@@ -62,9 +62,11 @@ Nav.prototype = {
 	},
 
 	renderSelected: function (key) {
+		var $selectedNode = $('.leaf-node[data-index='+key+']');
+		if ($selectedNode.length === 0) return;
 		$('.leaf-node').removeClass('cur');
-  	$('.leaf-node[data-index='+key+']').addClass('cur');
-  	$('.leaf-node[data-index='+key+']').parentsUntil('#menu','.item-group ul').removeClass('hide');
+  	$selectedNode.addClass('cur');
+  	$selectedNode.parentsUntil('#menu','.item-group ul').removeClass('hide');
   },
 
   getCurHash: function (){
