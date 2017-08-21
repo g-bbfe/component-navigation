@@ -1,7 +1,7 @@
 # navComponent
 navigation
 
-###预览方式
+### 预览方式
 
 ```
 	npm install
