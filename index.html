@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>navigation</title>
+        <style media="screen">
+            .hide {
+                display: none;
+            }
+
+            .show {
+                display: block;
+            }
+
+            .active {
+                background-color: red;
+            }
+
+            .main li {
+                width: 100px;
+            }
+
+            .menu {
+                position: relative;
+            }
+
+            .menu ul {
+                position: absolute;
+                top: 0;
+                left: 100px;
+                margin: 0;
+                padding: 0;
+            }
+
+            .menu:hover .title {
+                display: block;
+            }
+
+            .menu:hover > ul > li {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main">
+        </div>
+        <script type="text/javascript">
+            // 树的层次遍历
+            function layerTraversal (tree, callback) {
+                var queue = [];
+                queue.push(tree);
+                while (queue.length > 0) {
+                    parent = queue.pop();
+                    parent.forEach(function (node) {
+                        if (Array.isArray(node.children)) {
+                            queue.unshift(node.children);
+                        }
+                        callback(node, parent);
+                    });
+                }
+            }
+
+            // 树的先序遍历
+            function postOrderTraversal (parent, callback) {
+                var siblings = parent.children;
+                if (Array.isArray(siblings)) {
+                    siblings.forEach(function (node) {
+                        if (Array.isArray(node.children)) {
+                            postOrderTraversal(node, callback);
+                        }
+                        callback(node, parent);
+                    });
+                }
+            }
+
+            // layerTraversal(navData, function (node, parent) {
+            //     console.log("node", node);
+            //     console.log("parent", parent);
+            // });
+            //
+            // postOrderTraversal(navData, function (node, parent) {
+            //     console.log("node", node);
+            // });
+
+            // options = {
+            //     navData: [],           // 导航栏数据
+            //     currentPath: ''        // 当前路径，可选
+            // }
+
+            function navigation (options) {
+                options = options || {};
+                var currentPath = options.currentPath || window.location.hash;
+
+                // 导航栏状态
+                var navigationStatus = {
+                    children: options.navData,
+                    isFold: true
+                };
+
+                // 状态节点
+                // var node = {
+                //     title: '',
+                //     path: '',
+                //     isVisible: '',
+                //     isSelected: '',
+                //     children: [],
+                //     parent: null
+                // };
+
+                // 生成状态树
+                function initStatus() {
+                    postOrderTraversal(navigationStatus, function (node, parent) {
+                        node.isVisible = false;
+                        node.isSelected = false;
+                        node.parent = parent;
+                    });
+                }
+
+                // 查找符合当前路径的节点
+                function searchNode(path) {
+                    var result = null;
+                    postOrderTraversal(navigationStatus, function (node) {
+                        if (node.path === path) {
+                            result = node;
+                        }
+                    });
+                    return result;
+                }
+
+                function openNodes(node) {
+                    var nodeStatus = true;
+                    node.isSelected = nodeStatus;
+
+                    // 更新祖先状态
+                    while (node.parent) {
+                        var parent = node.parent;
+                        var siblings = parent.children;
+
+                        // 更新父节点状态
+                        parent.isSelected = nodeStatus;
+                        parent.isVisible = nodeStatus;
+
+                        // 更新兄弟节点状态
+                        if (Array.isArray(siblings)) {
+                            siblings.forEach(function (node) {
+                                node.isVisible = nodeStatus;
+                            });
+                        }
+
+                        node = parent;
+                    }
+                }
+
+                function closeNodes(node) {
+                    initStatus();
+                }
+
+                // 更新状态树
+                function updateStatus (path) {
+                    var isChange = false;
+                    var node = searchNode(path);
+
+                    if (node !== null) {
+                        closeNodes(node);
+                        openNodes(node);
+                        currentPath = path;
+                        isChange = true;
+                    }
+
+                    return isChange;
+                }
+
+                function updateView(path) {
+                    // 根据输入路径更新状态树
+                    var isChange = updateStatus(path);
+                    var tpl = '';
+                    // 渲染模板
+                    if (isChange) {
+                        tpl = render(navigationStatus.children);
+                        document.querySelector(".main").innerHTML = tpl;
+                    }
+                }
+
+                function renderMenuItem (node) {
+                    return '<li class="' + (node.isVisible ? 'show' : 'hide') + (node.isSelected ? ' active' : '') +'">'
+                                + '<a href="' + node.path + '">' + node.title + '</a>'
+                            + '</li>';
+                }
+
+                function renderMenu (node, nodes) {
+                    return '<div class="menu">'
+                                + '<li class="title ' + (node.isVisible ? 'show' : 'hide') + (node.isSelected ? ' active' : '') +'">'
+                                        + '<a href="' + node.path + '">' + node.title + '</a>'
+                                + '</li>'
+                                + '<ul>'
+                                + render(nodes)
+                                + '</ul>'
+                            + '</div>';
+                }
+
+                function render (nodes) {
+                    // console.log(nodes);
+                    var tpl = '';
+                    nodes.forEach(function (node) {
+                        if (Array.isArray(node.children)) {
+                            tpl += renderMenu(node, node.children);
+                        } else {
+                            tpl += renderMenuItem(node);
+                        }
+                    });
+                    return tpl;
+                }
+
+                // 初始化
+                (function init() {
+                    initStatus();
+                    updateView(currentPath);
+
+                    // 绑定 onpopstate 事件，当hash值发生变化时，更新视图
+                    window.onpopstate = function(event) {
+                        var path = window.location.hash;
+                        updateView(path);
+                    };
+                } ());
+            }
+
+            // 导航栏初始数据
+            var navData = [
+                {
+                    title:'导航栏1',
+                    path: '#/menu1',
+                    children: [
+                        {
+                            title: '导航栏11',
+                            path: '#',
+                            children: [
+                                {
+                                    title: '导航栏111',
+                                    path: '#/menu1/menu1/menu1'
+                                }
+                            ]
+                        },
+                        {
+                            title: '导航栏12',
+                            path: '#/menu1/menu2'
+                        }
+                    ]
+                },{
+                    title: '导航栏2',
+                    path: '#/menu2'
+                }
+            ];
+
+            // 启动导航栏
+            navigation({
+                navData: navData,
+                currentPath: window.location.hash || '#/menu1'
+            });
+        </script>
+    </body>
+</html>
