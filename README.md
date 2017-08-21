@@ -2,6 +2,7 @@
 navigation
 
 ###预览方式
+
 ```
 	npm install
 	live-server
