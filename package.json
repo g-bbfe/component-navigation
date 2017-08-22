@@ -1,0 +1,27 @@
+{
+  "name": "component-navigation",
+  "version": "0.0.1",
+  "description": "navigation component",
+  "main": "webpack.config.js",
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/g-bbfe/component-navigation.git"
+  },
+  "keywords": [
+    "g-bbfe",
+    "navigation"
+  ],
+  "author": "g-bbfe",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/g-bbfe/component-navigation/issues"
+  },
+  "homepage": "https://github.com/g-bbfe/component-navigation#readme"
+}
