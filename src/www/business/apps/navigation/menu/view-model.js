@@ -1,5 +1,5 @@
 // 树的先序遍历
-function postOrderTraversal (parent, callback) {
+function postOrderTraversal(parent, callback) {
     var siblings = parent.children;
     if (Array.isArray(siblings)) {
         siblings.forEach(function (node) {
@@ -12,16 +12,16 @@ function postOrderTraversal (parent, callback) {
 }
 
 // 根据条件，遍历树，返回符合条件的最深的节点
-function conditionalTraversal (tree, condition) {
+function conditionalTraversal(tree, condition) {
     var node = null;
     var children = tree.children;
 
     if (condition(tree)) {
         while (Array.isArray(children)) {
-            var currentNode = children.filter(condition).pop();
-            if (currentNode && currentNode.children) {
-                node = currentNode;
-                children = currentNode.children;
+            var nodes = children.filter(condition);
+            if (nodes.length > 0) {
+                node = nodes.pop();
+                children = node.children;
             } else {
                 break;
             }
@@ -31,7 +31,7 @@ function conditionalTraversal (tree, condition) {
     return node;
 }
 
-function menuViewModel (options) {
+function menuViewModel(options) {
     options = options || {};
 
     if (!options.menuData) {
@@ -136,7 +136,7 @@ function menuViewModel (options) {
         }
     }
 
-    function selectMenuItem (url) {
+    function selectMenuItem(url) {
         var node = searchNodeByUrl(url);
         if (node) {
             unselectNode(statusTree);
@@ -145,9 +145,9 @@ function menuViewModel (options) {
         }
     }
 
-    (function init () {
+    (function init() {
         initStatusTree();
-    } ())
+    }())
 
     return {
         selectMenuItem: selectMenuItem,
