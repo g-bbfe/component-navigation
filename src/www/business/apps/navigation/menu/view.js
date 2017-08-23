@@ -12,7 +12,7 @@
 
   function renderMenuItem (node) {
     return  '<li class="menu-item ' + (node.isSelect ? 'menu-item-selected' : '') +'">' + 
-              '<a class="menu-title menu-leaf" href="' + node.url + '">'+ 
+              '<a class="menu-title" href="' + node.url + '">'+ 
               ''+(node.icon ? '<i class="menu-icon-title-alt fa '+node.icon+'"></i>' : '') +' '+
               '<span class="menu-title-text">' + node.title + '</span>'+
                '</a>' +
@@ -60,7 +60,6 @@
       e.preventDefault();
       var event = e || window.event;
       var target = event.target || event.srcElement;
-      var menuLeafStr = 'menu-leaf';
       var menuTitleStr = 'menu-submenu-title';
       var targetClass = target.getAttribute('class');
       // 判断是否匹配目标元素
@@ -82,7 +81,17 @@
           ViewModel.selectMenuItem(url);
         }
       }
-    })
+    });
+
+    document.getElementById("menu").addEventListener('mouseover', function(e){
+      var event = e || window.event;
+      var target = event.target || event.srcElement;
+      console.log(target.getAttribute("class"));
+      if (target.getAttribute("class").indexOf("menu-item") > -1) {
+        console.log(111);
+      }
+      
+    });
     
   }
   init();
