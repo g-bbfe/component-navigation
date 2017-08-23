@@ -1,0 +1,39 @@
+.sidebar-folded .menu-root {
+
+	.menu-submenu {
+		display: none;
+	}
+
+	.menu-title-text {
+		display: none;
+	}
+
+	.menu-item:hover {
+
+		width: @sidebar-folded-width + @sidebar-width;
+
+		.menu-title-text {
+			display: inline-block;
+		}
+
+		& > .menu-submenu {
+			display: block;
+			float: right;
+			width: @sidebar-width;
+		}
+
+	}
+
+	& > .menu-item:hover {
+
+		.menu-title-text {
+			position: absolute;
+			left: @sidebar-folded-width + @base-padding;
+		}
+
+	}
+
+	.menu-submenu .menu-item:hover {
+		width: @sidebar-width;
+	}
+}
