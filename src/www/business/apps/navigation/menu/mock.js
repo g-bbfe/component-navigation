@@ -2,7 +2,7 @@
 [
   {
     "title": "一级菜单1",
-    "icon": "a.png",
+    "icon": "fa-home",
     "url": "/a",
     "children": [
       {
@@ -30,6 +30,7 @@
   {
     "title": "一级菜单2",
     "url": "/b",
+    "icon": "fa-home",
     "children": [
       {
         "title": "二级菜单2-1",
@@ -43,10 +44,12 @@
   },
   {
     "title": "一级菜单3 ",
+    "icon": "fa-home",
     "url": "/c"
   },
   {
     "title": "一级菜单4 ",
+    "icon": "fa-home",
     "url": "/d"
   }
 ]
