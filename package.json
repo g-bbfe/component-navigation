@@ -8,7 +8,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/g-bbfe/component-navigation/issues"
   },
-  "homepage": "https://github.com/g-bbfe/component-navigation#readme"
+  "homepage": "https://github.com/g-bbfe/component-navigation#readme",
+  "devDependencies": {
+    "webpack": "^3.5.5"
+  }
 }
