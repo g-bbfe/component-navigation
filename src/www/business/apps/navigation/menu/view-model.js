@@ -1,18 +1,3 @@
-// 树的层次遍历
-function layerTraversal (tree, callback) {
-    var queue = [];
-    queue.push(tree);
-    while (queue.length > 0) {
-        parent = queue.pop();
-        parent.forEach(function (node) {
-            if (Array.isArray(node.children)) {
-                queue.unshift(node.children);
-            }
-            callback(node, parent);
-        });
-    }
-}
-
 // 树的先序遍历
 function postOrderTraversal (parent, callback) {
     var siblings = parent.children;
@@ -26,7 +11,7 @@ function postOrderTraversal (parent, callback) {
     }
 }
 
-// 搜索节点
+// 搜索节点，从根节点按层次向下搜索
 function searchNode (tree, callback) {
     var children = tree.children;
     var node = null;
@@ -93,7 +78,6 @@ function menuViewModel (options) {
         });
     };
 
-    // 查找符合当前路径的节点
     function searchNodeByUrl(url) {
         var urls = [];
         // 根据URL生成查找路径
@@ -191,3 +175,5 @@ function menuViewModel (options) {
         }
     };
 }
+
+export default menuViewModel;
