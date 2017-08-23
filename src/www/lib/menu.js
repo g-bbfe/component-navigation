@@ -80,7 +80,11 @@ var _mock2 = _interopRequireDefault(_mock);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _view2.default)(_mock2.default, '/a/a-1/a-1-1');
+(0, _view2.default)({
+  container: "menu",
+  data: _mock2.default,
+  url: '/a/a-1/a-1-1'
+});
 
 /***/ }),
 /* 1 */
@@ -99,13 +103,8 @@ var _viewModel2 = _interopRequireDefault(_viewModel);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function menuView(menuData, currentUrl) {
-  var ViewModel = (0, _viewModel2.default)({
-    menuData: menuData,
-    render: renderInit
-  });
-
-  ViewModel.selectMenuItem(currentUrl);
+function menuView(options) {
+  var ViewModel;
 
   function renderMenuItem(node) {
     return '<li class="menu-item ' + (node.isSelect ? 'menu-item-selected' : '') + '">' + '<a class="menu-title" href="' + node.url + '">' + '' + (node.icon ? '<i class="menu-icon-title-alt fa ' + node.icon + '"></i>' : '') + ' ' + '' + node.title + '' + '</a>' + '</li>';
@@ -131,25 +130,22 @@ function menuView(menuData, currentUrl) {
   function renderInit(statusTree) {
     console.log(statusTree);
     var tpl = render(statusTree.children);
-    document.getElementById("menu").innerHTML = tpl;
+    document.getElementById(options.container).innerHTML = tpl;
   }
 
-  function init() {
-    // 1.获取状态树，按状态树渲染 render();
-    // 2.交互时，调用VM方法更新状态树，update view
-    // eg:mouseenter、click等
-
-    document.getElementById("menu").addEventListener('click', function (e) {
+  function bindEvents() {
+    document.getElementById(options.container).addEventListener('click', function (e) {
       e.preventDefault();
       var event = e || window.event;
       var target = event.target || event.srcElement;
       var menuTitleStr = 'menu-submenu-title';
+      var secondTitleStr = 'menu-title-vertical';
       var targetClass = target.getAttribute('class');
       // 判断是否匹配目标元素
-      // if (target.nodeName.toLocaleLowerCase() === 'a') {
-      if (target.nodeName.toLocaleLowerCase() === 'a' && targetClass.indexOf("menu-title") > -1) {
+      if (target.nodeName.toLocaleLowerCase() === 'a') {
         var url = target.getAttribute("href");
 
+        if (targetClass.indexOf(secondTitleStr) > -1) return;
         // 有儿子的菜单，点击打开
         if (targetClass.indexOf(menuTitleStr) > -1) {
           // 已经显示的儿子，点击隐藏
@@ -166,11 +162,12 @@ function menuView(menuData, currentUrl) {
       }
     });
 
-    document.getElementById("menu").addEventListener('mouseenter', function (e) {
+    document.getElementById(options.container).addEventListener('mouseenter', function (e) {
       var event = e || window.event;
       var target = event.target || event.srcElement;
-      // console.log(target.getAttribute("class"));
-      if (target.getAttribute("class").indexOf("menu-item-vertical") > -1) {
+      var secondItemStr = 'menu-item-vertical';
+
+      if (target.getAttribute("class").indexOf(secondItemStr) > -1) {
 
         var targetClass = target.getAttribute("class");
 
@@ -180,11 +177,12 @@ function menuView(menuData, currentUrl) {
       }
     }, true);
 
-    document.getElementById("menu").addEventListener('mouseleave', function (e) {
+    document.getElementById(options.container).addEventListener('mouseleave', function (e) {
       var event = e || window.event;
       var target = event.target || event.srcElement;
+      var secondItemStr = 'menu-item-vertical';
       // console.log(target.getAttribute("class"));
-      if (target.getAttribute("class").indexOf("menu-item-vertical") > -1) {
+      if (target.getAttribute("class").indexOf(secondItemStr) > -1) {
         var targetClass = target.getAttribute("class");
 
         if (targetClass.indexOf("selected") > -1) {
@@ -192,6 +190,19 @@ function menuView(menuData, currentUrl) {
         }
       }
     }, true);
+  }
+  function init() {
+    ViewModel = (0, _viewModel2.default)({
+      menuData: options.data,
+      render: renderInit
+    });
+
+    ViewModel.selectMenuItem(options.url);
+
+    bindEvents();
+    // 1.获取状态树，按状态树渲染 render();
+    // 2.交互时，调用VM方法更新状态树，update view
+    // eg:mouseenter、click等
   }
   init();
 }
