@@ -95,11 +95,13 @@ function menuViewModel (options) {
 
     // 查找符合当前路径的节点
     function searchNodeByUrl(url) {
-        var urls = url.split('/');
-        urls.shift();
-        urls = urls.map(function (url) {
-            return '/' + url;
-        });
+        var urls = [];
+        // 根据URL生成查找路径
+        url.split('/').slice(1).reduce(function (string1, string2) {
+            var url = string1 + '/' + string2;
+            urls.push(url);
+            return url;
+        }, '');
 
         url = urls.shift();
 
@@ -114,34 +116,36 @@ function menuViewModel (options) {
     }
 
     function selectNode(node) {
-        var nodeStatus = true;
-        node.isSelect = nodeStatus;
+        node.isSelect = true;
 
         // 更新祖先状态
         while (node.parent) {
             // 更新当前节点的父节点的状态
             var parent = node.parent;
-            parent.isSelect = nodeStatus;
+            parent.isSelect = true;
 
             node = parent;
         }
+        console.log(statusTree);
     }
 
     function unselectNode(tree) {
         var parent = tree;
         var children = parent.children;
 
-        while (parent.isSelect && Array.isArray(children)) {
+        while (parent.isSelect) {
             parent.isSelect = false;
 
-            children.some(function (node) {
-                if (node.isSelect === true) {
-                    parent = node;
-                    return true;
-                } else {
-                    return false;
-                }
-            });
+            if (Array.isArray(children)) {
+                children.some(function (node) {
+                    if (node.isSelect === true) {
+                        parent = node;
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+            }
 
             children = parent.children;
         }
