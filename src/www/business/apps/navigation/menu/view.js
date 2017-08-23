@@ -12,7 +12,7 @@ function menuView(menuData, currentUrl) {
     return  '<li class="menu-item ' + (node.isSelect ? 'menu-item-selected' : '') +'">' + 
               '<a class="menu-title" href="' + node.url + '">'+ 
               ''+(node.icon ? '<i class="menu-icon-title-alt fa '+node.icon+'"></i>' : '') +' '+
-              '<span class="menu-title-text">' + node.title + '</span>'+
+              '' + node.title + ''+
                '</a>' +
             '</li>';
   }
@@ -21,7 +21,7 @@ function menuView(menuData, currentUrl) {
     return  '<li class="menu-item ' + (node.isSelect && !node.isOpen ? 'menu-item-selected' : '') +' ' + (node.parent.parent ? 'menu-item-vertical' : '') + '">' +
               '<a href="'+node.url+'" class="menu-title menu-submenu-title ' + (node.isOpen ? 'isOpen' : '' )+' ' + (node.parent.parent ? 'menu-title-vertical' : '') + '" >'+
                 ''+ (node.icon ? '<i class="menu-icon-title-alt fa '+node.icon+'"></i>' : '') +''+
-                '<span class="menu-title-text">' + node.title + '</span>'+
+                '' + node.title + ''+
                 '' + (node.parent.parent ? '' : '<i class="menu-icon-angle fa fa-angle-' + (node.isOpen ? 'down' : 'right' )+'"></i>') + ''+
               '</a>'+
               '<ul class="menu-submenu ' + (node.isOpen ? 'menu-submenu-inline' : 'menu-submenu-hidden') + ' ' + (node.parent.parent ? 'menu-submenu-vertical' : '') + '">' +
@@ -81,16 +81,32 @@ function menuView(menuData, currentUrl) {
       }
     });
 
-    document.getElementById("menu").addEventListener('mouseover', function(e){
+    document.getElementById("menu").addEventListener('mouseenter', function(e){
       var event = e || window.event;
       var target = event.target || event.srcElement;
-      console.log(target.getAttribute("class"));
-      if (target.getAttribute("class").indexOf("menu-item") > -1) {
-        console.log(111);
+      // console.log(target.getAttribute("class"));
+      if (target.getAttribute("class").indexOf("menu-item-vertical") > -1) {
+        
+        var targetClass = target.getAttribute("class");
+
+        if (targetClass.indexOf("selected") > -1) {
+          target.className = '' + targetClass + ' isHover';
+        }
       }
-      
-    });
+    },true);
     
+    document.getElementById("menu").addEventListener('mouseleave', function(e){
+      var event = e || window.event;
+      var target = event.target || event.srcElement;
+      // console.log(target.getAttribute("class"));
+      if (target.getAttribute("class").indexOf("menu-item-vertical") > -1) {
+        var targetClass = target.getAttribute("class");
+
+        if (targetClass.indexOf("selected") > -1) {
+          target.className = targetClass.replace('isHover', '');
+        }
+      }
+    },true);
   }
   init();
 }
