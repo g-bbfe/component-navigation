@@ -1,18 +1,16 @@
-(function viewInit(){
-  var ViewModel;
-  $.getJSON("./mock.js",function(data){
-    console.log(data);
-    var navData = {
-      menuData: data,
+import menuViewModel from './view-model';
+
+function menuView(menuData, currentUrl) {
+  var ViewModel = menuViewModel({
+      menuData: menuData,
       render: renderInit
-    };
-    ViewModel = menuViewModel(navData);
-    ViewModel.selectMenuItem('/a/a-1/a-1-1');
-  })
+  });
+
+  ViewModel.selectMenuItem(currentUrl);
 
   function renderMenuItem (node) {
-    return  '<li class="menu-item ' + (node.isSelect ? 'menu-item-selected' : '') +'">' + 
-              '<a class="menu-title menu-leaf" href="' + node.url + '">'+ 
+    return  '<li class="menu-item ' + (node.isSelect ? 'menu-item-selected' : '') +'">' +
+              '<a class="menu-title menu-leaf" href="' + node.url + '">'+
               ''+(node.icon ? '<i class="menu-icon-title-alt fa '+node.icon+'"></i>' : '') +' '+
               '<span class="menu-title-text">' + node.title + '</span>'+
                '</a>' +
@@ -83,7 +81,9 @@
         }
       }
     })
-    
+
   }
   init();
-} ())
+}
+
+export default menuView;

@@ -1,5 +1,4 @@
-
-[
+var data = [
   {
     "title": "一级菜单1",
     "icon": "fa-home",
@@ -52,4 +51,6 @@
     "icon": "fa-home",
     "url": "/d"
   }
-]
+];
+
+export default data;

@@ -162,4 +162,4 @@ function menuViewModel(options) {
     };
 }
 
-// export default menuViewModel;
+export default menuViewModel;

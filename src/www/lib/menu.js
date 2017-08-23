@@ -70,8 +70,17 @@
 "use strict";
 
 
-__webpack_require__(1);
-__webpack_require__(2);
+var _view = __webpack_require__(1);
+
+var _view2 = _interopRequireDefault(_view);
+
+var _mock = __webpack_require__(3);
+
+var _mock2 = _interopRequireDefault(_mock);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _view2.default)(_mock2.default, '/a/a-1/a-1-1');
 
 /***/ }),
 /* 1 */
@@ -80,6 +89,99 @@ __webpack_require__(2);
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _viewModel = __webpack_require__(2);
+
+var _viewModel2 = _interopRequireDefault(_viewModel);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function menuView(menuData, currentUrl) {
+  var ViewModel = (0, _viewModel2.default)({
+    menuData: menuData,
+    render: renderInit
+  });
+
+  ViewModel.selectMenuItem(currentUrl);
+
+  function renderMenuItem(node) {
+    return '<li class="menu-item ' + (node.isSelect ? 'menu-item-selected' : '') + '">' + '<a class="menu-title menu-leaf" href="' + node.url + '">' + '' + (node.icon ? '<i class="menu-icon-title-alt fa ' + node.icon + '"></i>' : '') + ' ' + '<span class="menu-title-text">' + node.title + '</span>' + '</a>' + '</li>';
+  }
+
+  function renderMenu(node, nodes) {
+    return '<li class="menu-item ' + (node.isSelect && !node.isOpen ? 'menu-item-selected' : '') + ' ' + (node.parent.parent ? 'menu-item-vertical' : '') + '">' + '<a href="' + node.url + '" class="menu-title menu-submenu-title ' + (node.isOpen ? 'isOpen' : '') + ' ' + (node.parent.parent ? 'menu-title-vertical' : '') + '" >' + '' + (node.icon ? '<i class="menu-icon-title-alt fa ' + node.icon + '"></i>' : '') + '' + '<span class="menu-title-text">' + node.title + '</span>' + '' + (node.parent.parent ? '' : '<i class="menu-icon-angle fa fa-angle-' + (node.isOpen ? 'down' : 'right') + '"></i>') + '' + '</a>' + '<ul class="menu-submenu ' + (node.isOpen ? 'menu-submenu-inline' : 'menu-submenu-hidden') + ' ' + (node.parent.parent ? 'menu-submenu-vertical' : '') + '">' + render(nodes) + '</ul>' + '</li>';
+  }
+
+  function render(nodes) {
+    // console.log(nodes);
+    var tpl = '';
+    nodes.forEach(function (node) {
+      if (Array.isArray(node.children)) {
+        tpl += renderMenu(node, node.children);
+      } else {
+        tpl += renderMenuItem(node);
+      }
+    });
+    return tpl;
+  }
+
+  function renderInit(statusTree) {
+    console.log(statusTree);
+    var tpl = render(statusTree.children);
+    document.getElementById("menu").innerHTML = tpl;
+  }
+
+  function init() {
+    // 1.获取状态树，按状态树渲染 render();
+    // 2.交互时，调用VM方法更新状态树，update view
+    // eg:mouseenter、click等
+
+    document.getElementById("menu").addEventListener('click', function (e) {
+      e.preventDefault();
+      var event = e || window.event;
+      var target = event.target || event.srcElement;
+      var menuLeafStr = 'menu-leaf';
+      var menuTitleStr = 'menu-submenu-title';
+      var targetClass = target.getAttribute('class');
+      // 判断是否匹配目标元素
+      // if (target.nodeName.toLocaleLowerCase() === 'a') {
+      if (target.nodeName.toLocaleLowerCase() === 'a' && targetClass.indexOf("menu-title") > -1) {
+        var url = target.getAttribute("href");
+
+        // 有儿子的菜单，点击打开
+        if (targetClass.indexOf(menuTitleStr) > -1) {
+          // 已经显示的儿子，点击隐藏
+          if (targetClass.indexOf("isOpen") > -1) {
+            ViewModel.closeSubMenu(url);
+            // 隐藏的儿子，点击出现
+          } else {
+            ViewModel.openSubMenu(url);
+          }
+          // 叶子节点，点击选中
+        } else {
+          ViewModel.selectMenuItem(url);
+        }
+      }
+    });
+  }
+  init();
+}
+
+exports.default = menuView;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 // 树的先序遍历
 function postOrderTraversal(parent, callback) {
     var siblings = parent.children;
@@ -93,17 +195,20 @@ function postOrderTraversal(parent, callback) {
     }
 }
 
-// 搜索节点，从根节点按层次向下搜索
-function searchNode(tree, callback) {
-    var children = tree.children;
+// 根据条件，遍历树，返回符合条件的最深的节点
+function conditionalTraversal(tree, condition) {
     var node = null;
-    while (Array.isArray(children)) {
-        var nodes = children.filter(callback);
-        if (nodes.length > 0) {
-            node = nodes.pop();
-            children = node.children;
-        } else {
-            break;
+    var children = tree.children;
+
+    if (condition(tree)) {
+        while (Array.isArray(children)) {
+            var nodes = children.filter(condition);
+            if (nodes.length > 0) {
+                node = nodes.pop();
+                children = node.children;
+            } else {
+                break;
+            }
         }
     }
 
@@ -118,17 +223,11 @@ function menuViewModel(options) {
         return;
     }
 
-    if (!options.currentUrl) {
-        console.log('缺少当前URL！');
-        return;
-    }
-
     if (!options.render) {
         console.log('缺少渲染函数！');
         return;
     }
 
-    var currentUrl = options.currentUrl;
     var render = options.render;
 
     // 导航栏状态
@@ -160,7 +259,6 @@ function menuViewModel(options) {
         });
     };
 
-    // 查找符合当前路径的节点
     function searchNodeByUrl(url) {
         var urls = [];
         // 根据URL生成查找路径
@@ -170,9 +268,10 @@ function menuViewModel(options) {
             return url;
         }, '');
 
-        url = urls.shift();
+        // 根节点默认'/'
+        url = '/';
 
-        return searchNode(statusTree, function (node) {
+        return conditionalTraversal(statusTree, function (node) {
             if (node.url === url) {
                 url = urls.shift();
                 return true;
@@ -185,37 +284,26 @@ function menuViewModel(options) {
     function selectNode(node) {
         node.isSelect = true;
 
-        // 更新祖先状态
+        // 选择祖先节点
         while (node.parent) {
-            // 更新当前节点的父节点的状态
+            // 选中当前节点的父节点
             var parent = node.parent;
             parent.isSelect = true;
 
             node = parent;
         }
-        console.log(statusTree);
     }
 
+    // 从根节点开始，依次向下寻找被选中的节点，并将其改为未选中
     function unselectNode(tree) {
-        var parent = tree;
-        var children = parent.children;
-
-        while (parent.isSelect) {
-            parent.isSelect = false;
-
-            if (Array.isArray(children)) {
-                children.some(function (node) {
-                    if (node.isSelect === true) {
-                        parent = node;
-                        return true;
-                    } else {
-                        return false;
-                    }
-                });
+        conditionalTraversal(tree, function (node) {
+            if (node.isSelect === true) {
+                node.isSelect = false;
+                return true;
+            } else {
+                return false;
             }
-
-            children = parent.children;
-        }
+        });
     }
 
     function openNode(url) {
@@ -243,7 +331,6 @@ function menuViewModel(options) {
 
     (function init() {
         initStatusTree();
-        selectMenuItem(currentUrl);
     })();
 
     return {
@@ -259,75 +346,59 @@ function menuViewModel(options) {
     };
 }
 
+exports.default = menuViewModel;
+
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-(function viewInit() {
-  var ViewModel;
-  $.getJSON("./mock.js", function (data) {
-    console.log(data);
-    var navData = {
-      menuData: data,
-      currentUrl: '/a/a-1/a-1-1',
-      render: renderInit
-    };
-    ViewModel = menuViewModel(navData);
-  });
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var data = [{
+  "title": "一级菜单1",
+  "icon": "fa-home",
+  "url": "/a",
+  "children": [{
+    "title": "二级菜单1-1",
+    "url": "/a/a-1",
+    "children": [{
+      "title": "三级菜单1-1-1",
+      "url": "/a/a-1/a-1-1"
+    }]
+  }, {
+    "title": "二级菜单1-2",
+    "url": "/a/a-2",
+    "children": [{
+      "title": "三级菜单1-2-1",
+      "url": "/a/a-2/a-2-1"
+    }]
+  }]
+}, {
+  "title": "一级菜单2",
+  "url": "/b",
+  "icon": "fa-home",
+  "children": [{
+    "title": "二级菜单2-1",
+    "url": "/b/b-1"
+  }, {
+    "title": "二级菜单2-2",
+    "url": "/b/b-2"
+  }]
+}, {
+  "title": "一级菜单3 ",
+  "icon": "fa-home",
+  "url": "/c"
+}, {
+  "title": "一级菜单4 ",
+  "icon": "fa-home",
+  "url": "/d"
+}];
 
-  function renderMenuItem(node) {
-    return '<li class="bb-menu-item ' + (node.isSelect ? 'isSelect' : '') + '">' + '<a href="' + node.url + '">' + node.title + '</a>' + '</li>';
-  }
-
-  function renderMenu(node, nodes) {
-    return '<li class="bb-menu-submenu">' + '<div class="bb-menu-submenu-title ' + (node.isOpen ? 'isOpen' : '') + '"  data-index="' + node.url + '">' + '' + (node.icon ? '<i class="' + node.icon + '"></i>' : '') + '' + node.title + '' + '</div>' + '<ul class="bb-menu ' + (node.isOpen ? 'isOpen' : '') + '">' + render(nodes) + '</ul>' + '</li>';
-  }
-
-  function render(nodes) {
-    // console.log(nodes);
-    var tpl = '';
-    nodes.forEach(function (node) {
-      if (Array.isArray(node.children)) {
-        tpl += renderMenu(node, node.children);
-      } else {
-        tpl += renderMenuItem(node);
-      }
-    });
-    return tpl;
-  }
-
-  function renderInit(statusTree) {
-    console.log(statusTree);
-    var tpl = render(statusTree.children);
-    $("#menu").html(tpl);
-  }
-
-  function init() {
-    // 1.获取状态树，按状态树渲染 render();
-    // 2.交互时，调用VM方法更新状态树，update view
-    // eg:mouseenter、click等
-
-    $("#menu").on('click', '.bb-menu-submenu-title.isOpen', function () {
-      var url = $(this).data('index');
-      ViewModel.closeSubMenu(url);
-    });
-
-    $("#menu").on('click', '.bb-menu-submenu-title:not(.isOpen)', function () {
-      var url = $(this).data('index');
-      ViewModel.openSubMenu(url);
-    });
-
-    $("#menu").on('click', 'a', function () {
-      event.preventDefault();
-      var url = $(this).attr('href');
-      ViewModel.selectMenuItem(url);
-    });
-  }
-  init();
-})();
+exports.default = data;
 
 /***/ })
 /******/ ]);

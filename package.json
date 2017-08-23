@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "test",
-    "build": "webpack"
+    "build": "webpack -w"
   },
   "repository": {
     "type": "git",
