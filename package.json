@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "test",
-    "build": "webpack"
+    "build": "webpack -w"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,10 @@
   "homepage": "https://github.com/g-bbfe/component-navigation#readme",
   "devDependencies": {
     "webpack": "^3.5.5"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0"
   }
 }

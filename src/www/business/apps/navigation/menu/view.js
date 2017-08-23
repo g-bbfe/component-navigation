@@ -1,14 +1,12 @@
-(function viewInit(){
-  var ViewModel;
-  $.getJSON("./mock.js",function(data){
-    console.log(data);
-    var navData = {
-      menuData: data,
+import menuViewModel from './view-model';
+
+function menuView(menuData, currentUrl) {
+  var ViewModel = menuViewModel({
+      menuData: menuData,
       render: renderInit
-    };
-    ViewModel = menuViewModel(navData);
-    ViewModel.selectMenuItem('/a/a-1/a-1-1');
-  })
+  });
+
+  ViewModel.selectMenuItem(currentUrl);
 
   function renderMenuItem (node) {
     return  '<li class="menu-item ' + (node.isSelect ? 'menu-item-selected' : '') +'">' + 
@@ -95,4 +93,6 @@
     
   }
   init();
-} ())
+}
+
+export default menuView;
