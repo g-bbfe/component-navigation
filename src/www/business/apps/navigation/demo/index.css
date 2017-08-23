@@ -20,7 +20,7 @@
   background-color: #1c212d;
   box-shadow: inset 0px 1px 0px 0px #2b3447;
 }
-.menu-root .menu-item.menu-item-selected.menu-item-vertical > .menu-title:hover {
+.menu-root .menu-item.menu-item-selected.isHover > .menu-title {
   box-shadow: none;
 }
 .menu-root .menu-title {
