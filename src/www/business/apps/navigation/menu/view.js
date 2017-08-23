@@ -11,7 +11,7 @@
   })
 
   function renderMenuItem (node) {
-    return  '<li class="bb-menu-item ' + (node.isSelect ? 'isSelect' : '') +'">' + 
+    return  '<li class="bb-menu-item ' + (node.isSelect ? 'isSelect' : '') +'">' +
               '<a href="' + node.url + '">' + node.title + '</a>' +
             '</li>';
   }
@@ -66,7 +66,7 @@
       var url = $(this).attr('href');
       ViewModel.selectMenuItem(url);
     })
-    
+
   }
   init();
 } ())
