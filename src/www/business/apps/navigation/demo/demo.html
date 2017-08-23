@@ -20,51 +20,51 @@
 </style>
 
 <body>
-    <div class="sidebar">
-        <a class="sidebar-toggle-btn ">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
-    </a>
+    <div class="sidebar" id="sidebar">
+        <a class="sidebar-toggle-btn " id="sidebar-toggle-btn">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </a>
         <aside class="aside">
             <div class="logo">LOGO</div>
-            <nav class="menu-root" id="menu">
+            <nav class="menu menu-root" id="menu">
                 <ul class="menu-list">
                     <!-- 一个处于打开状态的二级菜单 -->
                     <li class="menu-item menu-item-l1">
-                        <a class="menu-title" href="#1"><i class="menu-icon-title-alt fa fa-home"></i>一级 - 1<i class="menu-icon-angle fa fa-angle-down"></i></a>
+                        <a class="menu-title" href="#1"><i class="menu-icon-title-alt fa fa-home"></i><span class="menu-title-text">一级 - 1</span><i class="menu-icon-angle fa fa-angle-down"></i></a>
                         <ul class="menu-submenu menu-submenu-inline">
                             <li class="menu-item menu-item-selected menu-item-l2 ">
-                                <a class="menu-title" href="#1.1">二级 - 1.1</a>
+                                <a class="menu-title" href="#1.1"><span class="menu-title-text">二级 - 1.1</span></a>
                                 <ul class="menu-submenu menu-submenu-vertical">
                                     <li class="menu-item  menu-item-l3">
-                                        <a class="menu-title" href="#1.1.1">三级 - 1.1.1</a>
+                                        <a class="menu-title" href="#1.1.1"><span class="menu-title-text">三级 - 1.1.1</span></a>
                                     </li>
                                     <li class="menu-item menu-item-selected menu-item-l3">
-                                        <a class="menu-title" href="#1.1.2">三级 - 1.1.2</a></li>
+                                        <a class="menu-title" href="#1.1.2"><span class="menu-title-text">三级 - 1.1.2</span></a></li>
                                     <li class="menu-item menu-item-l3">
-                                        <a class="menu-title" href="#1.1.3">三级 - 1.1.3</a></li>
+                                        <a class="menu-title" href="#1.1.3"><span class="menu-title-text">三级 - 1.1.3</span></a></li>
                                 </ul>
                             </li>
                             <li class="menu-item menu-item-l2">
-                                <a class="menu-title" href="#1.2">二级 - 1.2</a></li>
+                                <a class="menu-title" href="#1.2"><span class="menu-title-text"><span class="menu-title-text">二级 - 1.2</span></a></li>
                             <li class="menu-item menu-item-l2">
-                                <a class="menu-title" href="#1.3">二级 - 1.3</a></li>
+                                <a class="menu-title" href="#1.3"><span class="menu-title-text"><span class="menu-title-text">二级 - 1.3</span></a></li>
                         </ul>
                     </li>
                     <!-- 一个处于关闭状态的二级菜单， 它的子菜单通过menu-submenu-hidden类来隐藏自己 -->
                     <li class="menu-item menu-item-l1 ">
-                        <a class="menu-title" href="#2"><i class="menu-icon-title-alt fa fa-home"></i>一级 - 2<i class="menu-icon-angle fa fa-angle-right"></i></a>
+                        <a class="menu-title" href="#2"><i class="menu-icon-title-alt fa fa-home"></i><span class="menu-title-text">一级 - 2</span><i class="menu-icon-angle fa fa-angle-right"></i></a>
                         <ul class="menu-submenu menu-submenu-hidden">
                             <li class="menu-item menu-item-l2">
-                                <a class="menu-title" href="#2.1">二级 - 2.1</a>
+                                <a class="menu-title" href="#2.1"><span class="menu-title-text">二级 - 2.1</span></a>
                             </li>
                             <li class="menu-item menu-item-l2">
-                                <a class="menu-title" href="#2.2">二级 - 2.2</a></li>
+                                <a class="menu-title" href="#2.2"><span class="menu-title-text">二级 - 2.2</span></a></li>
                         </ul>
                     </li>
                     <li class="menu-item menu-item-l1">
-                        <a class="menu-title" href="#3"><i class="menu-icon-title-alt fa fa-home"></i>一级 - 3</a>
+                        <a class="menu-title" href="#3"><i class="menu-icon-title-alt fa fa-home"></i><span class="menu-title-text">一级 - 3</span></a>
                     </li>
                 </ul>
             </nav>
@@ -82,9 +82,83 @@
             </p>
         </div>
     </main>
-    <script src="http://s0.qhres.com/static/de0b7ee31de92291.js"></script>
-    <script type="text/javascript" src="../menu/view-model.js"></script>
-    <script type="text/javascript" src="../menu/view.js"></script>
+    <script src='/scripts/demo.js'></script>
+    <script>
+    let $sidebar = document.getElementById('sidebar');
+    let $sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
+    let $menu = document.getElementById('menu');
+
+
+    const hasClass = function hasClass($el, className) {
+        let classNamesArr = $el.className.split(' ');
+        return classNamesArr.indexOf(className) > -1;
+    }
+
+    const toggleClass = function toggleClass($el, className) {
+        let separator = ' ',
+            prevclassNames = $el.getAttribute('class'),
+            nextclassNames = '',
+            classNamesArr = prevclassNames.split(separator),
+            index = classNamesArr.indexOf(className);
+        if (index < 0) {
+            // addclassName
+            nextclassNames = `${prevclassNames}${separator}${className}`;
+        } else {
+            // removeclassName
+            nextclassNames = classNamesArr.reduce(function(accumulator, currValue) { return `${accumulator}${separator}` + (currValue === className ? '' : currValue) });
+        }
+        $el.setAttribute('class', nextclassNames);
+
+    }
+
+    const toggleSubmenu = function toggleSubmenu(e) {
+        let $targetEl = e.target,
+            className = 'menu-submenu-hidden';
+
+        let isMenuTitle = hasClass($targetEl, 'menu-title'),
+            isMenuIcon = hasClass($targetEl, 'menu-icon-angle') || hasClass($targetEl, 'menu-icon-title-alt'),
+            isMenuTitleText = hasClass($targetEl, 'menu-title-text') || hasClass($targetEl, 'menu-icon-title-alt');
+        let $submenu;
+
+        if (isMenuTitle) {
+            $submenu = $targetEl.nextElementSibling;
+        } else if (isMenuIcon || isMenuTitleText) {
+            $submenu = $targetEl.parentElement.nextElementSibling;
+        }
+
+        if ($submenu) {
+            toggleClass($submenu, className);
+            e.preventDefault();
+        }
+    }
+
+    $sidebarToggleBtn.onclick = function() {
+        if ($sidebar) {
+            toggleClass($sidebar, 'sidebar-folded');
+        }
+    }
+
+    $menu.addEventListener('click', function(e) {
+        let isFolded = hasClass($sidebar, 'sidebar-folded');
+        if (isFolded === false) {
+            toggleSubmenu(e)
+        } 
+    })
+
+    $menu.addEventListener('mouseenter', function(e) {
+        let isFolded = hasClass($sidebar, 'sidebar-folded');
+        if (isFolded === true) {
+        } 
+    })
+
+    $menu.addEventListener('mouseleave', function(e) {
+        let isFolded = hasClass($sidebar, 'sidebar-folded');
+        if (isFolded === true) {
+        } 
+    })
+
+
+    </script>
 </body>
 
 </html>

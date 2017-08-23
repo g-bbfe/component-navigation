@@ -96,6 +96,30 @@
   float: right;
   line-height: 50px;
 }
+.sidebar-folded .menu-root .menu-submenu {
+  display: none;
+}
+.sidebar-folded .menu-root .menu-title-text {
+  display: none;
+}
+.sidebar-folded .menu-root .menu-item:hover {
+  width: 265px;
+}
+.sidebar-folded .menu-root .menu-item:hover .menu-title-text {
+  display: inline-block;
+}
+.sidebar-folded .menu-root .menu-item:hover > .menu-submenu {
+  display: block;
+  float: right;
+  width: 200px;
+}
+.sidebar-folded .menu-root > .menu-item:hover .menu-title-text {
+  position: absolute;
+  left: 80px;
+}
+.sidebar-folded .menu-root .menu-submenu .menu-item:hover {
+  width: 200px;
+}
 * {
   box-sizing: border-box;
   padding: 0px;
@@ -162,24 +186,24 @@ body {
 .sidebar-toggle-btn .line {
   position: relative;
   height: 3px;
-  background-color: #dfe1e7;
+  background-color: #709d63;
   width: 16px;
 }
-.sidebar-toggle-btn .line:before {
+.sidebar-toggle-btn .line:after {
   display: inline-block;
   position: absolute;
   content: ' ';
   top: 0px;
-  left: 0px;
-  width: 4px;
+  right: 0px;
+  width: 12px;
   height: 3px;
-  background-color: #709d63;
+  background-color: #dfe1e7 ;
 }
 .sidebar-folded {
   width: 65px;
 }
-.sidebar-folded .sidebar-toggle-btn .line:before {
-  background-color: #dfe1e7;
+.sidebar-folded .sidebar-toggle-btn .line:after {
+  background-color: #709d63;
 }
 .main-container {
   -webkit-box-flex: 1;
@@ -199,4 +223,4 @@ body {
 .ie8 .menu-root .menu-submenu-vertical .menu-item {
     background-color: transparent;
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#f9262c3c,endColorstr=#f9262c3c)"
-}
+}}
