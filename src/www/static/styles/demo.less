@@ -1,0 +1,117 @@
+@import './demo/variables';
+@import './demo/menu';
+
+// Reset ========
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+
+// Layout ========
+body {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+// 左侧导航菜单区 - 展开状态
+.sidebar {
+    position: relative;
+    width: @sidebar-width;
+    z-index: @base-zindex + 1;
+    overflow-x: visible;
+
+    .logo {
+        height: @header-height;
+        background-color: lighten(@menu-item-bg-color, 10%);
+        line-height: @header-height;
+        text-align: center;
+    }
+
+
+    .menu-root {
+        position: relative;
+        background: #354059;
+        width: 100%;
+        overflow-x: visible;
+    }
+
+
+    &-toggle-btn {
+        float: right;
+        display: flex;
+        width: @header-height;
+        height: @header-height;
+        margin-right: -@header-height;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        background: #fafafc;
+        line-height: @header-height;
+        text-align: center;
+        color: @menu-item-bg-color;
+        padding: (@header-height - @menu-icon-size) / 2;
+
+        .line {
+            position: relative;
+            height: 3px;
+            background-color:  #dfe1e7;
+            width: @menu-icon-size;
+        }
+
+        .line:before {
+            display: inline-block;
+            position: absolute;
+            content: ' ';
+            top: 0px;
+            left: 0px;
+            width: 4px;
+            height: 3px;
+            background-color: @menu-item-selected-color;
+        }
+    }
+
+}
+
+// 左侧导航菜单区 - 折叠状态
+.sidebar-folded {
+
+    width: @sidebar-folded-width;
+
+    .sidebar-toggle-btn {
+        .line:before {
+            background-color: #dfe1e7;
+        }
+    }
+
+}
+
+// 主功能区域
+.main-container {
+    flex: 1;
+    z-index: @base-zindex;
+    background-color: #ededed;
+
+    .header {
+        width: 100%;
+        height: @header-height;
+        background-color: #ccc;
+    }
+    .main-content {
+        padding: @base-padding;
+    }
+
+}
+
+
+
+

@@ -1,0 +1,166 @@
+@import './variables';
+
+//=============  Menu-Mixins Start============= 
+.menu-icon(@menu-icon-color: @base-menu-font-color) {
+    width: @menu-icon-size;
+    height: @menu-icon-size;
+    color: @menu-icon-color;
+}
+
+.calc-colors(@base-menu-font-color) {
+
+    @menu-font-color-red: red(@base-menu-font-color);
+    @menu-font-color-green: green(@base-menu-font-color);
+    @menu-font-color-blue: blue(@base-menu-font-color);
+
+    @menu-item-font-color: rgba(@menu-font-color-red, @menu-font-color-green, @menu-font-color-blue, @base-menu-font-alpha);
+    @menu-item-icon-color: rgba(@menu-font-color-red, @menu-font-color-green, @menu-font-color-blue, @base-menu-icon-alpha);
+    @menu-item-selected-font-color: rgba(@menu-font-color-red, @menu-font-color-green, @menu-font-color-blue, @base-menu-font-alpha + 0.2);
+    @menu-item-selected-icon-color: rgba(@menu-font-color-red, @menu-font-color-green, @menu-font-color-blue, @base-menu-icon-alpha + 0.2);
+
+    @menu-submenu-list-icon-size: 4px;
+
+}
+
+//=============  Menu-Mixins End============= 
+
+
+//=============  Menu-Styles Start============= 
+.menu-root {
+
+    position: relative;
+
+    .calc-colors(@base-menu-font-color);
+
+    a {
+        & {
+            display: inline-block;
+            text-decoration: none;
+        }
+        &,
+        &:link,
+        &:visited,
+        &:hover,
+        &:active {
+            color: @menu-item-font-color;
+        }
+    }
+
+    .menu-item {
+        position: relative;
+        &:not(.menu-item-selected)>.menu-title:hover {
+            color: @menu-item-selected-font-color;
+            background-color: @menu-item-selected-bg-color;
+            box-shadow: inset 0px 1px 0px 0px @menu-item-bg-color;
+        }
+    } 
+
+    .menu-title {
+        width: 100%;
+        height:  @menu-item-height;
+        line-height: @menu-item-height;
+        padding-left: @menu-padding-left;
+        padding-right: @menu-padding-right;
+    }
+
+    .menu-item-selected {
+        // 选中的节点
+        &>.menu-title {
+            color: @menu-item-selected-font-color;
+            background-color: @menu-item-selected-bg-color;
+            box-shadow: inset @menu-item-selected-border-width 0px 0px 0px @menu-item-selected-color, inset 0px 1px 0px 0px @menu-item-bg-color;
+        }
+
+        .menu-icon-title-alt,
+        .menu-icon-angle {
+            color: @menu-item-selected-icon-color;
+        }
+    }
+
+    .menu-submenu {
+
+        position: relative;
+
+        &-hidden {
+            display: none;
+        }
+
+        .menu-item {
+            background-color: @menu-submenu-item-bg-color;
+        } 
+
+        .menu-title {
+            padding-left: @menu-submenu-padding-left + @menu-icon-margin-right + @menu-submenu-list-icon-size;
+        }
+
+    }
+
+    .menu-submenu-inline {
+        // 模拟list-style: circle-solid
+        & > .menu-item:before {
+            position: absolute;
+            display: block;
+            content: ' ';
+            left: @menu-submenu-padding-left;
+            top: 50%;
+            margin-top: -@menu-submenu-list-icon-size/2;
+            width: @menu-submenu-list-icon-size;
+            height: @menu-submenu-list-icon-size;
+            border-radius: @menu-submenu-list-icon-size/2;
+            background-color: @base-menu-font-color;
+        }
+
+    }
+
+     // 三级子菜单
+    .menu-submenu .menu-item:hover .menu-submenu-vertical {
+        position: absolute;
+        top: 0px;
+        left: @sidebar-width;
+        background-color: @menu-submenu-item-bg-color;
+        display: block;
+        z-index: @base-zindex + 2;
+
+        .menu-item {
+            box-shadow: inset 1px 0px 0px  0px @menu-item-bg-color;
+        }
+    }
+
+    .menu-submenu-vertical {
+
+        @menu-submenu-item-bg-color-red: red(@menu-submenu-item-bg-color);
+        @menu-submenu-item-bg-color-green: green(@menu-submenu-item-bg-color);
+        @menu-submenu-item-bg-color-blue: blue(@menu-submenu-item-bg-color);
+
+        @menu-submenu-vertical-item-bg-color: rgba(@menu-submenu-item-bg-color-red, @menu-submenu-item-bg-color-green, @menu-submenu-item-bg-color-blue, @menu-submenu-vertical-item-bg-color-alpha);
+
+        width: @menu-submenu-vertical-width;
+        overflow: visible;
+        display: none;
+
+        .menu-item {
+            background-color: @menu-submenu-vertical-item-bg-color;
+        }
+
+        .menu-title {
+            padding-left: 0px;
+            text-align: center;
+            font-size: 12px;
+        }
+    }
+
+    // icon ===== 
+    [class|=menu-icon] {
+        .menu-icon( @menu-item-icon-color);        
+    }
+
+    .menu-icon-title-alt {
+        margin-right: @menu-icon-margin-right;
+    }
+
+    .menu-icon-angle {
+        float: right;
+        line-height: @menu-item-height;
+    }
+}
+//=============  Menu-Styles End============= 
