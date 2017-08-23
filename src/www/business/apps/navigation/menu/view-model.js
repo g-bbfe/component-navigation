@@ -11,16 +11,17 @@ function postOrderTraversal (parent, callback) {
     }
 }
 
-// 根据条件，遍历树，返回符合条件的叶子节点
+// 根据条件，遍历树，返回符合条件的最深的节点
 function conditionalTraversal (tree, condition) {
     var node = null;
     var children = tree.children;
 
     if (condition(tree)) {
         while (Array.isArray(children)) {
-            node = children.filter(condition).pop();
-            if (node && node.children) {
-                children = node.children;
+            var currentNode = children.filter(condition).pop();
+            if (currentNode && currentNode.children) {
+                node = currentNode;
+                children = currentNode.children;
             } else {
                 break;
             }
