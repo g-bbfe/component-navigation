@@ -80,7 +80,7 @@ var _mock2 = _interopRequireDefault(_mock);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _view2.default)(_mock2.default, '/a/a-1/a-1-1');
+(0, _view2.default)(_mock2.default, '/ios/iphone/8');
 
 /***/ }),
 /* 1 */
@@ -330,6 +330,7 @@ function menuViewModel(options) {
 
     function selectMenuItem(url) {
         var node = searchNodeByUrl(url);
+        //@FIXME
         if (node) {
             unselectNode(statusTree);
             selectNode(node);
@@ -367,43 +368,52 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var data = [{
-  "title": "一级菜单1",
-  "icon": "fa-home",
-  "url": "/a",
+  "title": "安卓机",
+  "icon": "fa-android",
+  "url": "/android",
   "children": [{
-    "title": "二级菜单1-1",
-    "url": "/a/a-1",
+    "title": "华为",
+    "url": "/android/huawei",
     "children": [{
-      "title": "三级菜单1-1-1",
-      "url": "/a/a-1/a-1-1"
+      "title": "荣耀",
+      "url": "/android/huawei/hornour"
     }]
   }, {
-    "title": "二级菜单1-2",
-    "url": "/a/a-2",
+    "title": "小米",
+    "url": "/android/mi",
     "children": [{
-      "title": "三级菜单1-2-1",
-      "url": "/a/a-2/a-2-1"
+      "title": "红米",
+      "url": "/android/mi/hongmi"
     }]
   }]
 }, {
-  "title": "一级菜单2",
-  "url": "/b",
-  "icon": "fa-home",
+  "title": "IOS",
+  "url": "/ios",
+  "icon": "fa-apple",
   "children": [{
-    "title": "二级菜单2-1",
-    "url": "/b/b-1"
+    "title": "iwatch",
+    "url": "/ios/iwatch"
   }, {
-    "title": "二级菜单2-2",
-    "url": "/b/b-2"
+    "title": "iphone",
+    "url": "/ios/iphone",
+    "children": [{
+      "title": "iphone6s",
+      "url": "/ios/iphone/6s"
+    }, {
+      "title": "iphone6 plus",
+      "url": "/ios/iphone/6plus"
+    }, {
+      "title": "iphone7 plus",
+      "url": "/ios/iphone/7plus"
+    }, {
+      "title": "iphone8 ",
+      "url": "/ios/iphone/8"
+    }]
   }]
 }, {
-  "title": "一级菜单3 ",
-  "icon": "fa-home",
-  "url": "/c"
-}, {
-  "title": "一级菜单4 ",
-  "icon": "fa-home",
-  "url": "/d"
+  "title": "winPhone",
+  "icon": " fa-windows",
+  "url": "/windows"
 }];
 
 exports.default = data;

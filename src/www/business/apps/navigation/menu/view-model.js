@@ -138,6 +138,7 @@ function menuViewModel(options) {
 
     function selectMenuItem(url) {
         var node = searchNodeByUrl(url);
+        //@FIXME
         if (node) {
             unselectNode(statusTree);
             selectNode(node);

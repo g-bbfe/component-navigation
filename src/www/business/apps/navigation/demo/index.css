@@ -84,8 +84,7 @@
   background-color: rgba(38, 44, 60, 0.98);
 }
 .menu-root .menu-submenu-vertical .menu-title {
-  padding-left: 0px;
-  text-align: center;
+  padding-left: 25px;
   font-size: 12px;
 }
 .menu-root [class|=menu-icon] {
