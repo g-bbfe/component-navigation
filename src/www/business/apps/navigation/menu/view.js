@@ -4,7 +4,7 @@ function menuView(options) {
   var ViewModel;
   
   function renderMenuItem (node) {
-    return  '<li class="menu-item ' + (node.isSelect ? 'menu-item-selected' : '') +'">' + 
+    return  '<li class="menu-item ' + (node.isSelect ? 'menu-item-selected' : '') +'">' +
               '<a class="menu-title" href="' + node.url + '">'+ 
               ''+(node.icon ? '<i class="menu-icon-title-alt fa '+node.icon+'"></i>' : '') +' '+
               '' + node.title + ''+
