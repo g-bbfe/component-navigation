@@ -1,13 +1,15 @@
-// 树的先序遍历
-function postOrderTraversal(parent, callback) {
-    var siblings = parent.children;
-    if (Array.isArray(siblings)) {
-        siblings.forEach(function (node) {
-            if (Array.isArray(node.children)) {
-                postOrderTraversal(node, callback);
-            }
-            callback(node, parent);
-        });
+// 树的层次遍历
+function layerTraversal (tree, callback) {
+    var queue = [];
+    queue.push(tree);
+    while (queue.length > 0) {
+        var parent = queue.pop();
+        if (Array.isArray(parent.children)) {
+            parent.children.forEach(function (node) {
+                queue.unshift(node);
+                callback(node, parent);
+            });
+        }
     }
 }
 
@@ -52,6 +54,7 @@ function menuViewModel(options) {
         url: '/',
         isSelect: false,
         isOpen: true,
+        level: 0,
         children: options.menuData,
         parent: null
     };
@@ -66,6 +69,7 @@ function menuViewModel(options) {
     //     parent: null
     // };
 
+    // 根据祖先的个数确定层级
     function getNodeLevel(node) {
         var level = 0;
         while (node.parent) {
@@ -78,13 +82,11 @@ function menuViewModel(options) {
 
     // 生成状态树
     function initStatusTree() {
-        postOrderTraversal(statusTree, function (node, parent) {
+        // 必须保证父级元素已经遍历
+        layerTraversal(statusTree, function (node, parent) {
             node.isOpen = false;
             node.isSelect = false;
             node.parent = parent;
-        });
-
-        postOrderTraversal(statusTree, function (node, parent) {
             node.level = getNodeLevel(node);
         });
     };
