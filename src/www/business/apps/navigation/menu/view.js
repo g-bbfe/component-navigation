@@ -13,13 +13,34 @@ function menuView(options) {
   }
 
   function renderMenu (node, nodes) {
-    return  '<li class="menu-item ' + (node.isSelect && !node.isOpen ? 'menu-item-selected' : '') +' ' + (node.parent.parent ? 'menu-item-vertical' : '') + '">' +
-              '<a href="'+node.url+'" class="menu-title menu-submenu-title ' + (node.isOpen ? 'isOpen' : '' )+' ' + (node.parent.parent ? 'menu-title-vertical' : '') + '" >'+
+    return  '<li class="menu-item ' + (node.isSelect && !node.isOpen ? 'menu-item-selected' : '') +' ' + (node.level > 1 ? 'menu-item-vertical' : '') + '">' +
+              '<a href="'+node.url+'" class="menu-title menu-submenu-title ' + (node.isOpen ? 'isOpen' : '' )+' ' + (node.level > 1 ? 'menu-title-vertical' : '') + '" >'+
                 ''+ (node.icon ? '<i class="menu-icon-title-alt fa '+node.icon+'"></i>' : '') +''+
                 '' + node.title + ''+
-                '' + (node.parent.parent ? '' : '<i class="menu-icon-angle fa fa-angle-' + (node.isOpen ? 'down' : 'right' )+'"></i>') + ''+
+                '' + (node.level > 1 ? '' : '<i class="menu-icon-angle fa fa-angle-' + (node.isOpen ? 'down' : 'right' )+'"></i>') + ''+
               '</a>'+
-              '<ul class="menu-submenu ' + (node.isOpen ? 'menu-submenu-inline' : 'menu-submenu-hidden') + ' ' + (node.parent.parent ? 'menu-submenu-vertical' : '') + '">' +
+              '<ul class="menu-submenu ' + (node.isOpen ? 'menu-submenu-inline' : 'menu-submenu-hidden') + ' ' + (node.level > 1 ? 'menu-submenu-vertical' : '') + '">' +
+                render(nodes) +
+              '</ul>' +
+            '</li>';
+  }
+
+  function renderMenuItemFold (node) {
+    return  '<li  class="menu-item menu-item-l'+node.level+' ' + (node.isSelect ? 'menu-item-selected' : '') +'">' +
+              '<a class="menu-title" href="' + node.url + '">'+ 
+              ''+(node.icon ? '<i class="menu-icon-title-alt fa '+node.icon+'"></i>' : '') +' '+
+              '<span class="menu-title-text menu-title-l'+node.level+'">' + node.title + '</span>'+
+              '</a>' +
+            '</li>';
+  }
+
+  function renderMenuFold (node, nodes) {
+    return  '<li  class="menu-item menu-item-l'+node.level+' ' + (node.isSelect ? 'menu-item-selected' : '') +' ' + (node.isOpen ? 'menu-item-active' : '') +' ">' +
+              '<a href="'+node.url+'" class="menu-title" >'+
+                ''+ (node.icon ? '<i class="menu-icon-title-alt fa '+node.icon+'"></i>' : '') +''+
+                '<span class="menu-title-text menu-title-l'+node.level+'">' + node.title + '</span>'+
+              '</a>'+
+              '<ul class="menu-submenu menu-submenu-l'+ Number(node.level+1) +' ' + (node.isOpen ? '' : 'menu-submenu-hidden') + ' menu-submenu-' + (node.level === 1 ? 'inline' : 'vertical') + '">' +
                 render(nodes) +
               '</ul>' +
             '</li>';
@@ -28,12 +49,23 @@ function menuView(options) {
   function render (nodes) {
     // console.log(nodes);
     var tpl = '';
+    
     nodes.forEach(function (node) {
+      // 宽 TODO
+      if (options.ifFold) {
         if (Array.isArray(node.children)) {
-            tpl += renderMenu(node, node.children);
+          tpl += renderMenuFold(node, node.children);
         } else {
-            tpl += renderMenuItem(node);
+          tpl += renderMenuItemFold(node);
         }
+        
+      }else {
+        if (Array.isArray(node.children)) {
+          tpl += renderMenu(node, node.children);
+        } else {
+          tpl += renderMenuItem(node);
+        }
+      }     
     });
     return tpl;
   }
@@ -45,6 +77,11 @@ function menuView(options) {
   }
 
   function bindEvents() {
+
+    var sidebarClass = document.getElementsByClassName("sidebar")[0].getAttribute('class');
+    var isFoldSidebar = options.ifFold;
+    // var isFoldSidebar = sidebarClass.indexOf('sidebar-folded');
+
     document.getElementById(options.container).addEventListener('click', function(e){
       e.preventDefault();
       var event = e || window.event;
@@ -77,13 +114,26 @@ function menuView(options) {
       var event = e || window.event;
       var target = event.target || event.srcElement;
       var secondItemStr = 'menu-item-vertical';
-      
-      if (target.getAttribute("class").indexOf(secondItemStr) > -1) {
-        
-        var targetClass = target.getAttribute("class");
+      var targetClass = target.getAttribute("class");
+      // console.log(target.getAttribute("class"));
 
-        if (targetClass.indexOf("selected") > -1) {
-          target.className = '' + targetClass + ' isHover';
+      // 折叠菜单栏
+      if (isFoldSidebar) {
+        if (targetClass.indexOf("menu-item") > -1) {
+          target.className = '' + targetClass + ' menu-item-active';
+
+          var firstUl = target.getElementsByTagName('ul')[0];
+          if (!firstUl)return;
+          var firstUlClass = firstUl.getAttribute("class");
+          
+          firstUl.className = firstUlClass.replace('menu-submenu-hidden', '');
+        }
+      }else {
+        if (targetClass.indexOf(secondItemStr) > -1) {
+    
+          if (targetClass.indexOf("selected") > -1) {
+            target.className = '' + targetClass + ' isHover';
+          }
         }
       }
     },true);
@@ -92,10 +142,21 @@ function menuView(options) {
       var event = e || window.event;
       var target = event.target || event.srcElement;
       var secondItemStr = 'menu-item-vertical';
+      var targetClass = target.getAttribute("class");
       // console.log(target.getAttribute("class"));
-      if (target.getAttribute("class").indexOf(secondItemStr) > -1) {
-        var targetClass = target.getAttribute("class");
 
+      // 折叠菜单栏
+      if (isFoldSidebar) {
+        if (targetClass.indexOf("menu-item") > -1) {
+          target.className = targetClass.replace('menu-item-active', '');
+
+          var firstUl = target.getElementsByTagName('ul')[0];
+          if (!firstUl)return;
+          var firstUlClass = firstUl.getAttribute("class");
+          
+          firstUl.className =''+ firstUlClass+' menu-submenu-hidden';
+        }
+      }else if (targetClass.indexOf(secondItemStr) > -1) {
         if (targetClass.indexOf("selected") > -1) {
           target.className = targetClass.replace('isHover', '');
         }
