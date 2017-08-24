@@ -8,42 +8,14 @@ let $menu = document.getElementById('menu');
 
 // 折叠态
 // $sidebar.className = 'sidebar sidebar-folded';
-menu({container: "menu1",
-ifFold: true,
+menu({container1: "menu1",
+container2: "menu2",
 data: menuData,
 url: '/ios/iphone/8'});
 
 // 展开态
 // $sidebar.className = 'sidebar';
-menu({container: "menu2",
-ifFold: false,
-data: menuData,
-url: '/ios/iphone/8'});
-
-const toggleClass = function toggleClass($el, className) {
-    let separator = ' ',
-        prevclassNames = $el.getAttribute('class'),
-        nextclassNames = '',
-        classNamesArr = prevclassNames.split(separator),
-        index = classNamesArr.indexOf(className);
-    if (index < 0) {
-        // addclassName
-        nextclassNames = `${prevclassNames}${separator}${className}`;
-    } else {
-        // removeclassName
-        nextclassNames = classNamesArr.reduce(function(accumulator, currValue) { return `${accumulator}${separator}` + (currValue === className ? '' : currValue) });
-    }
-    $el.setAttribute('class', nextclassNames);
-
-}
-
-$sidebarToggleBtn.onclick = function() {
-    if ($sidebar) {
-        toggleClass($sidebar, 'sidebar-folded');
-        var ifFold = document.getElementById("sidebar-toggle-btn").className.indexOf("fold")>-1? true : false;
-        menu({container: "menu",
-        ifFold: ifFold,
-        data: menuData,
-        url: '/ios/iphone/8'});
-    }
-}
+// menu({container: "menu2",
+// ifFold: false,
+// data: menuData,
+// url: '/ios/iphone/8'});

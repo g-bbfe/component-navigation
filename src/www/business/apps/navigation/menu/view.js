@@ -20,7 +20,7 @@ function menuView(options) {
                 '' + (node.level > 1 ? '' : '<i class="menu-icon-angle fa fa-angle-' + (node.isOpen ? 'down' : 'right' )+'"></i>') + ''+
               '</a>'+
               '<ul class="menu-submenu ' + (node.isOpen ? 'menu-submenu-inline' : 'menu-submenu-hidden') + ' ' + (node.level > 1 ? 'menu-submenu-vertical' : '') + '">' +
-                render(nodes) +
+                render(nodes, renderMenu, renderMenuItem) +
               '</ul>' +
             '</li>';
   }
@@ -41,48 +41,89 @@ function menuView(options) {
                 '<span class="menu-title-text menu-title-l'+node.level+'">' + node.title + '</span>'+
               '</a>'+
               '<ul class="menu-submenu menu-submenu-l'+ Number(node.level+1) +' ' + (node.isOpen ? '' : 'menu-submenu-hidden') + ' menu-submenu-' + (node.level === 1 ? 'inline' : 'vertical') + '">' +
-                render(nodes) +
+                render(nodes, renderMenuFold, renderMenuItemFold) +
               '</ul>' +
             '</li>';
   }
 
-  function render (nodes) {
+  function render (nodes,renderMenuFun,renderItemFun) {
     // console.log(nodes);
     var tpl = '';
     
     nodes.forEach(function (node) {
-      // 宽 TODO
-      if (options.ifFold) {
-        if (Array.isArray(node.children)) {
-          tpl += renderMenuFold(node, node.children);
-        } else {
-          tpl += renderMenuItemFold(node);
-        }
-        
-      }else {
-        if (Array.isArray(node.children)) {
-          tpl += renderMenu(node, node.children);
-        } else {
-          tpl += renderMenuItem(node);
-        }
-      }     
+      
+      if (Array.isArray(node.children)) {
+        tpl += renderMenuFun(node, node.children);
+      } else {
+        tpl += renderItemFun(node);
+      }
     });
     return tpl;
   }
 
   function renderInit(statusTree) {
     console.log(statusTree);
-    var tpl = render(statusTree.children);
-    document.getElementById(options.container).innerHTML = tpl;
+    var tpl1 = render(statusTree.children, renderMenuFold, renderMenuItemFold);
+    document.getElementById(options.container1).innerHTML = tpl1;
+
+    var tpl2 = render(statusTree.children, renderMenu, renderMenuItem);
+    document.getElementById(options.container2).innerHTML = tpl2;
   }
 
   function bindEvents() {
 
-    var sidebarClass = document.getElementsByClassName("sidebar")[0].getAttribute('class');
-    var isFoldSidebar = options.ifFold;
-    // var isFoldSidebar = sidebarClass.indexOf('sidebar-folded');
+    // 折叠的
+    document.getElementById(options.container1).addEventListener('click', function(e){
+      e.preventDefault();
+      var event = e || window.event;
+      var target = event.target || event.srcElement;
+      var menuTitleStr = 'menu-submenu-title';
+      var secondTitleStr = 'menu-title-vertical';
+      var targetClass = target.getAttribute('class');
+      // 判断是否匹配目标元素
+      if (target.nodeName.toLocaleLowerCase() === 'a' ) {
+        var url = target.getAttribute("href");
+        ViewModel.selectMenuItem(url);
+      }
+    });
 
-    document.getElementById(options.container).addEventListener('click', function(e){
+    document.getElementById(options.container1).addEventListener('mouseenter', function(e){
+      var event = e || window.event;
+      var target = event.target || event.srcElement;
+      
+      var targetClass = target.getAttribute("class");
+
+      if (targetClass.indexOf("menu-item") > -1) {
+        target.className = '' + targetClass + ' menu-item-active';
+
+        var firstUl = target.getElementsByTagName('ul')[0];
+        if (!firstUl)return;
+        var firstUlClass = firstUl.getAttribute("class");
+        
+        firstUl.className = firstUlClass.replace('menu-submenu-hidden', '');
+      }
+    },true);
+
+    document.getElementById(options.container1).addEventListener('mouseleave', function(e){
+      var event = e || window.event;
+      var target = event.target || event.srcElement;
+      
+      var targetClass = target.getAttribute("class");
+     
+      if (targetClass.indexOf("menu-item") > -1) {
+        target.className = targetClass.replace('menu-item-active', '');
+
+        var firstUl = target.getElementsByTagName('ul')[0];
+        if (!firstUl)return;
+        var firstUlClass = firstUl.getAttribute("class");
+        
+        firstUl.className =''+ firstUlClass+' menu-submenu-hidden';
+      }
+      
+    },true);
+
+    // 展开的菜单
+    document.getElementById(options.container2).addEventListener('click', function(e){
       e.preventDefault();
       var event = e || window.event;
       var target = event.target || event.srcElement;
@@ -110,53 +151,30 @@ function menuView(options) {
       }
     });
 
-    document.getElementById(options.container).addEventListener('mouseenter', function(e){
+    document.getElementById(options.container2).addEventListener('mouseenter', function(e){
       var event = e || window.event;
       var target = event.target || event.srcElement;
       var secondItemStr = 'menu-item-vertical';
       var targetClass = target.getAttribute("class");
       // console.log(target.getAttribute("class"));
 
-      // 折叠菜单栏
-      if (isFoldSidebar) {
-        if (targetClass.indexOf("menu-item") > -1) {
-          target.className = '' + targetClass + ' menu-item-active';
-
-          var firstUl = target.getElementsByTagName('ul')[0];
-          if (!firstUl)return;
-          var firstUlClass = firstUl.getAttribute("class");
-          
-          firstUl.className = firstUlClass.replace('menu-submenu-hidden', '');
-        }
-      }else {
-        if (targetClass.indexOf(secondItemStr) > -1) {
-    
-          if (targetClass.indexOf("selected") > -1) {
-            target.className = '' + targetClass + ' isHover';
-          }
+      if (targetClass.indexOf(secondItemStr) > -1) {
+  
+        if (targetClass.indexOf("selected") > -1) {
+          target.className = '' + targetClass + ' isHover';
         }
       }
+      
     },true);
     
-    document.getElementById(options.container).addEventListener('mouseleave', function(e){
+    document.getElementById(options.container2).addEventListener('mouseleave', function(e){
       var event = e || window.event;
       var target = event.target || event.srcElement;
       var secondItemStr = 'menu-item-vertical';
       var targetClass = target.getAttribute("class");
       // console.log(target.getAttribute("class"));
 
-      // 折叠菜单栏
-      if (isFoldSidebar) {
-        if (targetClass.indexOf("menu-item") > -1) {
-          target.className = targetClass.replace('menu-item-active', '');
-
-          var firstUl = target.getElementsByTagName('ul')[0];
-          if (!firstUl)return;
-          var firstUlClass = firstUl.getAttribute("class");
-          
-          firstUl.className =''+ firstUlClass+' menu-submenu-hidden';
-        }
-      }else if (targetClass.indexOf(secondItemStr) > -1) {
+      if (targetClass.indexOf(secondItemStr) > -1) {
         if (targetClass.indexOf("selected") > -1) {
           target.className = targetClass.replace('isHover', '');
         }
