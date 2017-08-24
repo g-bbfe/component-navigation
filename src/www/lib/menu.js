@@ -270,7 +270,7 @@ function menuViewModel(options) {
         title: 'root',
         url: '/',
         isSelect: false,
-        isOpen: false,
+        isOpen: true,
         children: options.menuData,
         parent: null
     };
@@ -285,12 +285,26 @@ function menuViewModel(options) {
     //     parent: null
     // };
 
+    function getNodeLevel(node) {
+        var level = 0;
+        while (node.parent) {
+            level++;
+            node = node.parent;
+        }
+
+        return level;
+    }
+
     // 生成状态树
     function initStatusTree() {
         postOrderTraversal(statusTree, function (node, parent) {
             node.isOpen = false;
             node.isSelect = false;
             node.parent = parent;
+        });
+
+        postOrderTraversal(statusTree, function (node, parent) {
+            node.level = getNodeLevel(node);
         });
     };
 
@@ -357,12 +371,11 @@ function menuViewModel(options) {
 
     function selectMenuItem(url) {
         var node = searchNodeByUrl(url);
-        //@FIXME
         if (node) {
             unselectNode(statusTree);
             selectNode(node);
-            render(statusTree);
         }
+        render(statusTree);
     }
 
     (function init() {
