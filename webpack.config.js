@@ -4,7 +4,7 @@ module.exports = {
   entry: './src/www/business/apps/navigation/menu/index.js',
 
   output: {
-    path: path.resolve(__dirname, 'src/www/lib'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'menu.js'
   },
   module: {
@@ -42,7 +42,7 @@ module.exports = {
   },
   devtool: 'source-map',
   devServer: {
-    contentBase: [path.join(__dirname, "src/www/business/apps/navigation/menu"),path.join(__dirname, "src/www/lib")],
+    contentBase: [path.join(__dirname, "src/www/business/apps/navigation/menu"),path.join(__dirname, "dist")],
     compress: true,
     stats: 'minimal',
     watchContentBase: true,
