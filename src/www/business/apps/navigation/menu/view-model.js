@@ -9,7 +9,7 @@ var statusTree = {
     parent: null
 }; //给一个初始值TODO
 
-
+var statusTreeMap = []; //把状态树平铺
 
 // 储存选择节点的状态
 var selectStore = {
@@ -76,6 +76,7 @@ function initStatusTree() {
         node.isSelect = false;
         node.parent = parent;
         node.level = getNodeLevel(node);
+        statusTreeMap.push(node);
     });
 };
 
@@ -90,12 +91,13 @@ function getNodeLevel(node) {
     return level;
 }
 
-// 通过传入ID查找节点
-function searchNodeById(id) {
-    var mapTree = mapStatusTree();
+// 通过传入ID或url查找节点
+function searchNodeByTwoWays(param) {
+    // var mapTree = mapStatusTree();
     var curNode;
-    mapTree.some(function(element) {
-        if (element.id == id) {
+    // mapTree.some(function(element) {
+    statusTreeMap.some(function(element) {
+        if ((element.id == param) || (element.url == param)) {
             // return false;
             curNode = element;
             return element;
@@ -124,18 +126,18 @@ function selectNodeAttr(node, ifSelected) {
 function selectNode(newPath) {
     var oldPath = selectStore.oldNode;
     if (oldPath) {
-        var oldNode = searchNodeById(oldPath);
+        var oldNode = searchNodeByTwoWays(oldPath);
         // var oldNode = searchNodeByUrl(oldPath);
         selectNodeAttr(oldNode, false);
     }
-    var newNode = searchNodeById(newPath);
+    var newNode = searchNodeByTwoWays(newPath);
     // var newNode = searchNodeByUrl(newPath);
     selectNodeAttr(newNode, true);
 }
 
 // 传入节点,toggle其展开（isOpen）属性
 function toggleNode(url) {
-    var node = searchNodeById(url);
+    var node = searchNodeByTwoWays(url);
     // var node = searchNodeByUrl(url);
     if (node != null) {
         node.isOpen = !node.isOpen;
@@ -148,13 +150,13 @@ var ViewModel = {
         // params.curKey; TODO,默认选中一个节点
         initStatusTree();
         console.log('平铺的',mapStatusTree());
-        console.log('查找的node',searchNodeById(2));
+        console.log('查找的node',searchNodeByTwoWays(2));
         
         return statusTree;
     },
     selectNode: function(url) {
         selectStore.newNode = url;
-        if (selectStore.isEqual()) return;
+        if (selectStore.isEqual()) return statusTree;
         
         selectNode(url);
         selectStore.oldNode = url;

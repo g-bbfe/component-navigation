@@ -80,7 +80,7 @@ function bindEvents() {
       var url = target.getAttribute("href");
       var id = target.getAttribute("data-id");
       // ViewModel.selectMenuItem(url);
-      emitter.emit('change', {type:'NODE_SELECT', key:id});
+      emitter.emit('change', {type:'NODE_SELECT', key:id, url: url});
     }
   });
 
@@ -134,7 +134,7 @@ function bindEvents() {
       if(targetClass.indexOf(secondTitleStr) > -1) return;
       // 有儿子的菜单，点击打开
       if(targetClass.indexOf(menuTitleStr) > -1 ){
-        emitter.emit('change', {type:'NODE_TOGGLE', key:id});
+        emitter.emit('change', {type:'NODE_TOGGLE', key:id, url:url});
         // 已经显示的儿子，点击隐藏
         // if(targetClass.indexOf("isOpen") > -1) {
         //   ViewModel.closeSubMenu(url);
@@ -145,7 +145,7 @@ function bindEvents() {
       // 叶子节点，点击选中
       }else{
         // ViewModel.selectMenuItem(url);
-        emitter.emit('change', {type:'NODE_SELECT', key:id});
+        emitter.emit('change', {type:'NODE_SELECT', key:id, url:url});
       }
     }
   });
