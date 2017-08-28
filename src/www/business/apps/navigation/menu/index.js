@@ -1,8 +1,21 @@
-import { ViewModel, Store } from './view-model';
-import View from './view';
+import { ViewModel } from './view-model';
+import { View, Emitter } from './view';
 import { createStore } from 'redux';
 
-var store,
+function reducer(status, action) {
+  switch (action.type) {
+  case 'NODE_SELECT':
+    // return VIEWMODEL.selecNode(action.key);
+    return 'select'+action.key;
+  case 'NODE_TOGGLE':
+    // return toggleNode(action.key);
+    return 'toggle'+action.key;
+  default:
+    return initStatus;
+  };
+};
+
+var store = createStore(reducer),
     initStatus;
 
 function Menu(config) {
@@ -25,43 +38,34 @@ Menu.prototype = {
     initStatus = ViewModel({
       menuData: this.config.data
     });
-    store = createStore(reducer);
+
     // menuViewModel.selectMenuItem(this.config.url);
-    // menuViewModel.init();
 
-    
+    // 订阅
     this.subscribe();
-    // View
-    store.dispatch({ type: 'init', key: '/android/mi' });
-
+    this.viewOnchange();
+    View.init(this.config);
+    
   },
   subscribe: function() {
     
     // 可以手动订阅更新，将事件绑定到视图层。
     store.subscribe(function(){
-      // View.render(statusTree);
-      console.log('storestate',store.getState())
+      
+      var newStatus = store.getState();
+      View.render(newStatus);
+      console.log('控制层里看到生成新的状态树storestate',store.getState())
     });
+  },
+
+  viewOnchange: function(params) {
+    Emitter.on('change', function(data){
+      console.log("监听到view的变化为", data)
+      store.dispatch(data);
+   })
   }
 
 
 }
-
-
-function reducer(status, action) {
-  switch (action.type) {
-  case 'NODE_SELECT':
-    // return selecNode(action.key);
-    return 'select'+action.key;
-  case 'NODE_TOGGLE':
-    // return toggleNode(action.key);
-    return 'toggle'+action.key;
-  default:
-    return initStatus;
-  };
-};
-
-//操作视图，将引发变化
-// Store.dispatch({ type: 'NODE_SELECT', key: '/android/mi/hongmi' });
 
 export default Menu;
