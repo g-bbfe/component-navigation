@@ -1,4 +1,4 @@
-import { menuViewModel } from './view-model';
+import menuViewModel from './view-model';
 
 function menuView(options) {
   var ViewModel;
@@ -182,7 +182,12 @@ function menuView(options) {
     },true);
   }
   function init() {
-   
+    ViewModel = menuViewModel({
+      menuData: options.data,
+      render: renderInit
+    });
+
+    ViewModel.selectMenuItem(options.url);
 
     bindEvents();
     // 1.获取状态树，按状态树渲染 render();

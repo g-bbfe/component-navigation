@@ -1,8 +1,3 @@
-import { createStore } from 'redux';
-
-var statusTree; //给一个初始值TODO
-var store; //状态机TODO
-
 // 树的层次遍历
 function layerTraversal (tree, callback) {
     var queue = [];
@@ -46,10 +41,15 @@ function menuViewModel(options) {
         return;
     }
 
+    if (!options.render) {
+        console.log('缺少渲染函数！');
+        return;
+    }
+
+    var render = options.render;
 
     // 导航栏状态
-    // var statusTree = {
-    statusTree = {
+    var statusTree = {
         title: 'root',
         url: '/',
         isSelect: false,
@@ -158,43 +158,24 @@ function menuViewModel(options) {
             unselectNode(statusTree);
             selectNode(node);
         }
+        render(statusTree);
     }
 
     (function init() {
         initStatusTree();
-        store = createStore(reducer);
     }())
 
     return {
         selectMenuItem: selectMenuItem,
         openSubMenu: function (url) {
             openNode(url);
+            render(statusTree);
         },
         closeSubMenu: function (url) {
             closeNode(url);
+            render(statusTree);
         }
     };
 }
 
-// export default menuViewModel;
-
-
-function reducer(statusTree, action) {
-  switch (action.type) {
-  case 'NODE_SELECT':
-    // return selecNode(action.key);
-    return 'select'+action.key;
-  case 'NODE_TOGGLE':
-    // return toggleNode(action.key);
-    return 'toggle'+action.key;
-  default:
-    return statusTree;
-  };
-};
-
-
-
-export {
-    menuViewModel as ViewModel,
-    store as Store
-};
+export default menuViewModel;
