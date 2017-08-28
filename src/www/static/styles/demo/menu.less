@@ -104,6 +104,7 @@
         .menu-item {
             box-shadow: inset 1px 0px 0px  0px @menu-item-bg-color;
         }
+
     }
 
     .menu-submenu-vertical {
@@ -123,8 +124,8 @@
         }
 
         .menu-title {
-            padding-left: 0px;
-            text-align: center;
+            padding-left: @menu-submenu-padding-left - @base-padding;
+            text-align: left;
             font-size: 12px;
         }
     }

@@ -1,5 +1,8 @@
 import menuViewModel from './view-model';
 
+var container1 = 'menu-folded';
+var container2 = 'menu-unfold';
+
 function menuView(options) {
   var ViewModel;
   
@@ -40,7 +43,7 @@ function menuView(options) {
                 ''+ (node.icon ? '<i class="menu-icon-title-alt fa '+node.icon+'"></i>' : '') +''+
                 '<span class="menu-title-text menu-title-l'+node.level+'">' + node.title + '</span>'+
               '</a>'+
-              '<ul class="menu-submenu menu-submenu-l'+ Number(node.level+1) +' ' + (node.isOpen ? '' : 'menu-submenu-hidden') + ' menu-submenu-' + (node.level === 1 ? 'inline' : 'vertical') + '">' +
+              '<ul class="menu-submenu menu-submenu-l'+ Number(node.level+1) +' ' + (node.isOpen ? '' : 'menu-submenu-hidden') + ' menu-submenu-' + (node.level + 1 >= 1 ? 'vertical' : 'inline') + '">' +
                 render(nodes, renderMenuFold, renderMenuItemFold) +
               '</ul>' +
             '</li>';
@@ -64,16 +67,16 @@ function menuView(options) {
   function renderInit(statusTree) {
     console.log(statusTree);
     var tpl1 = render(statusTree.children, renderMenuFold, renderMenuItemFold);
-    document.getElementById(options.container1).innerHTML = tpl1;
+    document.getElementById(container1).innerHTML = tpl1;
 
     var tpl2 = render(statusTree.children, renderMenu, renderMenuItem);
-    document.getElementById(options.container2).innerHTML = tpl2;
+    document.getElementById(container2).innerHTML = tpl2;
   }
 
   function bindEvents() {
 
     // 折叠的
-    document.getElementById(options.container1).addEventListener('click', function(e){
+    document.getElementById(container1).addEventListener('click', function(e){
       e.preventDefault();
       var event = e || window.event;
       var target = event.target || event.srcElement;
@@ -87,7 +90,7 @@ function menuView(options) {
       }
     });
 
-    document.getElementById(options.container1).addEventListener('mouseenter', function(e){
+    document.getElementById(container1).addEventListener('mouseenter', function(e){
       var event = e || window.event;
       var target = event.target || event.srcElement;
       
@@ -104,7 +107,7 @@ function menuView(options) {
       }
     },true);
 
-    document.getElementById(options.container1).addEventListener('mouseleave', function(e){
+    document.getElementById(container1).addEventListener('mouseleave', function(e){
       var event = e || window.event;
       var target = event.target || event.srcElement;
       
@@ -123,7 +126,7 @@ function menuView(options) {
     },true);
 
     // 展开的菜单
-    document.getElementById(options.container2).addEventListener('click', function(e){
+    document.getElementById(container2).addEventListener('click', function(e){
       e.preventDefault();
       var event = e || window.event;
       var target = event.target || event.srcElement;
@@ -151,7 +154,7 @@ function menuView(options) {
       }
     });
 
-    document.getElementById(options.container2).addEventListener('mouseenter', function(e){
+    document.getElementById(container2).addEventListener('mouseenter', function(e){
       var event = e || window.event;
       var target = event.target || event.srcElement;
       var secondItemStr = 'menu-item-vertical';
@@ -167,7 +170,7 @@ function menuView(options) {
       
     },true);
     
-    document.getElementById(options.container2).addEventListener('mouseleave', function(e){
+    document.getElementById(container2).addEventListener('mouseleave', function(e){
       var event = e || window.event;
       var target = event.target || event.srcElement;
       var secondItemStr = 'menu-item-vertical';
