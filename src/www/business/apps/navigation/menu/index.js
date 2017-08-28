@@ -1,15 +1,15 @@
-import { ViewModel } from './view-model';
+import ViewModel from './view-model';
 import { View, Emitter } from './view';
 import { createStore } from 'redux';
 
 function reducer(status, action) {
   switch (action.type) {
   case 'NODE_SELECT':
-    // return VIEWMODEL.selecNode(action.key);
-    return 'select'+action.key;
+    return ViewModel.selecNode(action.key);
+    // return 'select'+action.key;
   case 'NODE_TOGGLE':
-    // return toggleNode(action.key);
-    return 'toggle'+action.key;
+    return ViewModel.toggleNode(action.key);
+    // return 'toggle'+action.key;
   default:
     return initStatus;
   };
@@ -35,9 +35,7 @@ Menu.prototype = {
     //在此controller内控制VM/M
     //VM只需关心接收action时，操作返回新的状态树
     //V只需关心处理自己的render以及bindEvent
-    initStatus = ViewModel({
-      menuData: this.config.data
-    });
+    initStatus = ViewModel.init(this.config.data);
 
     // menuViewModel.selectMenuItem(this.config.url);
 
@@ -54,7 +52,7 @@ Menu.prototype = {
       
       var newStatus = store.getState();
       View.render(newStatus);
-      console.log('控制层里看到生成新的状态树storestate',store.getState())
+      console.log('控制层里看到生成新的状态树storestate',store.getState());
     });
   },
 
