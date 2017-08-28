@@ -674,11 +674,11 @@ module.exports = function (it, tag, stat) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var ctx = __webpack_require__(8);
-var call = __webpack_require__(101);
-var isArrayIter = __webpack_require__(102);
+var call = __webpack_require__(104);
+var isArrayIter = __webpack_require__(105);
 var anObject = __webpack_require__(10);
 var toLength = __webpack_require__(40);
-var getIterFn = __webpack_require__(103);
+var getIterFn = __webpack_require__(106);
 var BREAK = {};
 var RETURN = {};
 var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) {
@@ -709,7 +709,7 @@ exports.RETURN = RETURN;
 
 exports.__esModule = true;
 
-var _defineProperty = __webpack_require__(128);
+var _defineProperty = __webpack_require__(131);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
@@ -737,7 +737,7 @@ exports.default = function () {
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(92), __esModule: true };
+module.exports = { "default": __webpack_require__(95), __esModule: true };
 
 /***/ }),
 /* 23 */
@@ -766,7 +766,7 @@ module.exports = function (bitmap, value) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject = __webpack_require__(10);
-var dPs = __webpack_require__(95);
+var dPs = __webpack_require__(98);
 var enumBugKeys = __webpack_require__(43);
 var IE_PROTO = __webpack_require__(41)('IE_PROTO');
 var Empty = function () { /* empty */ };
@@ -833,7 +833,7 @@ module.exports = function (it) {
 /* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(123), __esModule: true };
+module.exports = { "default": __webpack_require__(126), __esModule: true };
 
 /***/ }),
 /* 29 */
@@ -871,7 +871,7 @@ exports["default"] = Const;
 
 
 
-module.exports = __webpack_require__(91);
+module.exports = __webpack_require__(94);
 
 /***/ }),
 /* 32 */
@@ -885,7 +885,7 @@ module.exports = __webpack_require__(91);
 
 "use strict";
 
-var $at = __webpack_require__(93)(true);
+var $at = __webpack_require__(96)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
 __webpack_require__(36)(String, 'String', function (iterated) {
@@ -938,7 +938,7 @@ var redefine = __webpack_require__(58);
 var hide = __webpack_require__(9);
 var has = __webpack_require__(12);
 var Iterators = __webpack_require__(16);
-var $iterCreate = __webpack_require__(94);
+var $iterCreate = __webpack_require__(97);
 var setToStringTag = __webpack_require__(19);
 var getPrototypeOf = __webpack_require__(61);
 var ITERATOR = __webpack_require__(3)('iterator');
@@ -1095,7 +1095,7 @@ module.exports = (
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(98);
+__webpack_require__(101);
 var global = __webpack_require__(2);
 var hide = __webpack_require__(9);
 var Iterators = __webpack_require__(16);
@@ -1198,7 +1198,7 @@ module.exports = function (target, src, safe) {
 /* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(109), __esModule: true };
+module.exports = { "default": __webpack_require__(112), __esModule: true };
 
 /***/ }),
 /* 50 */
@@ -1327,11 +1327,11 @@ exports["default"] = Deferred;
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(135);
+var _iterator = __webpack_require__(138);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(137);
+var _symbol = __webpack_require__(140);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -1375,7 +1375,7 @@ module.exports = function (name) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(4);
-var normalizeHeaderName = __webpack_require__(148);
+var normalizeHeaderName = __webpack_require__(151);
 
 var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 var DEFAULT_CONTENT_TYPE = {
@@ -1490,7 +1490,7 @@ module.exports = __webpack_require__(9);
 
 var has = __webpack_require__(12);
 var toIObject = __webpack_require__(13);
-var arrayIndexOf = __webpack_require__(96)(false);
+var arrayIndexOf = __webpack_require__(99)(false);
 var IE_PROTO = __webpack_require__(41)('IE_PROTO');
 
 module.exports = function (object, names) {
@@ -1563,7 +1563,7 @@ module.exports = function (O, D) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var ctx = __webpack_require__(8);
-var invoke = __webpack_require__(104);
+var invoke = __webpack_require__(107);
 var html = __webpack_require__(60);
 var cel = __webpack_require__(37);
 var global = __webpack_require__(2);
@@ -1725,8 +1725,8 @@ module.exports = Array.isArray || function isArray(arg) {
 "use strict";
 
 
-exports.decode = exports.parse = __webpack_require__(126);
-exports.encode = exports.stringify = __webpack_require__(127);
+exports.decode = exports.parse = __webpack_require__(129);
+exports.encode = exports.stringify = __webpack_require__(130);
 
 
 /***/ }),
@@ -1744,7 +1744,7 @@ var _assign = __webpack_require__(28);
 
 var _assign2 = _interopRequireDefault(_assign);
 
-var _objectWithoutProperties2 = __webpack_require__(131);
+var _objectWithoutProperties2 = __webpack_require__(134);
 
 var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
 
@@ -2112,12 +2112,12 @@ process.umask = function() { return 0; };
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(4);
-var settle = __webpack_require__(149);
-var buildURL = __webpack_require__(151);
-var parseHeaders = __webpack_require__(152);
-var isURLSameOrigin = __webpack_require__(153);
+var settle = __webpack_require__(152);
+var buildURL = __webpack_require__(154);
+var parseHeaders = __webpack_require__(155);
+var isURLSameOrigin = __webpack_require__(156);
 var createError = __webpack_require__(78);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(154);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(157);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -2213,7 +2213,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(155);
+      var cookies = __webpack_require__(158);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -2296,7 +2296,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(150);
+var enhanceError = __webpack_require__(153);
 
 /**
  * Create an Error with the specified message, config, error code, and response.
@@ -2355,7 +2355,7 @@ module.exports = Cancel;
 /* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(178), __esModule: true };
+module.exports = { "default": __webpack_require__(181), __esModule: true };
 
 /***/ }),
 /* 82 */
@@ -2363,12 +2363,12 @@ module.exports = { "default": __webpack_require__(178), __esModule: true };
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_www_business_apps_navigation_menu__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_www_business_apps_navigation_menu__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_www_business_apps_navigation_menu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__src_www_business_apps_navigation_menu__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_static_styles_demo_less__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mock__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_static_styles_demo_less__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_static_styles_demo_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_static_styles_demo_less__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_proxy__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_proxy__ = __webpack_require__(92);
 
 
 
@@ -2446,6 +2446,407 @@ $sidebarToggleBtn.onclick = function() {
 
 /***/ }),
 /* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _view = __webpack_require__(84);
+
+var _view2 = _interopRequireDefault(_view);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+exports['default'] = _view2['default'];
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _viewModel = __webpack_require__(85);
+
+var _viewModel2 = _interopRequireDefault(_viewModel);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var container1 = 'menu-folded';
+var container2 = 'menu-unfold';
+
+function menuView(options) {
+  var ViewModel;
+
+  function renderMenuItem(node) {
+    return '<li class="menu-item ' + (node.isSelect ? 'menu-item-selected' : '') + '">' + '<a class="menu-title" href="' + node.url + '">' + '' + (node.icon ? '<i class="menu-icon-title-alt fa ' + node.icon + '"></i>' : '') + ' ' + '' + node.title + '' + '</a>' + '</li>';
+  }
+
+  function renderMenu(node, nodes) {
+    return '<li class="menu-item ' + (node.isSelect && !node.isOpen ? 'menu-item-selected' : '') + ' ' + (node.level > 1 ? 'menu-item-vertical' : '') + '">' + '<a href="' + node.url + '" class="menu-title menu-submenu-title ' + (node.isOpen ? 'isOpen' : '') + ' ' + (node.level > 1 ? 'menu-title-vertical' : '') + '" >' + '' + (node.icon ? '<i class="menu-icon-title-alt fa ' + node.icon + '"></i>' : '') + '' + '' + node.title + '' + '' + (node.level > 1 ? '' : '<i class="menu-icon-angle fa fa-angle-' + (node.isOpen ? 'down' : 'right') + '"></i>') + '' + '</a>' + '<ul class="menu-submenu ' + (node.isOpen ? 'menu-submenu-inline' : 'menu-submenu-hidden') + ' ' + (node.level > 1 ? 'menu-submenu-vertical' : '') + '">' + render(nodes, renderMenu, renderMenuItem) + '</ul>' + '</li>';
+  }
+
+  function renderMenuItemFold(node) {
+    return '<li  class="menu-item menu-item-l' + node.level + ' ' + (node.isSelect ? 'menu-item-selected' : '') + '">' + '<a class="menu-title" href="' + node.url + '">' + '' + (node.icon ? '<i class="menu-icon-title-alt fa ' + node.icon + '"></i>' : '') + ' ' + '<span class="menu-title-text menu-title-l' + node.level + '">' + node.title + '</span>' + '</a>' + '</li>';
+  }
+
+  function renderMenuFold(node, nodes) {
+    return '<li  class="menu-item menu-item-l' + node.level + ' ' + (node.isSelect ? 'menu-item-selected' : '') + ' ' + (node.isOpen ? 'menu-item-active' : '') + ' ">' + '<a href="' + node.url + '" class="menu-title" >' + '' + (node.icon ? '<i class="menu-icon-title-alt fa ' + node.icon + '"></i>' : '') + '' + '<span class="menu-title-text menu-title-l' + node.level + '">' + node.title + '</span>' + '</a>' + '<ul class="menu-submenu menu-submenu-l' + Number(node.level + 1) + ' ' + (node.isOpen ? '' : 'menu-submenu-hidden') + ' menu-submenu-' + (node.level + 1 >= 1 ? 'vertical' : 'inline') + '">' + render(nodes, renderMenuFold, renderMenuItemFold) + '</ul>' + '</li>';
+  }
+
+  function render(nodes, renderMenuFun, renderItemFun) {
+    // console.log(nodes);
+    var tpl = '';
+
+    nodes.forEach(function (node) {
+
+      if (Array.isArray(node.children)) {
+        tpl += renderMenuFun(node, node.children);
+      } else {
+        tpl += renderItemFun(node);
+      }
+    });
+    return tpl;
+  }
+
+  function renderInit(statusTree) {
+    console.log(statusTree);
+    var tpl1 = render(statusTree.children, renderMenuFold, renderMenuItemFold);
+    document.getElementById(container1).innerHTML = tpl1;
+
+    var tpl2 = render(statusTree.children, renderMenu, renderMenuItem);
+    document.getElementById(container2).innerHTML = tpl2;
+  }
+
+  function bindEvents() {
+
+    // 折叠的
+    document.getElementById(container1).addEventListener('click', function (e) {
+      e.preventDefault();
+      var event = e || window.event;
+      var target = event.target || event.srcElement;
+      var menuTitleStr = 'menu-submenu-title';
+      var secondTitleStr = 'menu-title-vertical';
+      var targetClass = target.getAttribute('class');
+      // 判断是否匹配目标元素
+      if (target.nodeName.toLocaleLowerCase() === 'a') {
+        var url = target.getAttribute("href");
+        ViewModel.selectMenuItem(url);
+      }
+    });
+
+    document.getElementById(container1).addEventListener('mouseenter', function (e) {
+      var event = e || window.event;
+      var target = event.target || event.srcElement;
+
+      var targetClass = target.getAttribute("class");
+
+      if (targetClass.indexOf("menu-item") > -1) {
+        target.className = '' + targetClass + ' menu-item-active';
+
+        var firstUl = target.getElementsByTagName('ul')[0];
+        if (!firstUl) return;
+        var firstUlClass = firstUl.getAttribute("class");
+
+        firstUl.className = firstUlClass.replace('menu-submenu-hidden', '');
+      }
+    }, true);
+
+    document.getElementById(container1).addEventListener('mouseleave', function (e) {
+      var event = e || window.event;
+      var target = event.target || event.srcElement;
+
+      var targetClass = target.getAttribute("class");
+
+      if (targetClass.indexOf("menu-item") > -1) {
+        target.className = targetClass.replace('menu-item-active', '');
+
+        var firstUl = target.getElementsByTagName('ul')[0];
+        if (!firstUl) return;
+        var firstUlClass = firstUl.getAttribute("class");
+
+        firstUl.className = '' + firstUlClass + ' menu-submenu-hidden';
+      }
+    }, true);
+
+    // 展开的菜单
+    document.getElementById(container2).addEventListener('click', function (e) {
+      e.preventDefault();
+      var event = e || window.event;
+      var target = event.target || event.srcElement;
+      var menuTitleStr = 'menu-submenu-title';
+      var secondTitleStr = 'menu-title-vertical';
+      var targetClass = target.getAttribute('class');
+      // 判断是否匹配目标元素
+      if (target.nodeName.toLocaleLowerCase() === 'a') {
+        var url = target.getAttribute("href");
+
+        if (targetClass.indexOf(secondTitleStr) > -1) return;
+        // 有儿子的菜单，点击打开
+        if (targetClass.indexOf(menuTitleStr) > -1) {
+          // 已经显示的儿子，点击隐藏
+          if (targetClass.indexOf("isOpen") > -1) {
+            ViewModel.closeSubMenu(url);
+            // 隐藏的儿子，点击出现
+          } else {
+            ViewModel.openSubMenu(url);
+          }
+          // 叶子节点，点击选中
+        } else {
+          ViewModel.selectMenuItem(url);
+        }
+      }
+    });
+
+    document.getElementById(container2).addEventListener('mouseenter', function (e) {
+      var event = e || window.event;
+      var target = event.target || event.srcElement;
+      var secondItemStr = 'menu-item-vertical';
+      var targetClass = target.getAttribute("class");
+      // console.log(target.getAttribute("class"));
+
+      if (targetClass.indexOf(secondItemStr) > -1) {
+
+        if (targetClass.indexOf("selected") > -1) {
+          target.className = '' + targetClass + ' isHover';
+        }
+      }
+    }, true);
+
+    document.getElementById(container2).addEventListener('mouseleave', function (e) {
+      var event = e || window.event;
+      var target = event.target || event.srcElement;
+      var secondItemStr = 'menu-item-vertical';
+      var targetClass = target.getAttribute("class");
+      // console.log(target.getAttribute("class"));
+
+      if (targetClass.indexOf(secondItemStr) > -1) {
+        if (targetClass.indexOf("selected") > -1) {
+          target.className = targetClass.replace('isHover', '');
+        }
+      }
+    }, true);
+  }
+  function init() {
+    ViewModel = (0, _viewModel2['default'])({
+      menuData: options.data,
+      render: renderInit
+    });
+
+    ViewModel.selectMenuItem(options.url);
+
+    bindEvents();
+    // 1.获取状态树，按状态树渲染 render();
+    // 2.交互时，调用VM方法更新状态树，update view
+    // eg:mouseenter、click等
+  }
+  init();
+}
+
+exports['default'] = menuView;
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+// 树的层次遍历
+function layerTraversal(tree, callback) {
+    var queue = [];
+    queue.push(tree);
+    while (queue.length > 0) {
+        var parent = queue.pop();
+        if (Array.isArray(parent.children)) {
+            parent.children.forEach(function (node) {
+                queue.unshift(node);
+                callback(node, parent);
+            });
+        }
+    }
+}
+
+// 根据条件，遍历树，返回符合条件的最深的节点
+function conditionalTraversal(tree, condition) {
+    var node = null;
+    var children = tree.children;
+
+    if (condition(tree)) {
+        while (Array.isArray(children)) {
+            var nodes = children.filter(condition);
+            if (nodes.length > 0) {
+                node = nodes.pop();
+                children = node.children;
+            } else {
+                break;
+            }
+        }
+    }
+
+    return node;
+}
+
+function menuViewModel(options) {
+    options = options || {};
+
+    if (!options.menuData) {
+        console.log('缺少菜单数据！');
+        return;
+    }
+
+    if (!options.render) {
+        console.log('缺少渲染函数！');
+        return;
+    }
+
+    var render = options.render;
+
+    // 导航栏状态
+    var statusTree = {
+        title: 'root',
+        url: '/',
+        isSelect: false,
+        isOpen: true,
+        level: 0,
+        children: options.menuData,
+        parent: null
+    };
+
+    // 状态节点
+    // var node = {
+    //     title: '',
+    //     url: '',
+    //     isSelect: '',
+    //     isOpen: '',
+    //     children: [],
+    //     parent: null
+    // };
+
+    // 根据祖先的个数确定层级
+    function getNodeLevel(node) {
+        var level = 0;
+        while (node.parent) {
+            level++;
+            node = node.parent;
+        }
+
+        return level;
+    }
+
+    // 生成状态树
+    function initStatusTree() {
+        // 必须保证父级元素已经遍历
+        layerTraversal(statusTree, function (node, parent) {
+            node.isOpen = false;
+            node.isSelect = false;
+            node.parent = parent;
+            node.level = getNodeLevel(node);
+        });
+    };
+
+    function searchNodeByUrl(url) {
+        var urls = [];
+        // 根据URL生成查找路径
+        url.split('/').slice(1).reduce(function (string1, string2) {
+            var url = string1 + '/' + string2;
+            urls.push(url);
+            return url;
+        }, '');
+
+        // 根节点默认'/'
+        url = '/';
+
+        return conditionalTraversal(statusTree, function (node) {
+            if (node.url === url) {
+                url = urls.shift();
+                return true;
+            } else {
+                return false;
+            }
+        });
+    }
+
+    function selectNode(node) {
+        node.isSelect = true;
+
+        // 选择祖先节点
+        while (node.parent) {
+            // 选中当前节点的父节点
+            var parent = node.parent;
+            parent.isSelect = true;
+
+            node = parent;
+        }
+    }
+
+    // 从根节点开始，依次向下寻找被选中的节点，并将其改为未选中
+    function unselectNode(tree) {
+        conditionalTraversal(tree, function (node) {
+            if (node.isSelect === true) {
+                node.isSelect = false;
+                return true;
+            } else {
+                return false;
+            }
+        });
+    }
+
+    function openNode(url) {
+        var node = searchNodeByUrl(url);
+        if (node != null) {
+            node.isOpen = true;
+        }
+    }
+
+    function closeNode(url) {
+        var node = searchNodeByUrl(url);
+        if (node != null) {
+            node.isOpen = false;
+        }
+    }
+
+    function selectMenuItem(url) {
+        var node = searchNodeByUrl(url);
+        if (node) {
+            unselectNode(statusTree);
+            selectNode(node);
+        }
+        render(statusTree);
+    }
+
+    (function init() {
+        initStatusTree();
+    })();
+
+    return {
+        selectMenuItem: selectMenuItem,
+        openSubMenu: function openSubMenu(url) {
+            openNode(url);
+            render(statusTree);
+        },
+        closeSubMenu: function closeSubMenu(url) {
+            closeNode(url);
+            render(statusTree);
+        }
+    };
+}
+
+exports['default'] = menuViewModel;
+
+/***/ }),
+/* 86 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2521,13 +2922,13 @@ var data = [
 
 
 /***/ }),
-/* 84 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(85);
+var content = __webpack_require__(88);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -2535,7 +2936,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(87)(content, options);
+var update = __webpack_require__(90)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -2552,21 +2953,21 @@ if(false) {
 }
 
 /***/ }),
-/* 85 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(86)(true);
+exports = module.exports = __webpack_require__(89)(true);
 // imports
 
 
 // module
-exports.push([module.i, ".menu-root {\n  position: relative;\n}\n.menu-root a {\n  display: inline-block;\n  text-decoration: none;\n}\n.menu-root a,\n.menu-root a:link,\n.menu-root a:visited,\n.menu-root a:hover,\n.menu-root a:active {\n  color: rgba(255, 255, 255, 0.6);\n}\n.menu-root .menu-item {\n  position: relative;\n}\n.menu-root .menu-item:not(.menu-item-selected) > .menu-title:hover {\n  color: rgba(255, 255, 255, 0.8);\n  background-color: #1c212d;\n  box-shadow: inset 0px 1px 0px 0px #2b3447;\n}\n.menu-root .menu-title {\n  width: 100%;\n  height: 50px;\n  line-height: 50px;\n  padding-left: 25px;\n  padding-right: 20px;\n}\n.menu-root .menu-item-selected > .menu-title {\n  color: rgba(255, 255, 255, 0.8);\n  background-color: #1c212d;\n  box-shadow: inset 3px 0px 0px 0px #709d63, inset 0px 1px 0px 0px #2b3447;\n}\n.menu-root .menu-item-selected.isHover > .menu-title {\n  box-shadow: none;\n}\n.menu-root .menu-item-selected .menu-icon-title-alt,\n.menu-root .menu-item-selected .menu-icon-angle {\n  color: rgba(255, 255, 255, 0.6);\n}\n.menu-root .menu-submenu {\n  position: relative;\n}\n.menu-root .menu-submenu-hidden {\n  display: none;\n}\n.menu-root .menu-submenu .menu-item {\n  background-color: #262c3c;\n}\n.menu-root .menu-submenu .menu-title {\n  padding-left: 65px;\n}\n.menu-root .menu-submenu-inline > .menu-item:before {\n  position: absolute;\n  display: block;\n  content: ' ';\n  left: 51px;\n  top: 50%;\n  margin-top: -2px;\n  width: 4px;\n  height: 4px;\n  border-radius: 2px;\n  background-color: white;\n}\n.menu-root .menu-submenu .menu-item:hover .menu-submenu-vertical {\n  position: absolute;\n  top: 0px;\n  left: 200px;\n  background-color: #262c3c;\n  display: block;\n  z-index: 2;\n}\n.menu-root .menu-submenu .menu-item:hover .menu-submenu-vertical .menu-item {\n  box-shadow: inset 1px 0px 0px 0px #2b3447;\n}\n.menu-root .menu-submenu-vertical {\n  width: 150px;\n  overflow: visible;\n  display: none;\n}\n.menu-root .menu-submenu-vertical .menu-item {\n  background-color: rgba(38, 44, 60, 0.98);\n}\n.menu-root .menu-submenu-vertical .menu-title {\n  padding-left: 36px;\n  text-align: left;\n  font-size: 12px;\n}\n.menu-root [class|=menu-icon] {\n  width: 16px;\n  height: 16px;\n  color: rgba(255, 255, 255, 0.4);\n}\n.menu-root .menu-icon-title-alt {\n  margin-right: 10px;\n}\n.menu-root .menu-icon-angle {\n  float: right;\n  line-height: 50px;\n}\n.sidebar-folded .menu-root .menu-submenu,\n.sidebar-folded .menu-root .fa-angle-down,\n.sidebar-folded .menu-root .fa-angle-right {\n  display: none;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-l1 {\n  width: 65px;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu-vertical {\n  width: 150px;\n}\n.sidebar-folded .menu-root .menu-item .menu-title-text.menu-title-l1 {\n  width: 150px;\n  display: none;\n}\n.sidebar-folded .menu-root .menu-item .menu-title-text.menu-title-l2 {\n  margin-left: 10px;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-active.menu-item-selected.menu-item-l3 > .menu-title {\n  box-shadow: inset 3px 0px 0px 0px #709d63, inset 0px 1px 0px 0px #2b3447;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-active > .menu-title {\n  color: rgba(255, 255, 255, 0.8);\n  background-color: #1c212d;\n  box-shadow: inset 0px 1px 0px 0px #2b3447;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-active .menu-title-l1 {\n  padding-left: 15px;\n  display: inline-block;\n  position: absolute;\n  left: 65px;\n  top: 0;\n  background-color: #1c212d;\n}\n.sidebar-folded .menu-root .menu-item .menu-title-text {\n  display: inline-block;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu-l2 > .menu-item:before {\n  position: absolute;\n  display: block;\n  content: ' ';\n  left: 31px;\n  top: 50%;\n  margin-top: -2px;\n  width: 4px;\n  height: 4px;\n  border-radius: 2px;\n  background-color: white;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu {\n  display: block;\n  float: right;\n  position: absolute;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu.menu-submenu-hidden {\n  display: none;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu.menu-submenu-l2 {\n  left: 65px;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu.menu-submenu-l3 {\n  top: 0;\n  left: 150px;\n}\n* {\n  box-sizing: border-box;\n  padding: 0px;\n  margin: 0px;\n}\nul,\nli {\n  list-style: none;\n}\nbody {\n  display: flex;\n  width: 100vw;\n  height: 100vh;\n}\n.sidebar {\n  position: relative;\n  width: 200px;\n  z-index: 1;\n  overflow-x: visible;\n}\n.sidebar .logo {\n  height: 65px;\n  background-color: #3e4b67;\n  line-height: 65px;\n  text-align: center;\n}\n.sidebar .menu-root {\n  position: relative;\n  background: #354059;\n  width: 100%;\n  overflow-x: visible;\n}\n.sidebar-toggle-btn {\n  float: right;\n  display: flex;\n  width: 65px;\n  height: 65px;\n  margin-right: -65px;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  flex-wrap: wrap;\n  justify-content: space-between;\n  background: #fafafc;\n  line-height: 65px;\n  text-align: center;\n  color: #2b3447;\n  padding: 24.5px;\n}\n.sidebar-toggle-btn .line {\n  position: relative;\n  height: 3px;\n  background-color: #709d63;\n  width: 16px;\n}\n.sidebar-toggle-btn .line:after {\n  display: inline-block;\n  position: absolute;\n  content: ' ';\n  top: 0px;\n  right: 0px;\n  width: 12px;\n  height: 3px;\n  background-color: #dfe1e7 ;\n}\n.sidebar-folded {\n  width: 65px;\n}\n.sidebar-folded .sidebar-toggle-btn .line:after {\n  background-color: #709d63;\n}\n.main-container {\n  flex: 1;\n  z-index: 0;\n  background-color: #ededed;\n}\n.main-container .header {\n  width: 100%;\n  height: 65px;\n  background-color: #ccc;\n}\n.main-container .main-content {\n  padding: 15px;\n}\n", "", {"version":3,"sources":["/Users/weimengxi/github/component-navigation/src/www/static/styles/demo/menu.less","/Users/weimengxi/github/component-navigation/src/www/static/styles/demo.less","/Users/weimengxi/github/component-navigation/src/www/static/styles/demo/mixin.less","/Users/weimengxi/github/component-navigation/src/www/static/styles/demo/menu-folded.less","/Users/weimengxi/github/component-navigation/src/www/static/styles/demo.less"],"names":[],"mappings":"AAKA;EAEI,mBAAA;CCLH;ADGD;EAQY,sBAAA;EACA,sBAAA;CCRX;ADUO;;;;;EAKI,gCAAA;CCRX;ADRD;EAqBQ,mBAAA;CCVP;ADWO;EACI,gCAAA;EACA,0BAAA;EACA,0CAAA;CCTX;ADhBD;EA8BQ,YAAA;EACA,aAAA;EACA,kBAAA;EACA,mBAAA;EACA,oBAAA;CCXP;ADgBO;EACI,gCAAA;EACA,0BAAA;EACA,yEAAA;CCdX;ADiBO;EACI,iBAAA;CCfX;AD/BD;;EAkDY,gCAAA;CCfX;ADnCD;EAwDQ,mBAAA;CClBP;ADoBO;EACI,cAAA;CClBX;ADzCD;EA+DY,0BAAA;CCnBX;AD5CD;EAmEY,mBAAA;CCpBX;AD2BO;EACI,mBAAA;EACA,eAAA;EACA,aAAA;EACA,WAAA;EACA,SAAA;EACA,iBAAA;EACA,WAAA;EACA,YAAA;EACA,mBAAA;EACA,wBAAA;CCzBX;AD3DD;EA2FQ,mBAAA;EACA,SAAA;EACA,YAAA;EACA,0BAAA;EACA,eAAA;EACA,WAAA;CC7BP;ADnED;EAmGY,0CAAA;CC7BX;ADtED;EAgHQ,aAAA;EACA,kBAAA;EACA,cAAA;CCvCP;AD3ED;EAqHY,yCAAA;CCvCX;AD9ED;EAyHY,mBAAA;EACA,iBAAA;EACA,gBAAA;CCxCX;ADnFD;EEHE,YAAA;EACA,aAAA;EACA,gCAAA;CDyFD;ADxFD;EAqIQ,mBAAA;CC1CP;AD3FD;EAyIQ,aAAA;EACA,kBAAA;CC3CP;AEjGD;;;EAOE,cAAA;CF+FD;AExFC;EACC,YAAA;CF0FF;AEzGD;EAmBG,aAAA;CFyFF;AE5GD;EAyBG,aAAA;EACA,cAAA;CFsFF;AEhHD;EA8BG,kBAAA;CFqFF;AEhFE;EACC,yEAAA;CFkFH;AEhFE;EACC,gCAAA;EACA,0BAAA;EACA,0CAAA;CFkFH;AEzFC;EAUE,mBAAA;EACA,sBAAA;EACA,mBAAA;EACA,WAAA;EACA,OAAA;EACA,0BAAA;CFkFH;AEnID;EAsDG,sBAAA;CFgFF;AE3EK;EACI,mBAAA;EACA,eAAA;EACA,aAAA;EACA,WAAA;EACA,SAAA;EACA,iBAAA;EACA,WAAA;EACA,YAAA;EACA,mBAAA;EACA,wBAAA;CF6ET;AElJD;EA2EG,eAAA;EACA,aAAA;EACA,mBAAA;CF0EF;AEzEE;EACC,cAAA;CF2EH;AEzEE;EACC,WAAA;CF2EH;AEzEE;EACC,OAAA;EACA,YAAA;CF2EH;AG/JD;EACI,uBAAA;EACA,aAAA;EACA,YAAA;CHiKH;AG9JD;;EAEI,iBAAA;CHgKH;AG3JD;EACI,cAAA;EACA,aAAA;EACA,cAAA;CH6JH;AGzJD;EACI,mBAAA;EACA,aAAA;EACA,WAAA;EACA,oBAAA;CH2JH;AG/JD;EAOQ,aAAA;EACA,0BAAA;EACA,kBAAA;EACA,mBAAA;CH2JP;AGrKD;EAeQ,mBAAA;EACA,oBAAA;EACA,YAAA;EACA,oBAAA;CHyJP;AGrJG;EACI,aAAA;EACA,cAAA;EACA,YAAA;EACA,aAAA;EACA,oBAAA;EACA,uBAAA;EACA,wBAAA;EACA,oBAAA;EACA,gBAAA;EACA,+BAAA;EACA,oBAAA;EACA,kBAAA;EACA,mBAAA;EACA,eAAA;EACA,gBAAA;CHuJP;AGtKG;EAkBQ,mBAAA;EACA,YAAA;EACA,0BAAA;EACA,YAAA;CHuJX;AG5KG;EAyBQ,sBAAA;EACA,mBAAA;EACA,aAAA;EACA,SAAA;EACA,WAAA;EACA,YAAA;EACA,YAAA;EACA,2BAAA;CHsJX;AG/ID;EAEI,YAAA;CHgJH;AGlJD;EAMY,0BAAA;CH+IX;AGxID;EACI,QAAA;EACA,WAAA;EACA,0BAAA;CH0IH;AG7ID;EAMQ,YAAA;EACA,aAAA;EACA,uBAAA;CH0IP;AGlJD;EAWQ,cAAA;CH0IP","file":"demo.less","sourcesContent":["@import './variables';\n@import './mixin';\n\n\n//=============  Menu-Styles Start============= \n.menu-root {\n\n    position: relative;\n\n    .calc-colors(@base-menu-font-color);\n\n    a {\n        & {\n            display: inline-block;\n            text-decoration: none;\n        }\n        &,\n        &:link,\n        &:visited,\n        &:hover,\n        &:active {\n            color: @menu-item-font-color;\n        }\n    }\n\n    .menu-item {\n        position: relative;\n        &:not(.menu-item-selected)>.menu-title:hover {\n            color: @menu-item-selected-font-color;\n            background-color: @menu-item-selected-bg-color;\n            box-shadow: inset 0px 1px 0px 0px @menu-item-bg-color;\n        }\n    } \n\n    .menu-title {\n        width: 100%;\n        height:  @menu-item-height;\n        line-height: @menu-item-height;\n        padding-left: @menu-padding-left;\n        padding-right: @menu-padding-right;\n    }\n\n    .menu-item-selected {\n        // 选中的节点\n        &>.menu-title {\n            color: @menu-item-selected-font-color;\n            background-color: @menu-item-selected-bg-color;\n            box-shadow: inset @menu-item-selected-border-width 0px 0px 0px @menu-item-selected-color, inset 0px 1px 0px 0px @menu-item-bg-color;\n        }\n\n        &.isHover>.menu-title {\n            box-shadow: none;\n        }\n        .menu-icon-title-alt,\n        .menu-icon-angle {\n            color: @menu-item-selected-icon-color;\n        }\n    }\n\n    .menu-submenu {\n\n        position: relative;\n\n        &-hidden {\n            display: none;\n        }\n\n        .menu-item {\n            background-color: @menu-submenu-item-bg-color;\n        } \n\n        .menu-title {\n            padding-left: @menu-submenu-padding-left + @menu-icon-margin-right + @menu-submenu-list-icon-size;\n        }\n\n    }\n\n    .menu-submenu-inline {\n        // 模拟list-style: circle-solid\n        & > .menu-item:before {\n            position: absolute;\n            display: block;\n            content: ' ';\n            left: @menu-submenu-padding-left;\n            top: 50%;\n            margin-top: -@menu-submenu-list-icon-size/2;\n            width: @menu-submenu-list-icon-size;\n            height: @menu-submenu-list-icon-size;\n            border-radius: @menu-submenu-list-icon-size/2;\n            background-color: @base-menu-font-color;\n        }\n\n    }\n\n     // 三级子菜单\n    .menu-submenu .menu-item:hover .menu-submenu-vertical {\n        position: absolute;\n        top: 0px;\n        left: @sidebar-width;\n        background-color: @menu-submenu-item-bg-color;\n        display: block;\n        z-index: @base-zindex + 2;\n\n        .menu-item {\n            box-shadow: inset 1px 0px 0px  0px @menu-item-bg-color;\n        }\n\n    }\n\n    .menu-submenu-vertical {\n\n        @menu-submenu-item-bg-color-red: red(@menu-submenu-item-bg-color);\n        @menu-submenu-item-bg-color-green: green(@menu-submenu-item-bg-color);\n        @menu-submenu-item-bg-color-blue: blue(@menu-submenu-item-bg-color);\n\n        @menu-submenu-vertical-item-bg-color: rgba(@menu-submenu-item-bg-color-red, @menu-submenu-item-bg-color-green, @menu-submenu-item-bg-color-blue, @menu-submenu-vertical-item-bg-color-alpha);\n\n        width: @menu-submenu-vertical-width;\n        overflow: visible;\n        display: none;\n\n        .menu-item {\n            background-color: @menu-submenu-vertical-item-bg-color;\n        }\n\n        .menu-title {\n            padding-left: @menu-submenu-padding-left - @base-padding;\n            text-align: left;\n            font-size: 12px;\n        }\n    }\n\n    // icon ===== \n    [class|=menu-icon] {\n        .menu-icon( @menu-item-icon-color);        \n    }\n\n    .menu-icon-title-alt {\n        margin-right: @menu-icon-margin-right;\n    }\n\n    .menu-icon-angle {\n        float: right;\n        line-height: @menu-item-height;\n    }\n}\n//=============  Menu-Styles End============= \n",".menu-root {\n  position: relative;\n}\n.menu-root a {\n  display: inline-block;\n  text-decoration: none;\n}\n.menu-root a,\n.menu-root a:link,\n.menu-root a:visited,\n.menu-root a:hover,\n.menu-root a:active {\n  color: rgba(255, 255, 255, 0.6);\n}\n.menu-root .menu-item {\n  position: relative;\n}\n.menu-root .menu-item:not(.menu-item-selected) > .menu-title:hover {\n  color: rgba(255, 255, 255, 0.8);\n  background-color: #1c212d;\n  box-shadow: inset 0px 1px 0px 0px #2b3447;\n}\n.menu-root .menu-title {\n  width: 100%;\n  height: 50px;\n  line-height: 50px;\n  padding-left: 25px;\n  padding-right: 20px;\n}\n.menu-root .menu-item-selected > .menu-title {\n  color: rgba(255, 255, 255, 0.8);\n  background-color: #1c212d;\n  box-shadow: inset 3px 0px 0px 0px #709d63, inset 0px 1px 0px 0px #2b3447;\n}\n.menu-root .menu-item-selected.isHover > .menu-title {\n  box-shadow: none;\n}\n.menu-root .menu-item-selected .menu-icon-title-alt,\n.menu-root .menu-item-selected .menu-icon-angle {\n  color: rgba(255, 255, 255, 0.6);\n}\n.menu-root .menu-submenu {\n  position: relative;\n}\n.menu-root .menu-submenu-hidden {\n  display: none;\n}\n.menu-root .menu-submenu .menu-item {\n  background-color: #262c3c;\n}\n.menu-root .menu-submenu .menu-title {\n  padding-left: 65px;\n}\n.menu-root .menu-submenu-inline > .menu-item:before {\n  position: absolute;\n  display: block;\n  content: ' ';\n  left: 51px;\n  top: 50%;\n  margin-top: -2px;\n  width: 4px;\n  height: 4px;\n  border-radius: 2px;\n  background-color: white;\n}\n.menu-root .menu-submenu .menu-item:hover .menu-submenu-vertical {\n  position: absolute;\n  top: 0px;\n  left: 200px;\n  background-color: #262c3c;\n  display: block;\n  z-index: 2;\n}\n.menu-root .menu-submenu .menu-item:hover .menu-submenu-vertical .menu-item {\n  box-shadow: inset 1px 0px 0px 0px #2b3447;\n}\n.menu-root .menu-submenu-vertical {\n  width: 150px;\n  overflow: visible;\n  display: none;\n}\n.menu-root .menu-submenu-vertical .menu-item {\n  background-color: rgba(38, 44, 60, 0.98);\n}\n.menu-root .menu-submenu-vertical .menu-title {\n  padding-left: 36px;\n  text-align: left;\n  font-size: 12px;\n}\n.menu-root [class|=menu-icon] {\n  width: 16px;\n  height: 16px;\n  color: rgba(255, 255, 255, 0.4);\n}\n.menu-root .menu-icon-title-alt {\n  margin-right: 10px;\n}\n.menu-root .menu-icon-angle {\n  float: right;\n  line-height: 50px;\n}\n.sidebar-folded .menu-root .menu-submenu,\n.sidebar-folded .menu-root .fa-angle-down,\n.sidebar-folded .menu-root .fa-angle-right {\n  display: none;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-l1 {\n  width: 65px;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu-vertical {\n  width: 150px;\n}\n.sidebar-folded .menu-root .menu-item .menu-title-text.menu-title-l1 {\n  width: 150px;\n  display: none;\n}\n.sidebar-folded .menu-root .menu-item .menu-title-text.menu-title-l2 {\n  margin-left: 10px;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-active.menu-item-selected.menu-item-l3 > .menu-title {\n  box-shadow: inset 3px 0px 0px 0px #709d63, inset 0px 1px 0px 0px #2b3447;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-active > .menu-title {\n  color: rgba(255, 255, 255, 0.8);\n  background-color: #1c212d;\n  box-shadow: inset 0px 1px 0px 0px #2b3447;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-active .menu-title-l1 {\n  padding-left: 15px;\n  display: inline-block;\n  position: absolute;\n  left: 65px;\n  top: 0;\n  background-color: #1c212d;\n}\n.sidebar-folded .menu-root .menu-item .menu-title-text {\n  display: inline-block;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu-l2 > .menu-item:before {\n  position: absolute;\n  display: block;\n  content: ' ';\n  left: 31px;\n  top: 50%;\n  margin-top: -2px;\n  width: 4px;\n  height: 4px;\n  border-radius: 2px;\n  background-color: white;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu {\n  display: block;\n  float: right;\n  position: absolute;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu.menu-submenu-hidden {\n  display: none;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu.menu-submenu-l2 {\n  left: 65px;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu.menu-submenu-l3 {\n  top: 0;\n  left: 150px;\n}\n* {\n  box-sizing: border-box;\n  padding: 0px;\n  margin: 0px;\n}\nul,\nli {\n  list-style: none;\n}\nbody {\n  display: flex;\n  width: 100vw;\n  height: 100vh;\n}\n.sidebar {\n  position: relative;\n  width: 200px;\n  z-index: 1;\n  overflow-x: visible;\n}\n.sidebar .logo {\n  height: 65px;\n  background-color: #3e4b67;\n  line-height: 65px;\n  text-align: center;\n}\n.sidebar .menu-root {\n  position: relative;\n  background: #354059;\n  width: 100%;\n  overflow-x: visible;\n}\n.sidebar-toggle-btn {\n  float: right;\n  display: flex;\n  width: 65px;\n  height: 65px;\n  margin-right: -65px;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  flex-wrap: wrap;\n  justify-content: space-between;\n  background: #fafafc;\n  line-height: 65px;\n  text-align: center;\n  color: #2b3447;\n  padding: 24.5px;\n}\n.sidebar-toggle-btn .line {\n  position: relative;\n  height: 3px;\n  background-color: #709d63;\n  width: 16px;\n}\n.sidebar-toggle-btn .line:after {\n  display: inline-block;\n  position: absolute;\n  content: ' ';\n  top: 0px;\n  right: 0px;\n  width: 12px;\n  height: 3px;\n  background-color: #dfe1e7 ;\n}\n.sidebar-folded {\n  width: 65px;\n}\n.sidebar-folded .sidebar-toggle-btn .line:after {\n  background-color: #709d63;\n}\n.main-container {\n  flex: 1;\n  z-index: 0;\n  background-color: #ededed;\n}\n.main-container .header {\n  width: 100%;\n  height: 65px;\n  background-color: #ccc;\n}\n.main-container .main-content {\n  padding: 15px;\n}\n","//=============  Menu-Mixins Start============= \n.menu-icon(@menu-icon-color: @base-menu-font-color) {\n  width: @menu-icon-size;\n  height: @menu-icon-size;\n  color: @menu-icon-color;\n}\n\n.calc-colors(@base-menu-font-color) {\n\n  @menu-font-color-red: red(@base-menu-font-color);\n  @menu-font-color-green: green(@base-menu-font-color);\n  @menu-font-color-blue: blue(@base-menu-font-color);\n\n  @menu-item-font-color: rgba(@menu-font-color-red, @menu-font-color-green, @menu-font-color-blue, @base-menu-font-alpha);\n  @menu-item-icon-color: rgba(@menu-font-color-red, @menu-font-color-green, @menu-font-color-blue, @base-menu-icon-alpha);\n  @menu-item-selected-font-color: rgba(@menu-font-color-red, @menu-font-color-green, @menu-font-color-blue, @base-menu-font-alpha + 0.2);\n  @menu-item-selected-icon-color: rgba(@menu-font-color-red, @menu-font-color-green, @menu-font-color-blue, @base-menu-icon-alpha + 0.2);\n\n  @menu-submenu-list-icon-size: 4px;\n\n}\n\n//=============  Menu-Mixins End============= ","@import './variables';\n@import './mixin';\n\n.sidebar-folded .menu-root {\n\n\t.calc-colors(@base-menu-font-color);\n\n\t.menu-submenu,\n\t.fa-angle-down,\n\t.fa-angle-right {\n\t\tdisplay: none;\n\t}\n\n\t.menu-item {\n\n\n\t\t// 一级li宽度调整\n\t\t&.menu-item-l1 {\n\t\t\twidth: @sidebar-folded-width;\n\t\t}\n\n\t\t.menu-submenu-vertical {\n\t\t\twidth: @menu-submenu-vertical-width;\n\n\t\t}\n\t\n\t\t// 一级title特殊处理\n\t\t.menu-title-text.menu-title-l1 {\n\t\t\twidth: @menu-submenu-vertical-width; \n\t\t\tdisplay: none;\n\t\t}\n\n\t\t.menu-title-text.menu-title-l2 {\n\t\t\tmargin-left: @menu-icon-margin-right;\n\n\t\t} \n\n\t\t&.menu-item-active {\n\t\t\t&.menu-item-selected.menu-item-l3 > .menu-title {\n\t\t\t\tbox-shadow: inset 3px 0px 0px 0px #709d63, inset 0px 1px 0px 0px #2b3447;\n\t\t\t}\n\t\t\t& > .menu-title {\n\t\t\t\tcolor: rgba(255, 255, 255, 0.8);\n\t\t\t\tbackground-color: #1c212d;\n\t\t\t\tbox-shadow: inset 0px 1px 0px 0px #2b3447;\n\t\t\t}\n\t\t\t.menu-title-l1 {\n\t\t\t\tpadding-left: @base-padding;\n\t\t\t\tdisplay: inline-block;\n\t\t\t\tposition: absolute;\n\t\t\t\tleft: @sidebar-folded-width;\n\t\t\t\ttop: 0;\n\t\t\t\tbackground-color: @menu-item-selected-bg-color;\n\t\t\t}\n\t\t}\n\n\t\t.menu-title-text {\n\t\t\tdisplay: inline-block;\n\t\t}\n\n\t\t.menu-submenu-l2 {\n\t\t    // 模拟list-style: circle-solid\n\t\t    & > .menu-item:before {\n\t\t        position: absolute;\n\t\t        display: block;\n\t\t        content: ' ';\n\t\t        left: @menu-submenu-padding-left - 2*@menu-icon-margin-right;\n\t\t        top: 50%;\n\t\t        margin-top: -@menu-submenu-list-icon-size/2;\n\t\t        width: @menu-submenu-list-icon-size;\n\t\t        height: @menu-submenu-list-icon-size;\n\t\t        border-radius: @menu-submenu-list-icon-size/2;\n\t\t        background-color: @base-menu-font-color;\n\t\t    }\n\n\t\t}\n\n\t\t.menu-submenu {\n\t\t\tdisplay: block;\n\t\t\tfloat: right;\n\t\t\tposition: absolute;\n\t\t\t&.menu-submenu-hidden {\n\t\t\t\tdisplay: none;\n\t\t\t}\n\t\t\t&.menu-submenu-l2 {\n\t\t\t\tleft: 65px;\n\t\t\t}\n\t\t\t&.menu-submenu-l3 {\n\t\t\t\ttop: 0;\n\t\t\t\tleft: @menu-submenu-vertical-width;\n\t\t\t}\n\t\t}\t\t\n\t}\n\n\n}","@import './demo/variables';\n@import './demo/menu';\n@import './demo/menu-folded';\n\n// Reset ========\n* {\n    box-sizing: border-box;\n    padding: 0px;\n    margin: 0px;\n}\n\nul,\nli {\n    list-style: none;\n}\n\n\n// Layout ========\nbody {\n    display: flex;\n    width: 100vw;\n    height: 100vh;\n}\n\n// 左侧导航菜单区 - 展开状态\n.sidebar {\n    position: relative;\n    width: @sidebar-width;\n    z-index: @base-zindex + 1;\n    overflow-x: visible;\n\n    .logo {\n        height: @header-height;\n        background-color: lighten(@menu-item-bg-color, 10%);\n        line-height: @header-height;\n        text-align: center;\n    }\n\n\n    .menu-root {\n        position: relative;\n        background: #354059;\n        width: 100%;\n        overflow-x: visible;\n    }\n\n\n    &-toggle-btn {\n        float: right;\n        display: flex;\n        width: @header-height;\n        height: @header-height;\n        margin-right: -@header-height;\n        flex-direction: column;\n        justify-content: center;\n        align-items: center;\n        flex-wrap: wrap;\n        justify-content: space-between;\n        background: #fafafc;\n        line-height: @header-height;\n        text-align: center;\n        color: @menu-item-bg-color;\n        padding: (@header-height - @menu-icon-size) / 2;\n\n        .line {\n            position: relative;\n            height: 3px;\n            background-color: @menu-item-selected-color;\n            width: @menu-icon-size;\n        }\n\n        .line:after {\n            display: inline-block;\n            position: absolute;\n            content: ' ';\n            top: 0px;\n            right: 0px;\n            width: 12px;\n            height: 3px;\n            background-color:  #dfe1e7 ;\n        }\n    }\n\n}\n\n// 左侧导航菜单区 - 折叠状态\n.sidebar-folded {\n\n    width: @sidebar-folded-width;\n\n    .sidebar-toggle-btn {\n        .line:after {\n            background-color: @menu-item-selected-color;\n        }\n    }\n\n}\n\n// 主功能区域\n.main-container {\n    flex: 1;\n    z-index: @base-zindex;\n    background-color: #ededed;\n\n    .header {\n        width: 100%;\n        height: @header-height;\n        background-color: #ccc;\n    }\n    .main-content {\n        padding: @base-padding;\n    }\n\n}\n\n\n\n\n"],"sourceRoot":""}]);
+exports.push([module.i, ".menu-root {\n  position: relative;\n}\n.menu-root a {\n  display: inline-block;\n  text-decoration: none;\n}\n.menu-root a,\n.menu-root a:link,\n.menu-root a:visited,\n.menu-root a:hover,\n.menu-root a:active {\n  color: rgba(255, 255, 255, 0.6);\n}\n.menu-root .menu-item {\n  position: relative;\n}\n.menu-root .menu-item:not(.menu-item-selected) > .menu-title:hover {\n  color: rgba(255, 255, 255, 0.8);\n  background-color: #1c212d;\n  box-shadow: inset 0px 1px 0px 0px #2b3447;\n}\n.menu-root .menu-title {\n  width: 100%;\n  height: 50px;\n  line-height: 50px;\n  padding-left: 25px;\n  padding-right: 20px;\n}\n.menu-root .menu-item-selected > .menu-title {\n  color: rgba(255, 255, 255, 0.8);\n  background-color: #1c212d;\n  box-shadow: inset 3px 0px 0px 0px #709d63, inset 0px 1px 0px 0px #2b3447;\n}\n.menu-root .menu-item-selected.isHover > .menu-title {\n  box-shadow: none;\n}\n.menu-root .menu-item-selected .menu-icon-title-alt,\n.menu-root .menu-item-selected .menu-icon-angle {\n  color: rgba(255, 255, 255, 0.6);\n}\n.menu-root .menu-submenu {\n  position: relative;\n}\n.menu-root .menu-submenu-hidden {\n  display: none;\n}\n.menu-root .menu-submenu .menu-item {\n  background-color: #262c3c;\n}\n.menu-root .menu-submenu .menu-title {\n  padding-left: 65px;\n}\n.menu-root .menu-submenu-inline > .menu-item:before {\n  position: absolute;\n  display: block;\n  content: ' ';\n  left: 51px;\n  top: 50%;\n  margin-top: -2px;\n  width: 4px;\n  height: 4px;\n  border-radius: 2px;\n  background-color: white;\n}\n.menu-root .menu-submenu .menu-item:hover .menu-submenu-vertical {\n  position: absolute;\n  top: 0px;\n  left: 200px;\n  background-color: #262c3c;\n  display: block;\n  z-index: 2;\n}\n.menu-root .menu-submenu .menu-item:hover .menu-submenu-vertical .menu-item {\n  box-shadow: inset 1px 0px 0px 0px #2b3447;\n}\n.menu-root .menu-submenu-vertical {\n  width: 150px;\n  overflow: visible;\n  display: none;\n}\n.menu-root .menu-submenu-vertical .menu-item {\n  background-color: rgba(38, 44, 60, 0.98);\n}\n.menu-root .menu-submenu-vertical .menu-title {\n  padding-left: 36px;\n  text-align: left;\n  font-size: 12px;\n}\n.menu-root [class|=menu-icon] {\n  width: 16px;\n  height: 16px;\n  color: rgba(255, 255, 255, 0.4);\n}\n.menu-root .menu-icon-title-alt {\n  margin-right: 10px;\n}\n.menu-root .menu-icon-angle {\n  float: right;\n  line-height: 50px;\n}\n.sidebar-folded .menu-root .menu-submenu,\n.sidebar-folded .menu-root .fa-angle-down,\n.sidebar-folded .menu-root .fa-angle-right {\n  display: none;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-l1 {\n  width: 65px;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu-vertical {\n  width: 150px;\n}\n.sidebar-folded .menu-root .menu-item .menu-title-text.menu-title-l1 {\n  width: 150px;\n  display: none;\n}\n.sidebar-folded .menu-root .menu-item .menu-title-text.menu-title-l2 {\n  margin-left: 10px;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-active.menu-item-selected.menu-item-l3 > .menu-title {\n  box-shadow: inset 3px 0px 0px 0px #709d63, inset 0px 1px 0px 0px #2b3447;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-active > .menu-title {\n  color: rgba(255, 255, 255, 0.8);\n  background-color: #1c212d;\n  box-shadow: inset 0px 1px 0px 0px #2b3447;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-active .menu-title-l1 {\n  padding-left: 15px;\n  display: inline-block;\n  position: absolute;\n  left: 65px;\n  top: 0;\n  background-color: #1c212d;\n}\n.sidebar-folded .menu-root .menu-item .menu-title-text {\n  display: inline-block;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu-l2 > .menu-item:before {\n  position: absolute;\n  display: block;\n  content: ' ';\n  left: 31px;\n  top: 50%;\n  margin-top: -2px;\n  width: 4px;\n  height: 4px;\n  border-radius: 2px;\n  background-color: white;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu {\n  display: block;\n  float: right;\n  position: absolute;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu.menu-submenu-hidden {\n  display: none;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu.menu-submenu-l2 {\n  left: 65px;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu.menu-submenu-l3 {\n  top: 0;\n  left: 150px;\n}\n* {\n  box-sizing: border-box;\n  padding: 0px;\n  margin: 0px;\n}\nul,\nli {\n  list-style: none;\n}\nbody {\n  display: flex;\n  width: 100vw;\n  height: 100vh;\n}\n.sidebar {\n  position: relative;\n  width: 200px;\n  z-index: 1;\n  overflow-x: visible;\n}\n.sidebar .logo {\n  height: 65px;\n  background-color: #3e4b67;\n  line-height: 65px;\n  text-align: center;\n}\n.sidebar .menu-root {\n  position: relative;\n  background: #354059;\n  width: 100%;\n  overflow-x: visible;\n}\n.sidebar-toggle-btn {\n  float: right;\n  display: flex;\n  width: 65px;\n  height: 65px;\n  margin-right: -65px;\n  justify-content: center;\n  align-items: center;\n  background: #fafafc;\n  line-height: 65px;\n  color: #2b3447;\n}\n.sidebar-toggle-btn .lines {\n  position: relative;\n  height: 13px;\n  width: 16px;\n  background: repeating-linear-gradient(to bottom, #709d63 0px, #709d63 2px, transparent 2px, transparent 5px);\n}\n.sidebar-toggle-btn .lines:before {\n  display: inline-block;\n  position: absolute;\n  content: ' ';\n  top: 0px;\n  right: 0px;\n  width: 12px;\n  height: 13px;\n  background-color: #dfe1e7 ;\n  background: repeating-linear-gradient(to bottom, #dfe1e7 0px, #dfe1e7 2px, transparent 2px, transparent 5px);\n}\n.sidebar-folded {\n  width: 65px;\n}\n.sidebar-folded .sidebar-toggle-btn .lines:before {\n  width: 0px;\n}\n.main-container {\n  flex: 1;\n  z-index: 0;\n  background-color: #ededed;\n}\n.main-container .header {\n  width: 100%;\n  height: 65px;\n  background-color: #ccc;\n}\n.main-container .main-content {\n  padding: 15px;\n}\n", "", {"version":3,"sources":["/Users/weimengxi/github/component-navigation/src/www/static/styles/demo/menu.less","/Users/weimengxi/github/component-navigation/src/www/static/styles/demo.less","/Users/weimengxi/github/component-navigation/src/www/static/styles/demo/mixin.less","/Users/weimengxi/github/component-navigation/src/www/static/styles/demo/menu-folded.less","/Users/weimengxi/github/component-navigation/src/www/static/styles/demo.less"],"names":[],"mappings":"AAKA;EAEI,mBAAA;CCLH;ADGD;EAQY,sBAAA;EACA,sBAAA;CCRX;ADUO;;;;;EAKI,gCAAA;CCRX;ADRD;EAqBQ,mBAAA;CCVP;ADWO;EACI,gCAAA;EACA,0BAAA;EACA,0CAAA;CCTX;ADhBD;EA8BQ,YAAA;EACA,aAAA;EACA,kBAAA;EACA,mBAAA;EACA,oBAAA;CCXP;ADgBO;EACI,gCAAA;EACA,0BAAA;EACA,yEAAA;CCdX;ADiBO;EACI,iBAAA;CCfX;AD/BD;;EAkDY,gCAAA;CCfX;ADnCD;EAwDQ,mBAAA;CClBP;ADoBO;EACI,cAAA;CClBX;ADzCD;EA+DY,0BAAA;CCnBX;AD5CD;EAmEY,mBAAA;CCpBX;AD2BO;EACI,mBAAA;EACA,eAAA;EACA,aAAA;EACA,WAAA;EACA,SAAA;EACA,iBAAA;EACA,WAAA;EACA,YAAA;EACA,mBAAA;EACA,wBAAA;CCzBX;AD3DD;EA2FQ,mBAAA;EACA,SAAA;EACA,YAAA;EACA,0BAAA;EACA,eAAA;EACA,WAAA;CC7BP;ADnED;EAmGY,0CAAA;CC7BX;ADtED;EAgHQ,aAAA;EACA,kBAAA;EACA,cAAA;CCvCP;AD3ED;EAqHY,yCAAA;CCvCX;AD9ED;EAyHY,mBAAA;EACA,iBAAA;EACA,gBAAA;CCxCX;ADnFD;EEHE,YAAA;EACA,aAAA;EACA,gCAAA;CDyFD;ADxFD;EAqIQ,mBAAA;CC1CP;AD3FD;EAyIQ,aAAA;EACA,kBAAA;CC3CP;AEjGD;;;EAOE,cAAA;CF+FD;AExFC;EACC,YAAA;CF0FF;AEzGD;EAmBG,aAAA;CFyFF;AE5GD;EAyBG,aAAA;EACA,cAAA;CFsFF;AEhHD;EA8BG,kBAAA;CFqFF;AEhFE;EACC,yEAAA;CFkFH;AEhFE;EACC,gCAAA;EACA,0BAAA;EACA,0CAAA;CFkFH;AEzFC;EAUE,mBAAA;EACA,sBAAA;EACA,mBAAA;EACA,WAAA;EACA,OAAA;EACA,0BAAA;CFkFH;AEnID;EAsDG,sBAAA;CFgFF;AE3EK;EACI,mBAAA;EACA,eAAA;EACA,aAAA;EACA,WAAA;EACA,SAAA;EACA,iBAAA;EACA,WAAA;EACA,YAAA;EACA,mBAAA;EACA,wBAAA;CF6ET;AElJD;EA2EG,eAAA;EACA,aAAA;EACA,mBAAA;CF0EF;AEzEE;EACC,cAAA;CF2EH;AEzEE;EACC,WAAA;CF2EH;AEzEE;EACC,OAAA;EACA,YAAA;CF2EH;AG/JD;EACI,uBAAA;EACA,aAAA;EACA,YAAA;CHiKH;AG9JD;;EAEI,iBAAA;CHgKH;AG3JD;EACI,cAAA;EACA,aAAA;EACA,cAAA;CH6JH;AGzJD;EACI,mBAAA;EACA,aAAA;EACA,WAAA;EACA,oBAAA;CH2JH;AG/JD;EAOQ,aAAA;EACA,0BAAA;EACA,kBAAA;EACA,mBAAA;CH2JP;AGrKD;EAeQ,mBAAA;EACA,oBAAA;EACA,YAAA;EACA,oBAAA;CHyJP;AGrJG;EACI,aAAA;EACA,cAAA;EACA,YAAA;EACA,aAAA;EACA,oBAAA;EACA,wBAAA;EACA,oBAAA;EACA,oBAAA;EACA,kBAAA;EACA,eAAA;CHuJP;AGjKG;EAaQ,mBAAA;EACA,aAAA;EACA,YAAA;EACA,6GAAA;CHuJX;AGvKG;EAqBQ,sBAAA;EACA,mBAAA;EACA,aAAA;EACA,SAAA;EACA,WAAA;EACA,YAAA;EACA,aAAA;EACA,2BAAA;EACA,6GAAA;CHqJX;AG9ID;EAEI,YAAA;CH+IH;AGjJD;EAMY,WAAA;CH8IX;AGvID;EACI,QAAA;EACA,WAAA;EACA,0BAAA;CHyIH;AG5ID;EAMQ,YAAA;EACA,aAAA;EACA,uBAAA;CHyIP;AGjJD;EAWQ,cAAA;CHyIP","file":"demo.less","sourcesContent":["@import './variables';\n@import './mixin';\n\n\n//=============  Menu-Styles Start============= \n.menu-root {\n\n    position: relative;\n\n    .calc-colors(@base-menu-font-color);\n\n    a {\n        & {\n            display: inline-block;\n            text-decoration: none;\n        }\n        &,\n        &:link,\n        &:visited,\n        &:hover,\n        &:active {\n            color: @menu-item-font-color;\n        }\n    }\n\n    .menu-item {\n        position: relative;\n        &:not(.menu-item-selected)>.menu-title:hover {\n            color: @menu-item-selected-font-color;\n            background-color: @menu-item-selected-bg-color;\n            box-shadow: inset 0px 1px 0px 0px @menu-item-bg-color;\n        }\n    } \n\n    .menu-title {\n        width: 100%;\n        height:  @menu-item-height;\n        line-height: @menu-item-height;\n        padding-left: @menu-padding-left;\n        padding-right: @menu-padding-right;\n    }\n\n    .menu-item-selected {\n        // 选中的节点\n        &>.menu-title {\n            color: @menu-item-selected-font-color;\n            background-color: @menu-item-selected-bg-color;\n            box-shadow: inset @menu-item-selected-border-width 0px 0px 0px @menu-item-selected-color, inset 0px 1px 0px 0px @menu-item-bg-color;\n        }\n\n        &.isHover>.menu-title {\n            box-shadow: none;\n        }\n        .menu-icon-title-alt,\n        .menu-icon-angle {\n            color: @menu-item-selected-icon-color;\n        }\n    }\n\n    .menu-submenu {\n\n        position: relative;\n\n        &-hidden {\n            display: none;\n        }\n\n        .menu-item {\n            background-color: @menu-submenu-item-bg-color;\n        } \n\n        .menu-title {\n            padding-left: @menu-submenu-padding-left + @menu-icon-margin-right + @menu-submenu-list-icon-size;\n        }\n\n    }\n\n    .menu-submenu-inline {\n        // 模拟list-style: circle-solid\n        & > .menu-item:before {\n            position: absolute;\n            display: block;\n            content: ' ';\n            left: @menu-submenu-padding-left;\n            top: 50%;\n            margin-top: -@menu-submenu-list-icon-size/2;\n            width: @menu-submenu-list-icon-size;\n            height: @menu-submenu-list-icon-size;\n            border-radius: @menu-submenu-list-icon-size/2;\n            background-color: @base-menu-font-color;\n        }\n\n    }\n\n     // 三级子菜单\n    .menu-submenu .menu-item:hover .menu-submenu-vertical {\n        position: absolute;\n        top: 0px;\n        left: @sidebar-width;\n        background-color: @menu-submenu-item-bg-color;\n        display: block;\n        z-index: @base-zindex + 2;\n\n        .menu-item {\n            box-shadow: inset 1px 0px 0px  0px @menu-item-bg-color;\n        }\n\n    }\n\n    .menu-submenu-vertical {\n\n        @menu-submenu-item-bg-color-red: red(@menu-submenu-item-bg-color);\n        @menu-submenu-item-bg-color-green: green(@menu-submenu-item-bg-color);\n        @menu-submenu-item-bg-color-blue: blue(@menu-submenu-item-bg-color);\n\n        @menu-submenu-vertical-item-bg-color: rgba(@menu-submenu-item-bg-color-red, @menu-submenu-item-bg-color-green, @menu-submenu-item-bg-color-blue, @menu-submenu-vertical-item-bg-color-alpha);\n\n        width: @menu-submenu-vertical-width;\n        overflow: visible;\n        display: none;\n\n        .menu-item {\n            background-color: @menu-submenu-vertical-item-bg-color;\n        }\n\n        .menu-title {\n            padding-left: @menu-submenu-padding-left - @base-padding;\n            text-align: left;\n            font-size: 12px;\n        }\n    }\n\n    // icon ===== \n    [class|=menu-icon] {\n        .menu-icon( @menu-item-icon-color);        \n    }\n\n    .menu-icon-title-alt {\n        margin-right: @menu-icon-margin-right;\n    }\n\n    .menu-icon-angle {\n        float: right;\n        line-height: @menu-item-height;\n    }\n}\n//=============  Menu-Styles End============= \n",".menu-root {\n  position: relative;\n}\n.menu-root a {\n  display: inline-block;\n  text-decoration: none;\n}\n.menu-root a,\n.menu-root a:link,\n.menu-root a:visited,\n.menu-root a:hover,\n.menu-root a:active {\n  color: rgba(255, 255, 255, 0.6);\n}\n.menu-root .menu-item {\n  position: relative;\n}\n.menu-root .menu-item:not(.menu-item-selected) > .menu-title:hover {\n  color: rgba(255, 255, 255, 0.8);\n  background-color: #1c212d;\n  box-shadow: inset 0px 1px 0px 0px #2b3447;\n}\n.menu-root .menu-title {\n  width: 100%;\n  height: 50px;\n  line-height: 50px;\n  padding-left: 25px;\n  padding-right: 20px;\n}\n.menu-root .menu-item-selected > .menu-title {\n  color: rgba(255, 255, 255, 0.8);\n  background-color: #1c212d;\n  box-shadow: inset 3px 0px 0px 0px #709d63, inset 0px 1px 0px 0px #2b3447;\n}\n.menu-root .menu-item-selected.isHover > .menu-title {\n  box-shadow: none;\n}\n.menu-root .menu-item-selected .menu-icon-title-alt,\n.menu-root .menu-item-selected .menu-icon-angle {\n  color: rgba(255, 255, 255, 0.6);\n}\n.menu-root .menu-submenu {\n  position: relative;\n}\n.menu-root .menu-submenu-hidden {\n  display: none;\n}\n.menu-root .menu-submenu .menu-item {\n  background-color: #262c3c;\n}\n.menu-root .menu-submenu .menu-title {\n  padding-left: 65px;\n}\n.menu-root .menu-submenu-inline > .menu-item:before {\n  position: absolute;\n  display: block;\n  content: ' ';\n  left: 51px;\n  top: 50%;\n  margin-top: -2px;\n  width: 4px;\n  height: 4px;\n  border-radius: 2px;\n  background-color: white;\n}\n.menu-root .menu-submenu .menu-item:hover .menu-submenu-vertical {\n  position: absolute;\n  top: 0px;\n  left: 200px;\n  background-color: #262c3c;\n  display: block;\n  z-index: 2;\n}\n.menu-root .menu-submenu .menu-item:hover .menu-submenu-vertical .menu-item {\n  box-shadow: inset 1px 0px 0px 0px #2b3447;\n}\n.menu-root .menu-submenu-vertical {\n  width: 150px;\n  overflow: visible;\n  display: none;\n}\n.menu-root .menu-submenu-vertical .menu-item {\n  background-color: rgba(38, 44, 60, 0.98);\n}\n.menu-root .menu-submenu-vertical .menu-title {\n  padding-left: 36px;\n  text-align: left;\n  font-size: 12px;\n}\n.menu-root [class|=menu-icon] {\n  width: 16px;\n  height: 16px;\n  color: rgba(255, 255, 255, 0.4);\n}\n.menu-root .menu-icon-title-alt {\n  margin-right: 10px;\n}\n.menu-root .menu-icon-angle {\n  float: right;\n  line-height: 50px;\n}\n.sidebar-folded .menu-root .menu-submenu,\n.sidebar-folded .menu-root .fa-angle-down,\n.sidebar-folded .menu-root .fa-angle-right {\n  display: none;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-l1 {\n  width: 65px;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu-vertical {\n  width: 150px;\n}\n.sidebar-folded .menu-root .menu-item .menu-title-text.menu-title-l1 {\n  width: 150px;\n  display: none;\n}\n.sidebar-folded .menu-root .menu-item .menu-title-text.menu-title-l2 {\n  margin-left: 10px;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-active.menu-item-selected.menu-item-l3 > .menu-title {\n  box-shadow: inset 3px 0px 0px 0px #709d63, inset 0px 1px 0px 0px #2b3447;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-active > .menu-title {\n  color: rgba(255, 255, 255, 0.8);\n  background-color: #1c212d;\n  box-shadow: inset 0px 1px 0px 0px #2b3447;\n}\n.sidebar-folded .menu-root .menu-item.menu-item-active .menu-title-l1 {\n  padding-left: 15px;\n  display: inline-block;\n  position: absolute;\n  left: 65px;\n  top: 0;\n  background-color: #1c212d;\n}\n.sidebar-folded .menu-root .menu-item .menu-title-text {\n  display: inline-block;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu-l2 > .menu-item:before {\n  position: absolute;\n  display: block;\n  content: ' ';\n  left: 31px;\n  top: 50%;\n  margin-top: -2px;\n  width: 4px;\n  height: 4px;\n  border-radius: 2px;\n  background-color: white;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu {\n  display: block;\n  float: right;\n  position: absolute;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu.menu-submenu-hidden {\n  display: none;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu.menu-submenu-l2 {\n  left: 65px;\n}\n.sidebar-folded .menu-root .menu-item .menu-submenu.menu-submenu-l3 {\n  top: 0;\n  left: 150px;\n}\n* {\n  box-sizing: border-box;\n  padding: 0px;\n  margin: 0px;\n}\nul,\nli {\n  list-style: none;\n}\nbody {\n  display: flex;\n  width: 100vw;\n  height: 100vh;\n}\n.sidebar {\n  position: relative;\n  width: 200px;\n  z-index: 1;\n  overflow-x: visible;\n}\n.sidebar .logo {\n  height: 65px;\n  background-color: #3e4b67;\n  line-height: 65px;\n  text-align: center;\n}\n.sidebar .menu-root {\n  position: relative;\n  background: #354059;\n  width: 100%;\n  overflow-x: visible;\n}\n.sidebar-toggle-btn {\n  float: right;\n  display: flex;\n  width: 65px;\n  height: 65px;\n  margin-right: -65px;\n  justify-content: center;\n  align-items: center;\n  background: #fafafc;\n  line-height: 65px;\n  color: #2b3447;\n}\n.sidebar-toggle-btn .lines {\n  position: relative;\n  height: 13px;\n  width: 16px;\n  background: repeating-linear-gradient(to bottom, #709d63 0px, #709d63 2px, transparent 2px, transparent 5px);\n}\n.sidebar-toggle-btn .lines:before {\n  display: inline-block;\n  position: absolute;\n  content: ' ';\n  top: 0px;\n  right: 0px;\n  width: 12px;\n  height: 13px;\n  background-color: #dfe1e7 ;\n  background: repeating-linear-gradient(to bottom, #dfe1e7 0px, #dfe1e7 2px, transparent 2px, transparent 5px);\n}\n.sidebar-folded {\n  width: 65px;\n}\n.sidebar-folded .sidebar-toggle-btn .lines:before {\n  width: 0px;\n}\n.main-container {\n  flex: 1;\n  z-index: 0;\n  background-color: #ededed;\n}\n.main-container .header {\n  width: 100%;\n  height: 65px;\n  background-color: #ccc;\n}\n.main-container .main-content {\n  padding: 15px;\n}\n","//=============  Menu-Mixins Start============= \n.menu-icon(@menu-icon-color: @base-menu-font-color) {\n  width: @menu-icon-size;\n  height: @menu-icon-size;\n  color: @menu-icon-color;\n}\n\n.calc-colors(@base-menu-font-color) {\n\n  @menu-font-color-red: red(@base-menu-font-color);\n  @menu-font-color-green: green(@base-menu-font-color);\n  @menu-font-color-blue: blue(@base-menu-font-color);\n\n  @menu-item-font-color: rgba(@menu-font-color-red, @menu-font-color-green, @menu-font-color-blue, @base-menu-font-alpha);\n  @menu-item-icon-color: rgba(@menu-font-color-red, @menu-font-color-green, @menu-font-color-blue, @base-menu-icon-alpha);\n  @menu-item-selected-font-color: rgba(@menu-font-color-red, @menu-font-color-green, @menu-font-color-blue, @base-menu-font-alpha + 0.2);\n  @menu-item-selected-icon-color: rgba(@menu-font-color-red, @menu-font-color-green, @menu-font-color-blue, @base-menu-icon-alpha + 0.2);\n\n  @menu-submenu-list-icon-size: 4px;\n\n}\n\n//=============  Menu-Mixins End============= ","@import './variables';\n@import './mixin';\n\n.sidebar-folded .menu-root {\n\n\t.calc-colors(@base-menu-font-color);\n\n\t.menu-submenu,\n\t.fa-angle-down,\n\t.fa-angle-right {\n\t\tdisplay: none;\n\t}\n\n\t.menu-item {\n\n\n\t\t// 一级li宽度调整\n\t\t&.menu-item-l1 {\n\t\t\twidth: @sidebar-folded-width;\n\t\t}\n\n\t\t.menu-submenu-vertical {\n\t\t\twidth: @menu-submenu-vertical-width;\n\n\t\t}\n\t\n\t\t// 一级title特殊处理\n\t\t.menu-title-text.menu-title-l1 {\n\t\t\twidth: @menu-submenu-vertical-width; \n\t\t\tdisplay: none;\n\t\t}\n\n\t\t.menu-title-text.menu-title-l2 {\n\t\t\tmargin-left: @menu-icon-margin-right;\n\n\t\t} \n\n\t\t&.menu-item-active {\n\t\t\t&.menu-item-selected.menu-item-l3 > .menu-title {\n\t\t\t\tbox-shadow: inset 3px 0px 0px 0px #709d63, inset 0px 1px 0px 0px #2b3447;\n\t\t\t}\n\t\t\t& > .menu-title {\n\t\t\t\tcolor: rgba(255, 255, 255, 0.8);\n\t\t\t\tbackground-color: #1c212d;\n\t\t\t\tbox-shadow: inset 0px 1px 0px 0px #2b3447;\n\t\t\t}\n\t\t\t.menu-title-l1 {\n\t\t\t\tpadding-left: @base-padding;\n\t\t\t\tdisplay: inline-block;\n\t\t\t\tposition: absolute;\n\t\t\t\tleft: @sidebar-folded-width;\n\t\t\t\ttop: 0;\n\t\t\t\tbackground-color: @menu-item-selected-bg-color;\n\t\t\t}\n\t\t}\n\n\t\t.menu-title-text {\n\t\t\tdisplay: inline-block;\n\t\t}\n\n\t\t.menu-submenu-l2 {\n\t\t    // 模拟list-style: circle-solid\n\t\t    & > .menu-item:before {\n\t\t        position: absolute;\n\t\t        display: block;\n\t\t        content: ' ';\n\t\t        left: @menu-submenu-padding-left - 2*@menu-icon-margin-right;\n\t\t        top: 50%;\n\t\t        margin-top: -@menu-submenu-list-icon-size/2;\n\t\t        width: @menu-submenu-list-icon-size;\n\t\t        height: @menu-submenu-list-icon-size;\n\t\t        border-radius: @menu-submenu-list-icon-size/2;\n\t\t        background-color: @base-menu-font-color;\n\t\t    }\n\n\t\t}\n\n\t\t.menu-submenu {\n\t\t\tdisplay: block;\n\t\t\tfloat: right;\n\t\t\tposition: absolute;\n\t\t\t&.menu-submenu-hidden {\n\t\t\t\tdisplay: none;\n\t\t\t}\n\t\t\t&.menu-submenu-l2 {\n\t\t\t\tleft: @sidebar-folded-width;\n\t\t\t}\n\t\t\t&.menu-submenu-l3 {\n\t\t\t\ttop: 0;\n\t\t\t\tleft: @menu-submenu-vertical-width;\n\t\t\t}\n\t\t}\t\t\n\t}\n\n\n}","@import './demo/variables';\n@import './demo/menu';\n@import './demo/menu-folded';\n\n// Reset ========\n* {\n    box-sizing: border-box;\n    padding: 0px;\n    margin: 0px;\n}\n\nul,\nli {\n    list-style: none;\n}\n\n\n// Layout ========\nbody {\n    display: flex;\n    width: 100vw;\n    height: 100vh;\n}\n\n// 左侧导航菜单区 - 展开状态\n.sidebar {\n    position: relative;\n    width: @sidebar-width;\n    z-index: @base-zindex + 1;\n    overflow-x: visible;\n\n    .logo {\n        height: @header-height;\n        background-color: lighten(@menu-item-bg-color, 10%);\n        line-height: @header-height;\n        text-align: center;\n    }\n\n\n    .menu-root {\n        position: relative;\n        background: #354059;\n        width: 100%;\n        overflow-x: visible;\n    }\n\n\n    &-toggle-btn {\n        float: right;\n        display: flex;\n        width: @header-height;\n        height: @header-height;\n        margin-right: -@header-height;\n        justify-content: center;\n        align-items: center;\n        background: #fafafc;\n        line-height: @header-height;\n        color: @menu-item-bg-color;\n\n        .lines {\n            position: relative;\n            height: 13px;\n            width: @menu-icon-size;\n            background: repeating-linear-gradient(to bottom, @menu-item-selected-color 0px,  @menu-item-selected-color 2px,transparent 2px,  transparent 5px);\n\n        }\n\n        .lines:before {\n            display: inline-block;\n            position: absolute;\n            content: ' ';\n            top: 0px;\n            right: 0px;\n            width: 12px;\n            height: 13px;\n            background-color:  #dfe1e7 ;\n            background: repeating-linear-gradient(to bottom, #dfe1e7  0px,  #dfe1e7 2px,transparent 2px,  transparent 5px)\n        }\n    }\n\n}\n\n// 左侧导航菜单区 - 折叠状态\n.sidebar-folded {\n\n    width: @sidebar-folded-width;\n\n    .sidebar-toggle-btn {\n        .lines:before {\n            width: 0px;\n        }\n    }\n\n}\n\n// 主功能区域\n.main-container {\n    flex: 1;\n    z-index: @base-zindex;\n    background-color: #ededed;\n\n    .header {\n        width: 100%;\n        height: @header-height;\n        background-color: #ccc;\n    }\n    .main-content {\n        padding: @base-padding;\n    }\n\n}\n\n\n\n\n"],"sourceRoot":""}]);
 
 // exports
 
 
 /***/ }),
-/* 86 */
+/* 89 */
 /***/ (function(module, exports) {
 
 /*
@@ -2648,7 +3049,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 87 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -2694,7 +3095,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(88);
+var	fixUrls = __webpack_require__(91);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -3007,7 +3408,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 88 */
+/* 91 */
 /***/ (function(module, exports) {
 
 
@@ -3102,15 +3503,15 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 89 */
+/* 92 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_data_source_proxy__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_data_source_proxy___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_data_source_proxy__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__interceptors_FixParams__ = __webpack_require__(184);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__interceptors_ErrorProcessor__ = __webpack_require__(185);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__interceptors_FixParams__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__interceptors_ErrorProcessor__ = __webpack_require__(188);
 
 
 
@@ -3205,7 +3606,7 @@ DataSourceProxy.createError = __WEBPACK_IMPORTED_MODULE_1_data_source_proxy___de
 
 
 /***/ }),
-/* 90 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3218,7 +3619,7 @@ const config = {
 /* harmony default export */ __webpack_exports__["a"] = (config);
 
 /***/ }),
-/* 91 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3256,7 +3657,7 @@ var _ComboPromise = __webpack_require__(72);
 
 var _ComboPromise2 = _interopRequireDefault(_ComboPromise);
 
-var _config = __webpack_require__(132);
+var _config = __webpack_require__(135);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -3264,19 +3665,19 @@ var _const = __webpack_require__(30);
 
 var _const2 = _interopRequireDefault(_const);
 
-var _Ajax = __webpack_require__(133);
+var _Ajax = __webpack_require__(136);
 
 var _Ajax2 = _interopRequireDefault(_Ajax);
 
-var _Http = __webpack_require__(163);
+var _Http = __webpack_require__(166);
 
 var _Http2 = _interopRequireDefault(_Http);
 
-var _MissionDispatcher = __webpack_require__(179);
+var _MissionDispatcher = __webpack_require__(182);
 
 var _MissionDispatcher2 = _interopRequireDefault(_MissionDispatcher);
 
-var _CacheData = __webpack_require__(181);
+var _CacheData = __webpack_require__(184);
 
 var _CacheData2 = _interopRequireDefault(_CacheData);
 
@@ -3478,20 +3879,20 @@ exports['default'] = DataSource;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 92 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(32);
 __webpack_require__(33);
 __webpack_require__(44);
-__webpack_require__(100);
-__webpack_require__(107);
-__webpack_require__(108);
+__webpack_require__(103);
+__webpack_require__(110);
+__webpack_require__(111);
 module.exports = __webpack_require__(0).Promise;
 
 
 /***/ }),
-/* 93 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(34);
@@ -3514,7 +3915,7 @@ module.exports = function (TO_STRING) {
 
 
 /***/ }),
-/* 94 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3534,7 +3935,7 @@ module.exports = function (Constructor, NAME, next) {
 
 
 /***/ }),
-/* 95 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(5);
@@ -3553,14 +3954,14 @@ module.exports = __webpack_require__(6) ? Object.defineProperties : function def
 
 
 /***/ }),
-/* 96 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(13);
 var toLength = __webpack_require__(40);
-var toAbsoluteIndex = __webpack_require__(97);
+var toAbsoluteIndex = __webpack_require__(100);
 module.exports = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
     var O = toIObject($this);
@@ -3582,7 +3983,7 @@ module.exports = function (IS_INCLUDES) {
 
 
 /***/ }),
-/* 97 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(34);
@@ -3595,12 +3996,12 @@ module.exports = function (index, length) {
 
 
 /***/ }),
-/* 98 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var addToUnscopables = __webpack_require__(99);
+var addToUnscopables = __webpack_require__(102);
 var step = __webpack_require__(62);
 var Iterators = __webpack_require__(16);
 var toIObject = __webpack_require__(13);
@@ -3636,14 +4037,14 @@ addToUnscopables('entries');
 
 
 /***/ }),
-/* 99 */
+/* 102 */
 /***/ (function(module, exports) {
 
 module.exports = function () { /* empty */ };
 
 
 /***/ }),
-/* 100 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3659,7 +4060,7 @@ var anInstance = __webpack_require__(46);
 var forOf = __webpack_require__(20);
 var speciesConstructor = __webpack_require__(63);
 var task = __webpack_require__(64).set;
-var microtask = __webpack_require__(105)();
+var microtask = __webpack_require__(108)();
 var newPromiseCapabilityModule = __webpack_require__(47);
 var perform = __webpack_require__(65);
 var promiseResolve = __webpack_require__(66);
@@ -3891,7 +4292,7 @@ $export($export.S + $export.F * (LIBRARY || !USE_NATIVE), PROMISE, {
     return promiseResolve(this, x);
   }
 });
-$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(106)(function (iter) {
+$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(109)(function (iter) {
   $Promise.all(iter)['catch'](empty);
 })), PROMISE, {
   // 25.4.4.1 Promise.all(iterable)
@@ -3938,7 +4339,7 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(106)(functio
 
 
 /***/ }),
-/* 101 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // call something on iterator step with safe closing on error
@@ -3956,7 +4357,7 @@ module.exports = function (iterator, fn, value, entries) {
 
 
 /***/ }),
-/* 102 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // check on default Array iterator
@@ -3970,7 +4371,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 103 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var classof = __webpack_require__(45);
@@ -3984,7 +4385,7 @@ module.exports = __webpack_require__(0).getIteratorMethod = function (it) {
 
 
 /***/ }),
-/* 104 */
+/* 107 */
 /***/ (function(module, exports) {
 
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
@@ -4006,7 +4407,7 @@ module.exports = function (fn, args, that) {
 
 
 /***/ }),
-/* 105 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(2);
@@ -4080,7 +4481,7 @@ module.exports = function () {
 
 
 /***/ }),
-/* 106 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ITERATOR = __webpack_require__(3)('iterator');
@@ -4108,7 +4509,7 @@ module.exports = function (exec, skipClosing) {
 
 
 /***/ }),
-/* 107 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4135,7 +4536,7 @@ $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
 
 
 /***/ }),
-/* 108 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4154,31 +4555,31 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 
 
 /***/ }),
-/* 109 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(32);
 __webpack_require__(33);
 __webpack_require__(44);
-__webpack_require__(110);
-__webpack_require__(116);
+__webpack_require__(113);
 __webpack_require__(119);
-__webpack_require__(121);
+__webpack_require__(122);
+__webpack_require__(124);
 module.exports = __webpack_require__(0).Map;
 
 
 /***/ }),
-/* 110 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var strong = __webpack_require__(111);
+var strong = __webpack_require__(114);
 var validate = __webpack_require__(68);
 var MAP = 'Map';
 
 // 23.1 Map Objects
-module.exports = __webpack_require__(112)(MAP, function (get) {
+module.exports = __webpack_require__(115)(MAP, function (get) {
   return function Map() { return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.1.3.6 Map.prototype.get(key)
@@ -4194,7 +4595,7 @@ module.exports = __webpack_require__(112)(MAP, function (get) {
 
 
 /***/ }),
-/* 111 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4345,7 +4746,7 @@ module.exports = {
 
 
 /***/ }),
-/* 112 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4361,7 +4762,7 @@ var anInstance = __webpack_require__(46);
 var isObject = __webpack_require__(7);
 var setToStringTag = __webpack_require__(19);
 var dP = __webpack_require__(5).f;
-var each = __webpack_require__(113)(0);
+var each = __webpack_require__(116)(0);
 var DESCRIPTORS = __webpack_require__(6);
 
 module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
@@ -4411,7 +4812,7 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
 
 
 /***/ }),
-/* 113 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 0 -> Array#forEach
@@ -4425,7 +4826,7 @@ var ctx = __webpack_require__(8);
 var IObject = __webpack_require__(39);
 var toObject = __webpack_require__(27);
 var toLength = __webpack_require__(40);
-var asc = __webpack_require__(114);
+var asc = __webpack_require__(117);
 module.exports = function (TYPE, $create) {
   var IS_MAP = TYPE == 1;
   var IS_FILTER = TYPE == 2;
@@ -4461,11 +4862,11 @@ module.exports = function (TYPE, $create) {
 
 
 /***/ }),
-/* 114 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
-var speciesConstructor = __webpack_require__(115);
+var speciesConstructor = __webpack_require__(118);
 
 module.exports = function (original, length) {
   return new (speciesConstructor(original))(length);
@@ -4473,7 +4874,7 @@ module.exports = function (original, length) {
 
 
 /***/ }),
-/* 115 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(7);
@@ -4495,22 +4896,22 @@ module.exports = function (original) {
 
 
 /***/ }),
-/* 116 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export = __webpack_require__(1);
 
-$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(117)('Map') });
+$export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(120)('Map') });
 
 
 /***/ }),
-/* 117 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var classof = __webpack_require__(45);
-var from = __webpack_require__(118);
+var from = __webpack_require__(121);
 module.exports = function (NAME) {
   return function toJSON() {
     if (classof(this) != NAME) throw TypeError(NAME + "#toJSON isn't generic");
@@ -4520,7 +4921,7 @@ module.exports = function (NAME) {
 
 
 /***/ }),
-/* 118 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var forOf = __webpack_require__(20);
@@ -4533,15 +4934,15 @@ module.exports = function (iter, ITERATOR) {
 
 
 /***/ }),
-/* 119 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-map.of
-__webpack_require__(120)('Map');
+__webpack_require__(123)('Map');
 
 
 /***/ }),
-/* 120 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4560,15 +4961,15 @@ module.exports = function (COLLECTION) {
 
 
 /***/ }),
-/* 121 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://tc39.github.io/proposal-setmap-offrom/#sec-map.from
-__webpack_require__(122)('Map');
+__webpack_require__(125)('Map');
 
 
 /***/ }),
-/* 122 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4603,25 +5004,25 @@ module.exports = function (COLLECTION) {
 
 
 /***/ }),
-/* 123 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(124);
+__webpack_require__(127);
 module.exports = __webpack_require__(0).Object.assign;
 
 
 /***/ }),
-/* 124 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
 var $export = __webpack_require__(1);
 
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__(125) });
+$export($export.S + $export.F, 'Object', { assign: __webpack_require__(128) });
 
 
 /***/ }),
-/* 125 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4662,7 +5063,7 @@ module.exports = !$assign || __webpack_require__(11)(function () {
 
 
 /***/ }),
-/* 126 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4753,7 +5154,7 @@ var isArray = Array.isArray || function (xs) {
 
 
 /***/ }),
-/* 127 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4845,16 +5246,16 @@ var objectKeys = Object.keys || function (obj) {
 
 
 /***/ }),
-/* 128 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(129), __esModule: true };
+module.exports = { "default": __webpack_require__(132), __esModule: true };
 
 /***/ }),
-/* 129 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(130);
+__webpack_require__(133);
 var $Object = __webpack_require__(0).Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
@@ -4862,7 +5263,7 @@ module.exports = function defineProperty(it, key, desc) {
 
 
 /***/ }),
-/* 130 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -4871,7 +5272,7 @@ $export($export.S + $export.F * !__webpack_require__(6), 'Object', { definePrope
 
 
 /***/ }),
-/* 131 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4892,7 +5293,7 @@ exports.default = function (obj, keys) {
 };
 
 /***/ }),
-/* 132 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4950,7 +5351,7 @@ exports['default'] = DefaultConfig;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 133 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4984,7 +5385,7 @@ var _querystring = __webpack_require__(70);
 
 var _querystring2 = _interopRequireDefault(_querystring);
 
-var _axios = __webpack_require__(145);
+var _axios = __webpack_require__(148);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -5103,10 +5504,10 @@ var AjaxWorkerFactory = function () {
 
 exports['default'] = AjaxWorkerFactory;
 //# sourceMappingURL=Ajax.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(134)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(137)))
 
 /***/ }),
-/* 134 */
+/* 137 */
 /***/ (function(module, exports) {
 
 var g;
@@ -5133,13 +5534,13 @@ module.exports = g;
 
 
 /***/ }),
-/* 135 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(136), __esModule: true };
+module.exports = { "default": __webpack_require__(139), __esModule: true };
 
 /***/ }),
-/* 136 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(33);
@@ -5148,24 +5549,24 @@ module.exports = __webpack_require__(54).f('iterator');
 
 
 /***/ }),
-/* 137 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(138), __esModule: true };
+module.exports = { "default": __webpack_require__(141), __esModule: true };
 
 /***/ }),
-/* 138 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(139);
+__webpack_require__(142);
 __webpack_require__(32);
-__webpack_require__(143);
-__webpack_require__(144);
+__webpack_require__(146);
+__webpack_require__(147);
 module.exports = __webpack_require__(0).Symbol;
 
 
 /***/ }),
-/* 139 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5184,15 +5585,15 @@ var uid = __webpack_require__(26);
 var wks = __webpack_require__(3);
 var wksExt = __webpack_require__(54);
 var wksDefine = __webpack_require__(55);
-var keyOf = __webpack_require__(140);
-var enumKeys = __webpack_require__(141);
+var keyOf = __webpack_require__(143);
+var enumKeys = __webpack_require__(144);
 var isArray = __webpack_require__(69);
 var anObject = __webpack_require__(10);
 var toIObject = __webpack_require__(13);
 var toPrimitive = __webpack_require__(38);
 var createDesc = __webpack_require__(24);
 var _create = __webpack_require__(25);
-var gOPNExt = __webpack_require__(142);
+var gOPNExt = __webpack_require__(145);
 var $GOPD = __webpack_require__(74);
 var $DP = __webpack_require__(5);
 var $keys = __webpack_require__(17);
@@ -5407,7 +5808,7 @@ setToStringTag(global.JSON, 'JSON', true);
 
 
 /***/ }),
-/* 140 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getKeys = __webpack_require__(17);
@@ -5423,7 +5824,7 @@ module.exports = function (object, el) {
 
 
 /***/ }),
-/* 141 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
@@ -5444,7 +5845,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 142 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
@@ -5469,27 +5870,27 @@ module.exports.f = function getOwnPropertyNames(it) {
 
 
 /***/ }),
-/* 143 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(55)('asyncIterator');
 
 
 /***/ }),
-/* 144 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(55)('observable');
 
 
 /***/ }),
-/* 145 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(146);
+module.exports = __webpack_require__(149);
 
 /***/ }),
-/* 146 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5497,7 +5898,7 @@ module.exports = __webpack_require__(146);
 
 var utils = __webpack_require__(4);
 var bind = __webpack_require__(75);
-var Axios = __webpack_require__(147);
+var Axios = __webpack_require__(150);
 var defaults = __webpack_require__(56);
 
 /**
@@ -5532,14 +5933,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(80);
-axios.CancelToken = __webpack_require__(161);
+axios.CancelToken = __webpack_require__(164);
 axios.isCancel = __webpack_require__(79);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(162);
+axios.spread = __webpack_require__(165);
 
 module.exports = axios;
 
@@ -5548,7 +5949,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 147 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5556,10 +5957,10 @@ module.exports.default = axios;
 
 var defaults = __webpack_require__(56);
 var utils = __webpack_require__(4);
-var InterceptorManager = __webpack_require__(156);
-var dispatchRequest = __webpack_require__(157);
-var isAbsoluteURL = __webpack_require__(159);
-var combineURLs = __webpack_require__(160);
+var InterceptorManager = __webpack_require__(159);
+var dispatchRequest = __webpack_require__(160);
+var isAbsoluteURL = __webpack_require__(162);
+var combineURLs = __webpack_require__(163);
 
 /**
  * Create a new instance of Axios
@@ -5640,7 +6041,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 148 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5659,7 +6060,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 149 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5691,7 +6092,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 150 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5717,7 +6118,7 @@ module.exports = function enhanceError(error, config, code, response) {
 
 
 /***/ }),
-/* 151 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5792,7 +6193,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 152 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5836,7 +6237,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 153 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5911,7 +6312,7 @@ module.exports = (
 
 
 /***/ }),
-/* 154 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5954,7 +6355,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 155 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6014,7 +6415,7 @@ module.exports = (
 
 
 /***/ }),
-/* 156 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6073,14 +6474,14 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 157 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(4);
-var transformData = __webpack_require__(158);
+var transformData = __webpack_require__(161);
 var isCancel = __webpack_require__(79);
 var defaults = __webpack_require__(56);
 
@@ -6159,7 +6560,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 158 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6186,7 +6587,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 159 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6207,7 +6608,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 160 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6226,7 +6627,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 161 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6290,7 +6691,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 162 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6324,7 +6725,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 163 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6334,7 +6735,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _getPrototypeOf = __webpack_require__(164);
+var _getPrototypeOf = __webpack_require__(167);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
@@ -6342,15 +6743,15 @@ var _classCallCheck2 = __webpack_require__(14);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _possibleConstructorReturn2 = __webpack_require__(168);
+var _possibleConstructorReturn2 = __webpack_require__(171);
 
 var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-var _inherits2 = __webpack_require__(169);
+var _inherits2 = __webpack_require__(172);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _Super = __webpack_require__(177);
+var _Super = __webpack_require__(180);
 
 var _Super2 = _interopRequireDefault(_Super);
 
@@ -6371,28 +6772,28 @@ exports['default'] = HttpMission;
 //# sourceMappingURL=Http.js.map
 
 /***/ }),
-/* 164 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(165), __esModule: true };
+module.exports = { "default": __webpack_require__(168), __esModule: true };
 
 /***/ }),
-/* 165 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(166);
+__webpack_require__(169);
 module.exports = __webpack_require__(0).Object.getPrototypeOf;
 
 
 /***/ }),
-/* 166 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 Object.getPrototypeOf(O)
 var toObject = __webpack_require__(27);
 var $getPrototypeOf = __webpack_require__(61);
 
-__webpack_require__(167)('getPrototypeOf', function () {
+__webpack_require__(170)('getPrototypeOf', function () {
   return function getPrototypeOf(it) {
     return $getPrototypeOf(toObject(it));
   };
@@ -6400,7 +6801,7 @@ __webpack_require__(167)('getPrototypeOf', function () {
 
 
 /***/ }),
-/* 167 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // most Object methods by ES6 should accept primitives
@@ -6416,7 +6817,7 @@ module.exports = function (KEY, exec) {
 
 
 /***/ }),
-/* 168 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6439,7 +6840,7 @@ exports.default = function (self, call) {
 };
 
 /***/ }),
-/* 169 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6447,11 +6848,11 @@ exports.default = function (self, call) {
 
 exports.__esModule = true;
 
-var _setPrototypeOf = __webpack_require__(170);
+var _setPrototypeOf = __webpack_require__(173);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(174);
+var _create = __webpack_require__(177);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -6478,30 +6879,30 @@ exports.default = function (subClass, superClass) {
 };
 
 /***/ }),
-/* 170 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(171), __esModule: true };
+module.exports = { "default": __webpack_require__(174), __esModule: true };
 
 /***/ }),
-/* 171 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(172);
+__webpack_require__(175);
 module.exports = __webpack_require__(0).Object.setPrototypeOf;
 
 
 /***/ }),
-/* 172 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = __webpack_require__(1);
-$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(173).set });
+$export($export.S, 'Object', { setPrototypeOf: __webpack_require__(176).set });
 
 
 /***/ }),
-/* 173 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Works with __proto__ only. Old v8 can't work with null proto objects.
@@ -6532,16 +6933,16 @@ module.exports = {
 
 
 /***/ }),
-/* 174 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(175), __esModule: true };
+module.exports = { "default": __webpack_require__(178), __esModule: true };
 
 /***/ }),
-/* 175 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(176);
+__webpack_require__(179);
 var $Object = __webpack_require__(0).Object;
 module.exports = function create(P, D) {
   return $Object.create(P, D);
@@ -6549,7 +6950,7 @@ module.exports = function create(P, D) {
 
 
 /***/ }),
-/* 176 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(1);
@@ -6558,7 +6959,7 @@ $export($export.S, 'Object', { create: __webpack_require__(25) });
 
 
 /***/ }),
-/* 177 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6592,7 +6993,7 @@ exports["default"] = Mission;
 //# sourceMappingURL=Super.js.map
 
 /***/ }),
-/* 178 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(0);
@@ -6603,7 +7004,7 @@ module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
 
 
 /***/ }),
-/* 179 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6635,7 +7036,7 @@ var _Deferred2 = _interopRequireDefault(_Deferred);
 
 var _ComboPromise = __webpack_require__(72);
 
-var _events = __webpack_require__(180);
+var _events = __webpack_require__(183);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -6770,7 +7171,7 @@ exports['default'] = MissionDispatcher;
 //# sourceMappingURL=MissionDispatcher.js.map
 
 /***/ }),
-/* 180 */
+/* 183 */
 /***/ (function(module, exports) {
 
 // Copyright Joyent, Inc. and other Node contributors.
@@ -7078,7 +7479,7 @@ function isUndefined(arg) {
 
 
 /***/ }),
-/* 181 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7096,7 +7497,7 @@ var _createClass2 = __webpack_require__(21);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _Storage = __webpack_require__(182);
+var _Storage = __webpack_require__(185);
 
 var _Storage2 = _interopRequireDefault(_Storage);
 
@@ -7233,7 +7634,7 @@ exports['default'] = CacheData;
 //# sourceMappingURL=CacheData.js.map
 
 /***/ }),
-/* 182 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7255,7 +7656,7 @@ var _createClass2 = __webpack_require__(21);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
-var _Solution = __webpack_require__(183);
+var _Solution = __webpack_require__(186);
 
 var _Solution2 = _interopRequireDefault(_Solution);
 
@@ -7358,7 +7759,7 @@ exports['default'] = Storage;
 //# sourceMappingURL=Storage.js.map
 
 /***/ }),
-/* 183 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7502,7 +7903,7 @@ exports["default"] = Solution;
 //# sourceMappingURL=Solution.js.map
 
 /***/ }),
-/* 184 */
+/* 187 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7525,13 +7926,13 @@ exports["default"] = Solution;
 });
 
 /***/ }),
-/* 185 */
+/* 188 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_data_source_proxy__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_data_source_proxy___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_data_source_proxy__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__locale__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__locale__ = __webpack_require__(189);
 
 
 
@@ -7600,7 +8001,7 @@ const BizModulesErrorLocales = ErrorLocales[ErrorType.BUSINESS]['MODULES'];
 
 
 /***/ }),
-/* 186 */
+/* 189 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7663,407 +8064,6 @@ const Errors = {
     Errors
 });
 
-
-/***/ }),
-/* 187 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _view = __webpack_require__(188);
-
-var _view2 = _interopRequireDefault(_view);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-exports['default'] = _view2['default'];
-
-/***/ }),
-/* 188 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _viewModel = __webpack_require__(189);
-
-var _viewModel2 = _interopRequireDefault(_viewModel);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var container1 = 'menu-folded';
-var container2 = 'menu-unfold';
-
-function menuView(options) {
-  var ViewModel;
-
-  function renderMenuItem(node) {
-    return '<li class="menu-item ' + (node.isSelect ? 'menu-item-selected' : '') + '">' + '<a class="menu-title" href="' + node.url + '">' + '' + (node.icon ? '<i class="menu-icon-title-alt fa ' + node.icon + '"></i>' : '') + ' ' + '' + node.title + '' + '</a>' + '</li>';
-  }
-
-  function renderMenu(node, nodes) {
-    return '<li class="menu-item ' + (node.isSelect && !node.isOpen ? 'menu-item-selected' : '') + ' ' + (node.level > 1 ? 'menu-item-vertical' : '') + '">' + '<a href="' + node.url + '" class="menu-title menu-submenu-title ' + (node.isOpen ? 'isOpen' : '') + ' ' + (node.level > 1 ? 'menu-title-vertical' : '') + '" >' + '' + (node.icon ? '<i class="menu-icon-title-alt fa ' + node.icon + '"></i>' : '') + '' + '' + node.title + '' + '' + (node.level > 1 ? '' : '<i class="menu-icon-angle fa fa-angle-' + (node.isOpen ? 'down' : 'right') + '"></i>') + '' + '</a>' + '<ul class="menu-submenu ' + (node.isOpen ? 'menu-submenu-inline' : 'menu-submenu-hidden') + ' ' + (node.level > 1 ? 'menu-submenu-vertical' : '') + '">' + render(nodes, renderMenu, renderMenuItem) + '</ul>' + '</li>';
-  }
-
-  function renderMenuItemFold(node) {
-    return '<li  class="menu-item menu-item-l' + node.level + ' ' + (node.isSelect ? 'menu-item-selected' : '') + '">' + '<a class="menu-title" href="' + node.url + '">' + '' + (node.icon ? '<i class="menu-icon-title-alt fa ' + node.icon + '"></i>' : '') + ' ' + '<span class="menu-title-text menu-title-l' + node.level + '">' + node.title + '</span>' + '</a>' + '</li>';
-  }
-
-  function renderMenuFold(node, nodes) {
-    return '<li  class="menu-item menu-item-l' + node.level + ' ' + (node.isSelect ? 'menu-item-selected' : '') + ' ' + (node.isOpen ? 'menu-item-active' : '') + ' ">' + '<a href="' + node.url + '" class="menu-title" >' + '' + (node.icon ? '<i class="menu-icon-title-alt fa ' + node.icon + '"></i>' : '') + '' + '<span class="menu-title-text menu-title-l' + node.level + '">' + node.title + '</span>' + '</a>' + '<ul class="menu-submenu menu-submenu-l' + Number(node.level + 1) + ' ' + (node.isOpen ? '' : 'menu-submenu-hidden') + ' menu-submenu-' + (node.level + 1 >= 1 ? 'vertical' : 'inline') + '">' + render(nodes, renderMenuFold, renderMenuItemFold) + '</ul>' + '</li>';
-  }
-
-  function render(nodes, renderMenuFun, renderItemFun) {
-    // console.log(nodes);
-    var tpl = '';
-
-    nodes.forEach(function (node) {
-
-      if (Array.isArray(node.children)) {
-        tpl += renderMenuFun(node, node.children);
-      } else {
-        tpl += renderItemFun(node);
-      }
-    });
-    return tpl;
-  }
-
-  function renderInit(statusTree) {
-    console.log(statusTree);
-    var tpl1 = render(statusTree.children, renderMenuFold, renderMenuItemFold);
-    document.getElementById(container1).innerHTML = tpl1;
-
-    var tpl2 = render(statusTree.children, renderMenu, renderMenuItem);
-    document.getElementById(container2).innerHTML = tpl2;
-  }
-
-  function bindEvents() {
-
-    // 折叠的
-    document.getElementById(container1).addEventListener('click', function (e) {
-      e.preventDefault();
-      var event = e || window.event;
-      var target = event.target || event.srcElement;
-      var menuTitleStr = 'menu-submenu-title';
-      var secondTitleStr = 'menu-title-vertical';
-      var targetClass = target.getAttribute('class');
-      // 判断是否匹配目标元素
-      if (target.nodeName.toLocaleLowerCase() === 'a') {
-        var url = target.getAttribute("href");
-        ViewModel.selectMenuItem(url);
-      }
-    });
-
-    document.getElementById(container1).addEventListener('mouseenter', function (e) {
-      var event = e || window.event;
-      var target = event.target || event.srcElement;
-
-      var targetClass = target.getAttribute("class");
-
-      if (targetClass.indexOf("menu-item") > -1) {
-        target.className = '' + targetClass + ' menu-item-active';
-
-        var firstUl = target.getElementsByTagName('ul')[0];
-        if (!firstUl) return;
-        var firstUlClass = firstUl.getAttribute("class");
-
-        firstUl.className = firstUlClass.replace('menu-submenu-hidden', '');
-      }
-    }, true);
-
-    document.getElementById(container1).addEventListener('mouseleave', function (e) {
-      var event = e || window.event;
-      var target = event.target || event.srcElement;
-
-      var targetClass = target.getAttribute("class");
-
-      if (targetClass.indexOf("menu-item") > -1) {
-        target.className = targetClass.replace('menu-item-active', '');
-
-        var firstUl = target.getElementsByTagName('ul')[0];
-        if (!firstUl) return;
-        var firstUlClass = firstUl.getAttribute("class");
-
-        firstUl.className = '' + firstUlClass + ' menu-submenu-hidden';
-      }
-    }, true);
-
-    // 展开的菜单
-    document.getElementById(container2).addEventListener('click', function (e) {
-      e.preventDefault();
-      var event = e || window.event;
-      var target = event.target || event.srcElement;
-      var menuTitleStr = 'menu-submenu-title';
-      var secondTitleStr = 'menu-title-vertical';
-      var targetClass = target.getAttribute('class');
-      // 判断是否匹配目标元素
-      if (target.nodeName.toLocaleLowerCase() === 'a') {
-        var url = target.getAttribute("href");
-
-        if (targetClass.indexOf(secondTitleStr) > -1) return;
-        // 有儿子的菜单，点击打开
-        if (targetClass.indexOf(menuTitleStr) > -1) {
-          // 已经显示的儿子，点击隐藏
-          if (targetClass.indexOf("isOpen") > -1) {
-            ViewModel.closeSubMenu(url);
-            // 隐藏的儿子，点击出现
-          } else {
-            ViewModel.openSubMenu(url);
-          }
-          // 叶子节点，点击选中
-        } else {
-          ViewModel.selectMenuItem(url);
-        }
-      }
-    });
-
-    document.getElementById(container2).addEventListener('mouseenter', function (e) {
-      var event = e || window.event;
-      var target = event.target || event.srcElement;
-      var secondItemStr = 'menu-item-vertical';
-      var targetClass = target.getAttribute("class");
-      // console.log(target.getAttribute("class"));
-
-      if (targetClass.indexOf(secondItemStr) > -1) {
-
-        if (targetClass.indexOf("selected") > -1) {
-          target.className = '' + targetClass + ' isHover';
-        }
-      }
-    }, true);
-
-    document.getElementById(container2).addEventListener('mouseleave', function (e) {
-      var event = e || window.event;
-      var target = event.target || event.srcElement;
-      var secondItemStr = 'menu-item-vertical';
-      var targetClass = target.getAttribute("class");
-      // console.log(target.getAttribute("class"));
-
-      if (targetClass.indexOf(secondItemStr) > -1) {
-        if (targetClass.indexOf("selected") > -1) {
-          target.className = targetClass.replace('isHover', '');
-        }
-      }
-    }, true);
-  }
-  function init() {
-    ViewModel = (0, _viewModel2['default'])({
-      menuData: options.data,
-      render: renderInit
-    });
-
-    ViewModel.selectMenuItem(options.url);
-
-    bindEvents();
-    // 1.获取状态树，按状态树渲染 render();
-    // 2.交互时，调用VM方法更新状态树，update view
-    // eg:mouseenter、click等
-  }
-  init();
-}
-
-exports['default'] = menuView;
-
-/***/ }),
-/* 189 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-// 树的层次遍历
-function layerTraversal(tree, callback) {
-    var queue = [];
-    queue.push(tree);
-    while (queue.length > 0) {
-        var parent = queue.pop();
-        if (Array.isArray(parent.children)) {
-            parent.children.forEach(function (node) {
-                queue.unshift(node);
-                callback(node, parent);
-            });
-        }
-    }
-}
-
-// 根据条件，遍历树，返回符合条件的最深的节点
-function conditionalTraversal(tree, condition) {
-    var node = null;
-    var children = tree.children;
-
-    if (condition(tree)) {
-        while (Array.isArray(children)) {
-            var nodes = children.filter(condition);
-            if (nodes.length > 0) {
-                node = nodes.pop();
-                children = node.children;
-            } else {
-                break;
-            }
-        }
-    }
-
-    return node;
-}
-
-function menuViewModel(options) {
-    options = options || {};
-
-    if (!options.menuData) {
-        console.log('缺少菜单数据！');
-        return;
-    }
-
-    if (!options.render) {
-        console.log('缺少渲染函数！');
-        return;
-    }
-
-    var render = options.render;
-
-    // 导航栏状态
-    var statusTree = {
-        title: 'root',
-        url: '/',
-        isSelect: false,
-        isOpen: true,
-        level: 0,
-        children: options.menuData,
-        parent: null
-    };
-
-    // 状态节点
-    // var node = {
-    //     title: '',
-    //     url: '',
-    //     isSelect: '',
-    //     isOpen: '',
-    //     children: [],
-    //     parent: null
-    // };
-
-    // 根据祖先的个数确定层级
-    function getNodeLevel(node) {
-        var level = 0;
-        while (node.parent) {
-            level++;
-            node = node.parent;
-        }
-
-        return level;
-    }
-
-    // 生成状态树
-    function initStatusTree() {
-        // 必须保证父级元素已经遍历
-        layerTraversal(statusTree, function (node, parent) {
-            node.isOpen = false;
-            node.isSelect = false;
-            node.parent = parent;
-            node.level = getNodeLevel(node);
-        });
-    };
-
-    function searchNodeByUrl(url) {
-        var urls = [];
-        // 根据URL生成查找路径
-        url.split('/').slice(1).reduce(function (string1, string2) {
-            var url = string1 + '/' + string2;
-            urls.push(url);
-            return url;
-        }, '');
-
-        // 根节点默认'/'
-        url = '/';
-
-        return conditionalTraversal(statusTree, function (node) {
-            if (node.url === url) {
-                url = urls.shift();
-                return true;
-            } else {
-                return false;
-            }
-        });
-    }
-
-    function selectNode(node) {
-        node.isSelect = true;
-
-        // 选择祖先节点
-        while (node.parent) {
-            // 选中当前节点的父节点
-            var parent = node.parent;
-            parent.isSelect = true;
-
-            node = parent;
-        }
-    }
-
-    // 从根节点开始，依次向下寻找被选中的节点，并将其改为未选中
-    function unselectNode(tree) {
-        conditionalTraversal(tree, function (node) {
-            if (node.isSelect === true) {
-                node.isSelect = false;
-                return true;
-            } else {
-                return false;
-            }
-        });
-    }
-
-    function openNode(url) {
-        var node = searchNodeByUrl(url);
-        if (node != null) {
-            node.isOpen = true;
-        }
-    }
-
-    function closeNode(url) {
-        var node = searchNodeByUrl(url);
-        if (node != null) {
-            node.isOpen = false;
-        }
-    }
-
-    function selectMenuItem(url) {
-        var node = searchNodeByUrl(url);
-        if (node) {
-            unselectNode(statusTree);
-            selectNode(node);
-        }
-        render(statusTree);
-    }
-
-    (function init() {
-        initStatusTree();
-    })();
-
-    return {
-        selectMenuItem: selectMenuItem,
-        openSubMenu: function openSubMenu(url) {
-            openNode(url);
-            render(statusTree);
-        },
-        closeSubMenu: function closeSubMenu(url) {
-            closeNode(url);
-            render(statusTree);
-        }
-    };
-}
-
-exports['default'] = menuViewModel;
 
 /***/ })
 /******/ ]);
