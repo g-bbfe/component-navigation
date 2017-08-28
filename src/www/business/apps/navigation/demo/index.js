@@ -8,7 +8,7 @@ let $menu = document.getElementById('menu');
 
 // 折叠态
 // $sidebar.className = 'sidebar sidebar-folded';
-menu({container1: "menu1",
+new menu({container1: "menu1",
 container2: "menu2",
 data: menuData,
 url: '/ios/iphone/8'});
