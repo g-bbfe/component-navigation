@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 function reducer(status, action) {
   switch (action.type) {
   case 'NODE_SELECT':
-    return ViewModel.selecNode(action.key);
+    return ViewModel.selectNode(action.key);
     // return 'select'+action.key;
   case 'NODE_TOGGLE':
     return ViewModel.toggleNode(action.key);
@@ -35,7 +35,10 @@ Menu.prototype = {
     //在此controller内控制VM/M
     //VM只需关心接收action时，操作返回新的状态树
     //V只需关心处理自己的render以及bindEvent
-    initStatus = ViewModel.init(this.config.data);
+    initStatus = ViewModel.init({
+      modelData:this.config.data,
+      curKey:'key' //默认选中节点
+    });
 
     // menuViewModel.selectMenuItem(this.config.url);
 

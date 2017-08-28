@@ -1,3 +1,4 @@
+// 状态树
 var statusTree = {
     title: 'root',
     url: '/',
@@ -8,14 +9,18 @@ var statusTree = {
     parent: null
 }; //给一个初始值TODO
 
+
+
+// 储存选择节点的状态
 var selectStore = {
-    oldSelected: null,
-    newSelected: null,
-    selectChanged: function() {
-        return (this.newSelected !== this.oldSelected);       
+    oldNode: null,
+    newNode: null,
+    isEqual: function() {
+        return (this.newNode === this.oldNode);
     }
     
-}
+};
+
 // 树的层次遍历
 function layerTraversal (tree, callback) {
     var queue = [];
@@ -51,10 +56,22 @@ function conditionalTraversal(tree, condition) {
     return node;
 }
 
+//平铺
+function mapStatusTree() {
+    var statusTreeMap = []; //把状态树平铺
+    layerTraversal(statusTree, function (node, parent) {
+       statusTreeMap.push(node);
+    });
+
+    return statusTreeMap;
+}
+
 // 生成状态树
 function initStatusTree() {
+    var id = 1;
     // 必须保证父级元素已经遍历
     layerTraversal(statusTree, function (node, parent) {
+        node.id = id++;
         node.isOpen = false;
         node.isSelect = false;
         node.parent = parent;
@@ -73,136 +90,81 @@ function getNodeLevel(node) {
     return level;
 }
 
-
-
-function searchNodeByUrl(url) {
-    var urls = [];
-    // 根据URL生成查找路径
-    url.split('/').slice(1).reduce(function (string1, string2) {
-        var url = string1 + '/' + string2;
-        urls.push(url);
-        return url;
-    }, '');
-
-    // 根节点默认'/'
-    url = '/';
-
-    return conditionalTraversal(statusTree, function (node) {
-        if (node.url === url) {
-            url = urls.shift();
-            return true;
-        } else {
-            return false;
+// 通过传入ID查找节点
+function searchNodeById(id) {
+    var mapTree = mapStatusTree();
+    var curNode;
+    mapTree.some(function(element) {
+        if (element.id == id) {
+            // return false;
+            curNode = element;
+            return element;
+            
         }
+        console.log(element)
     });
+    return curNode;
 }
 
-function selectNode(node) {
-    node.isSelect = true;
+// 操作选择节点的属性
+function selectNodeAttr(node, ifSelected) {
+    node.isSelect = ifSelected;
 
     // 选择祖先节点
     while (node.parent) {
         // 选中当前节点的父节点
         var parent = node.parent;
-        parent.isSelect = true;
+        parent.isSelect = ifSelected;
 
         node = parent;
     }
 }
 
-// 从根节点开始，依次向下寻找被选中的节点，并将其改为未选中
-function unselectNode(tree) {
-    conditionalTraversal(tree, function (node) {
-        if (node.isSelect === true) {
-            node.isSelect = false;
-            return true;
-        } else {
-            return false;
-        }
-    });
+// 选择节点
+function selectNode(newPath) {
+    var oldPath = selectStore.oldNode;
+    if (oldPath) {
+        var oldNode = searchNodeById(oldPath);
+        // var oldNode = searchNodeByUrl(oldPath);
+        selectNodeAttr(oldNode, false);
+    }
+    var newNode = searchNodeById(newPath);
+    // var newNode = searchNodeByUrl(newPath);
+    selectNodeAttr(newNode, true);
 }
 
-function Model(options) {
-    options = options || {};
-
-    if (!options.menuData) {
-        console.log('缺少菜单数据！');
-        return;
+// 传入节点,toggle其展开（isOpen）属性
+function toggleNode(url) {
+    var node = searchNodeById(url);
+    // var node = searchNodeByUrl(url);
+    if (node != null) {
+        node.isOpen = !node.isOpen;
     }
-
-
-    // 导航栏状态
-    // var statusTree = {
-    statusTree = {
-        title: 'root',
-        url: '/',
-        isSelect: false,
-        isOpen: true,
-        level: 0,
-        children: options.menuData,
-        parent: null
-    };
-    console.log('statusTree',statusTree)
-    // 状态节点
-    // var node = {
-    //     title: '',
-    //     url: '',
-    //     isSelect: '',
-    //     isOpen: '',
-    //     children: [],
-    //     parent: null
-    // };
-
-   
-
-    // function openNode(url) {
-    //     var node = searchNodeByUrl(url);
-    //     if (node != null) {
-    //         node.isOpen = true;
-    //     }
-    // }
-
-    // function closeNode(url) {
-    //     var node = searchNodeByUrl(url);
-    //     if (node != null) {
-    //         node.isOpen = false;
-    //     }
-    // }
-
-    // function selectMenuItem(url) {
-    //     var node = searchNodeByUrl(url);
-    //     if (node) {
-    //         unselectNode(statusTree);
-    //         selectNode(node);
-    //     }
-    // }
-
-    // (function init() {
-    //     initStatusTree();
-    // }())
-
-    // return {
-    //     selectMenuItem: selectMenuItem,
-    //     openSubMenu: function (url) {
-    //         openNode(url);
-    //     },
-    //     closeSubMenu: function (url) {
-    //         closeNode(url);
-    //     }
-    // };
 }
 
 var ViewModel = {
-    init: function(modelData) {
-        statusTree.children = modelData;
+    init: function(params) {
+        statusTree.children = params.modelData;
+        // params.curKey; TODO,默认选中一个节点
         initStatusTree();
+        console.log('平铺的',mapStatusTree());
+        console.log('查找的node',searchNodeById(2));
+        
         return statusTree;
     },
     selectNode: function(url) {
-        console.log('选中的路径',url);
+        selectStore.newNode = url;
+        if (selectStore.isEqual()) return;
+        
+        selectNode(url);
+        selectStore.oldNode = url;
+        console.log('VM中选中的路径',url);
+        return statusTree;
     },
     toggleNode: function(url) {
-        console.log('需要toggle的路径',url);
+        console.log('VM中需要toggle的路径',url);
+        toggleNode(url);
+        return statusTree;
     }
 }
 export default ViewModel;
