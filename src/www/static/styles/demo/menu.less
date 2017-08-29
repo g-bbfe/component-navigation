@@ -67,6 +67,9 @@
 
         .menu-item {
             background-color: @menu-submenu-item-bg-color;
+            &:not(.menu-item-selected)>.menu-title:hover {
+                box-shadow: inset 1px 0px 0px 0px @menu-submenu-item-bg-color;
+            }
         } 
 
         .menu-title {
