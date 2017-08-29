@@ -51,33 +51,31 @@ body {
         width: @header-height;
         height: @header-height;
         margin-right: -@header-height;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        flex-wrap: wrap;
-        justify-content: space-between;
         background: #fafafc;
         line-height: @header-height;
-        text-align: center;
         color: @menu-item-bg-color;
-        padding: (@header-height - @menu-icon-size) / 2;
-
-        .line {
+        cursor: pointer;
+        
+        .lines {
             position: relative;
-            height: 3px;
-            background-color: @menu-item-selected-color;
+            height: 13px;
             width: @menu-icon-size;
+            background: repeating-linear-gradient(to bottom, @menu-item-selected-color 0px,  @menu-item-selected-color 2px,transparent 2px,  transparent 5px);
+
         }
 
-        .line:after {
+        .lines:before {
             display: inline-block;
             position: absolute;
             content: ' ';
             top: 0px;
             right: 0px;
             width: 12px;
-            height: 3px;
+            height: 13px;
             background-color:  #dfe1e7 ;
+            background: repeating-linear-gradient(to bottom, #dfe1e7  0px,  #dfe1e7 2px,transparent 2px,  transparent 5px)
         }
     }
 
@@ -89,13 +87,11 @@ body {
     width: @sidebar-folded-width;
 
     .sidebar-toggle-btn {
-        .line:after {
-            background-color: @menu-item-selected-color;
+        .lines:before {
+            width: 0px;
         }
     }
-}
-.sidebar-toggle-btn {
-    cursor: pointer;
+
 }
 
 // 主功能区域
@@ -114,7 +110,3 @@ body {
     }
 
 }
-
-
-
-

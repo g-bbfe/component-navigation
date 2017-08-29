@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/www/business/apps/navigation/demo/index.js',
+  entry: './demo/index.js',
 
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -15,7 +15,8 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env']
+            presets: ["env", "stage-2"],
+            plugins: ["transform-runtime", "transform-class-properties", "transform-es3-member-expression-literals", "transform-es3-property-literals"]
           }
         }
       },
@@ -42,7 +43,7 @@ module.exports = {
   },
   devtool: 'source-map',
   devServer: {
-    contentBase: [path.join(__dirname, "src/www/business/apps/navigation/demo"),path.join(__dirname, "dist")],
+    contentBase: [path.join(__dirname, "demo/"),path.join(__dirname, "dist")],
     compress: true,
     stats: 'minimal',
     watchContentBase: true,

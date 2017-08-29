@@ -21,7 +21,6 @@
         &:active {
             color: @menu-item-font-color;
         }
-        cursor: pointer;
     }
 
     .menu-item {
@@ -39,6 +38,7 @@
         line-height: @menu-item-height;
         padding-left: @menu-padding-left;
         padding-right: @menu-padding-right;
+        cursor: pointer;
     }
 
     .menu-item-selected {
@@ -68,6 +68,9 @@
 
         .menu-item {
             background-color: @menu-submenu-item-bg-color;
+            &:not(.menu-item-selected)>.menu-title:hover {
+                box-shadow: inset 1px 0px 0px 0px @menu-submenu-item-bg-color;
+            }
         } 
 
         .menu-title {
@@ -105,6 +108,7 @@
         .menu-item {
             box-shadow: inset 1px 0px 0px  0px @menu-item-bg-color;
         }
+
     }
 
     .menu-submenu-vertical {
@@ -124,8 +128,8 @@
         }
 
         .menu-title {
-            padding-left: 0px;
-            text-align: center;
+            padding-left: @menu-submenu-padding-left - @base-padding;
+            text-align: left;
             font-size: 12px;
         }
     }

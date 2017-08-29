@@ -72,7 +72,7 @@ function renderMenuFold(node, nodes) {
               ''+ (node.icon ? '<i class="menu-icon-title-alt fa '+node.icon+'"></i>' : '') +''+
               '<span class="menu-title-text menu-title-l'+node.level+'">' + node.title + '</span>'+
             '</a>'+
-            '<ul class="menu-submenu menu-submenu-l'+ Number(node.level+1) +' menu-submenu-hidden menu-submenu-' + (node.level === 1 ? 'inline' : 'vertical') + '">' +
+            '<ul class="menu-submenu menu-submenu-l'+ Number(node.level+1) +' menu-submenu-hidden menu-submenu-vertical">' +
             renderTwoWays(nodes, renderMenuFold, renderMenuItemFold) +
             '</ul>' +
           '</li>';
