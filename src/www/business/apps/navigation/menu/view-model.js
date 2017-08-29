@@ -90,24 +90,21 @@ function selectNodeAttr(node, ifSelected) {
 }
 
 // 选择节点
-function selectNode(newPath) {
+function VMSelectNode(newPath) {
     var oldPath = selectStore.oldNode;
     if (oldPath) {
         var oldNode = searchNodeByTwoWays(oldPath);
-        // var oldNode = searchNodeByUrl(oldPath);
         selectNodeAttr(oldNode, false);
     }
     var newNode = searchNodeByTwoWays(newPath);
-    // var newNode = searchNodeByUrl(newPath);
     if (newNode) {
         selectNodeAttr(newNode, true);  
     }
 }
 
 // 传入节点,toggle其展开（isOpen）属性
-function toggleNode(url) {
-    var node = searchNodeByTwoWays(url);
-    // var node = searchNodeByUrl(url);
+function VMToggleNode(key) {
+    var node = searchNodeByTwoWays(key);
     if (node != null) {
         node.isOpen = !node.isOpen;
     }
@@ -121,18 +118,18 @@ var ViewModel = {
     
         return statusTree;
     },
-    selectNode: function(url) {
-        selectStore.newNode = url;
+    selectNode: function(key) {
+        selectStore.newNode = key;
         if (selectStore.isEqual()) return statusTree;
         
-        selectNode(url);
-        selectStore.oldNode = url;
-        console.log('VM中选中的路径',url);
+        VMSelectNode(key);
+        selectStore.oldNode = key;
+        console.log('VM中选中的路径',key);
         return statusTree;
     },
-    toggleNode: function(url) {
-        console.log('VM中需要toggle的路径',url);
-        toggleNode(url);
+    toggleNode: function(key) {
+        console.log('VM中需要toggle的路径',key);
+        VMToggleNode(key);
         return statusTree;
     }
 }

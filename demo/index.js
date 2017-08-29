@@ -14,10 +14,7 @@ function getMenuData() {
 
 getMenuData()
     .then(data => {
-        // 折叠态
-        // $sidebar.className = 'sidebar sidebar-folded';
         new menu({
-            // container: "menu-folded",
             data: data,
             url: '/ios/iphone/8'
         });
