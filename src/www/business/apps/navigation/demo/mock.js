@@ -2,11 +2,9 @@ var data = [
   {
     "title": "安卓机",
     "icon": "fa-android",
-    "url": "/android",
     "children": [
       {
         "title": "华为",
-        "url": "/android/huawei",
         "children": [
           {
             "title": "荣耀",
@@ -16,7 +14,6 @@ var data = [
       },
       {
         "title": "小米",
-        "url": "/android/mi",
         "children": [
           {
             "title": "红米",
@@ -28,7 +25,6 @@ var data = [
   },
   {
     "title": "IOS",
-    "url": "/ios",
     "icon": "fa-apple",
     "children": [
       {
@@ -37,7 +33,6 @@ var data = [
       },
       {
         "title": "iphone",
-        "url": "/ios/iphone",
         "children": [
           {
             "title": "iphone6s",

@@ -7,9 +7,10 @@ var statusTree = {
     level: 0,
     children: null,
     parent: null
-}; //给一个初始值TODO
+}; //给一个初始值
 
-var statusTreeMap = []; //把状态树平铺
+//把状态树平铺
+var statusTreeMap = [];
 
 // 储存选择节点的状态
 var selectStore = {
@@ -17,8 +18,7 @@ var selectStore = {
     newNode: null,
     isEqual: function() {
         return (this.newNode === this.oldNode);
-    }
-    
+    }   
 };
 
 // 树的层次遍历
@@ -34,36 +34,6 @@ function layerTraversal (tree, callback) {
             });
         }
     }
-}
-
-// 根据条件，遍历树，返回符合条件的最深的节点
-function conditionalTraversal(tree, condition) {
-    var node = null;
-    var children = tree.children;
-
-    if (condition(tree)) {
-        while (Array.isArray(children)) {
-            var nodes = children.filter(condition);
-            if (nodes.length > 0) {
-                node = nodes.pop();
-                children = node.children;
-            } else {
-                break;
-            }
-        }
-    }
-
-    return node;
-}
-
-//平铺
-function mapStatusTree() {
-    var statusTreeMap = []; //把状态树平铺
-    layerTraversal(statusTree, function (node, parent) {
-       statusTreeMap.push(node);
-    });
-
-    return statusTreeMap;
 }
 
 // 生成状态树
@@ -98,12 +68,9 @@ function searchNodeByTwoWays(param) {
     // mapTree.some(function(element) {
     statusTreeMap.some(function(element) {
         if ((element.id == param) || (element.url == param)) {
-            // return false;
-            curNode = element;
-            return element;
             
+            return curNode = element;
         }
-        console.log(element)
     });
     return curNode;
 }
@@ -132,7 +99,9 @@ function selectNode(newPath) {
     }
     var newNode = searchNodeByTwoWays(newPath);
     // var newNode = searchNodeByUrl(newPath);
-    selectNodeAttr(newNode, true);
+    if (newNode) {
+        selectNodeAttr(newNode, true);  
+    }
 }
 
 // 传入节点,toggle其展开（isOpen）属性
@@ -147,11 +116,9 @@ function toggleNode(url) {
 var ViewModel = {
     init: function(params) {
         statusTree.children = params.modelData;
-        // params.curKey; TODO,默认选中一个节点
         initStatusTree();
-        console.log('平铺的',mapStatusTree());
-        console.log('查找的node',searchNodeByTwoWays(2));
-        
+        console.log('平铺的',statusTreeMap);
+    
         return statusTree;
     },
     selectNode: function(url) {
