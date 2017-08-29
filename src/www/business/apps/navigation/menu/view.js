@@ -1,19 +1,19 @@
-let $sidebar = document.getElementById('sidebar');
-let $sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
-let $menuFolded = document.getElementById('menu-folded');
-let $menuUnfold = document.getElementById('menu-unfold');
+var $sidebar = document.getElementById('sidebar');
+var $sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
+var $menuFolded = document.getElementById('menu-folded');
+var $menuUnfold = document.getElementById('menu-unfold');
 
 var events = require('events');
 // 实例化EventEmitter
 var emitter = new events.EventEmitter();
 
-const hasClass = function hasClass($el, className) {
-  let classNamesArr = $el.className.split(' ');
+function hasClass($el, className) {
+  var classNamesArr = $el.className.split(' ');
   return classNamesArr.indexOf(className) > -1;
 }
 
-const toggleClass = function toggleClass($el, className) {
-  let separator = ' ',
+function toggleClass($el, className) {
+  var separator = ' ',
     prevclassNames = $el.getAttribute('class'),
     nextclassNames = '',
     classNamesArr = prevclassNames.split(separator),
@@ -28,7 +28,7 @@ const toggleClass = function toggleClass($el, className) {
   $el.setAttribute('class', nextclassNames);
 }
 
-const toggleShowHide = function toggleShowHide($elFolded, $elUnfold) {
+function toggleShowHide($elFolded, $elUnfold) {
   var $elFoldedShow = $elFolded.style.display || 'block';
   var $elUnfoldShow = $elUnfold.style.display || 'block';
   $elFolded.style.display = $elFoldedShow == 'block' ? 'none':'block';
@@ -100,8 +100,6 @@ function bindEvents() {
     e.preventDefault();
     var event = e || window.event;
     var target = event.target || event.srcElement;
-    var menuTitleStr = 'menu-submenu-title';
-    var secondTitleStr = 'menu-title-vertical';
     var targetClass = target.getAttribute('class');
     // 判断是否匹配目标元素
     if (target.nodeName.toLocaleLowerCase() === 'a' ) {
@@ -183,7 +181,6 @@ function bindEvents() {
         target.className = '' + targetClass + ' isHover';
       }
     }
-    
   },true);
   
   $menuUnfold.addEventListener('mouseleave', function(e){
@@ -211,11 +208,11 @@ function bindEvents() {
 var menuView = {
   render: function(statusTree) {
     console.log('view里要render的状态树',statusTree);
-    var tpl1 = renderTwoWays(statusTree.children, renderMenuFold, renderMenuItemFold);
-    $menuFolded.innerHTML = tpl1;
+    var tplFolded = renderTwoWays(statusTree.children, renderMenuFold, renderMenuItemFold);
+    $menuFolded.innerHTML = tplFolded;
 
-    var tpl2 = renderTwoWays(statusTree.children, renderMenu, renderMenuItem);
-    $menuUnfold.innerHTML = tpl2;
+    var tplUnfold = renderTwoWays(statusTree.children, renderMenu, renderMenuItem);
+    $menuUnfold.innerHTML = tplUnfold;
   },
 
   init: function() {
