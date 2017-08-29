@@ -1,78 +1,45 @@
-import ViewModel from './view-model';
+import { ViewModel, Store } from './view-model';
 import { View, Emitter } from './view';
-import { createStore } from 'redux';
-
-var store = createStore(reducer),
-    initStatus;
-
-// 储存选择节点的状态
-var selectStore = {
-  oldNode: null,
-  newNode: null,
-  isEqual: function() {
-      return (this.newNode === this.oldNode);
-  }   
-};
-
-function reducer(status, action) {
-  switch (action.type) {
-  case 'NODE_SELECT':
-    // 可以加一个状态管理，防止多次render，这里的重复点击效果TODO
-    // selectStore.newNode = action.key;
-    // if (selectStore.isEqual()) return;
-    // selectStore.oldNode = action.key;
-    return ViewModel.selectNode(action.key);
-  case 'NODE_TOGGLE':
-    return ViewModel.toggleNode(action.key);
-  default:
-    return initStatus;
-  };
-};
 
 function subscribe() {
   
-  // 可以手动订阅更新，将事件绑定到视图层。
-  store.subscribe(function(){
-    
-    var newStatus = store.getState();
-    View.render(newStatus);
-    console.log('控制层里看到生成新的状态树storestate',store.getState());
+  // VM更新,通知view
+  Store.subscribe(function(){  
+    var newStatus = Store.getState(); // VM状态树变化，生成新状态
+    Emitter.emit('viewEmitterFromC', newStatus); // 将新状态告诉View
+    console.log('控制层里看到生成新的状态树Storestate',Store.getState());
   });
 
-  Emitter.on('change', function(data){
+  // View上面传递过来的事件，我们把它dispatch给VM
+  Emitter.on('viewEmitterToC', function(data){
     console.log("监听到view的变化为", data)
-    store.dispatch(data);
-  })
+    Store.dispatch(data);
+  });
 }
 
 // 构造一个Menu
 function Menu(config) {
 	this.config = config;
   this.init();
-};
+}
 
 Menu.prototype = {
   
   init: function() {
-
-    // VM 初始，
-    //1.在VM内生成初始状态给状态机
-    //2.状态机接收变化告知View渲染
     //在此controller内控制VM&View
-    //VM只需关心接收action时，操作返回新的状态树
-    //View只需关心处理自己的render以及bindEvent
-    initStatus = ViewModel.init({
-      modelData:this.config.data
-    });
+    
+    View.init(); //初始化VIEW，绑定事件,内部会监听controller派发出的事件
 
-    if (this.config.url) {
-      ViewModel.selectNode(this.config.url);
-    }
-    subscribe(); // 订阅store状态机，以及视图上VIEW的动作变化
-  
-    View.init(); //初始化VIEW，绑定事件
+    subscribe(); // 状态机管理，VM更新,会通知view & 视图上VIEW的动作变化，会通知VM
+    
+    // VM 初始，
+    //1.在VM内生成store
+    //2.VM接收controller传递过来的action，VM状态变化通知Controller
+    ViewModel.init({
+      modelData:this.config.data,
+      url: this.config.url
+    });
   }
-  
 }
 
 export default Menu;

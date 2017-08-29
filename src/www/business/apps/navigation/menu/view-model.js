@@ -1,3 +1,5 @@
+import { createStore } from 'redux';
+
 // 状态树
 var statusTree = {
     title: 'root',
@@ -20,6 +22,24 @@ var selectStore = {
         return (this.newNode === this.oldNode);
     }   
 };
+
+// 生成store状态机
+var Store = createStore(reducer);
+
+function reducer(status, action) {
+    switch (action.type) {
+    case 'NODE_SELECT':
+      return ViewModel.selectNode(action.id);
+    case 'NODE_TOGGLE':
+      return ViewModel.toggleNode(action.id);
+    case 'INIT':
+        return ViewModel.selectNode(action.url);
+    default:
+      return statusTree;
+    }
+}
+
+
 
 // 树的层次遍历
 function layerTraversal (tree, callback) {
@@ -48,7 +68,7 @@ function initStatusTree() {
         node.level = getNodeLevel(node);
         statusTreeMap.push(node);
     });
-};
+}
 
 // 根据祖先的个数确定层级
 function getNodeLevel(node) {
@@ -63,12 +83,9 @@ function getNodeLevel(node) {
 
 // 通过传入ID或url查找节点
 function searchNodeByTwoWays(param) {
-    // var mapTree = mapStatusTree();
     var curNode;
-    // mapTree.some(function(element) {
     statusTreeMap.some(function(element) {
         if ((element.id == param) || (element.url == param)) {
-            
             return curNode = element;
         }
     });
@@ -112,13 +129,21 @@ function VMToggleNode(key) {
 
 var ViewModel = {
     init: function(params) {
+        var defaultUrl = params.url;
         statusTree.children = params.modelData;
         initStatusTree();
         console.log('平铺的',statusTreeMap);
-    
-        return statusTree;
+        
+        if (defaultUrl) {
+            Store.dispatch({type: 'INIT', url: defaultUrl});
+        } else {
+            Store.dispatch({type: 'DEFAULT'})
+        }
+            
     },
     selectNode: function(key) {
+
+        // 两次Key相同，直接返回状态树
         selectStore.newNode = key;
         if (selectStore.isEqual()) return statusTree;
         
@@ -133,4 +158,4 @@ var ViewModel = {
         return statusTree;
     }
 }
-export default ViewModel;
+export {ViewModel,Store};

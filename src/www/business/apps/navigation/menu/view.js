@@ -106,7 +106,7 @@ function bindEvents() {
       var url = target.getAttribute("href");
       var id = target.getAttribute("data-id");
       if (url) {
-        emitter.emit('change', {type:'NODE_SELECT', key:id, url: url});
+        emitter.emit('viewEmitterToC', {type:'NODE_SELECT', id:id, url: url});
       }
     }
   });
@@ -161,10 +161,10 @@ function bindEvents() {
       if(targetClass.indexOf(secondTitleStr) > -1) return;
       // 有儿子的菜单，点击打开
       if(targetClass.indexOf(menuTitleStr) > -1 ){
-        emitter.emit('change', {type:'NODE_TOGGLE', key:id, url:url});
+        emitter.emit('viewEmitterToC', {type:'NODE_TOGGLE', id:id, url:url});
       // 叶子节点，点击选中
       }else{
-        emitter.emit('change', {type:'NODE_SELECT', key:id, url:url});
+        emitter.emit('viewEmitterToC', {type:'NODE_SELECT', id:id, url:url});
       }
     }
   });
@@ -205,20 +205,22 @@ function bindEvents() {
   }
 }
 
+function render(statusTree) {
+  console.log('view里要render的状态树',statusTree);
+  var tplFolded = renderTwoWays(statusTree.children, renderMenuFold, renderMenuItemFold);
+  $menuFolded.innerHTML = tplFolded;
+
+  var tplUnfold = renderTwoWays(statusTree.children, renderMenu, renderMenuItem);
+  $menuUnfold.innerHTML = tplUnfold;
+}
+
 var menuView = {
-  render: function(statusTree) {
-    console.log('view里要render的状态树',statusTree);
-    var tplFolded = renderTwoWays(statusTree.children, renderMenuFold, renderMenuItemFold);
-    $menuFolded.innerHTML = tplFolded;
-
-    var tplUnfold = renderTwoWays(statusTree.children, renderMenu, renderMenuItem);
-    $menuUnfold.innerHTML = tplUnfold;
-  },
-
   init: function() {
     bindEvents();
     // 触发sayHi事件
-    emitter.emit('change', { type: 'init'});
+    emitter.on('viewEmitterFromC', function(data){
+      render(data);
+    });
     // 1.获取状态树，按状态树渲染 render();
     // 2.交互时，调用VM方法更新状态树，update view
     // eg:mouseenter、click等
