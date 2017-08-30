@@ -42,7 +42,7 @@ function renderMenuItem(node) {
             '' + node.title + ''+
              '</a>' +
           '</li>';
-};
+}
 
 function renderMenu(node, nodes) {
   return  '<li class="menu-item ' + (node.isSelect && !node.isOpen ? 'menu-item-selected' : '') +' ' + (node.level > 1 ? 'menu-item-vertical' : '') + '">' +
@@ -55,16 +55,16 @@ function renderMenu(node, nodes) {
             renderTwoWays(nodes, renderMenu, renderMenuItem) +
             '</ul>' +
           '</li>';
-};
+}
 
 function renderMenuItemFold(node) {
   return  '<li  class="menu-item menu-item-l'+node.level+' ' + (node.isSelect ? 'menu-item-selected' : '') +'">' +
-            '<a class="menu-title" data-id="'+node.id+'" ' + (node.url?"href="+node.url+"":"")+'>'+ 
+            '<a class="menu-title menu-title-no-children" data-id="'+node.id+'" ' + (node.url?"href="+node.url+"":"")+'>'+ 
             ''+(node.icon ? '<i class="menu-icon-title-alt fa '+node.icon+'"></i>' : '') +' '+
-            '<span class="menu-title-text menu-title-l'+node.level+'">' + node.title + '</span>'+
+            ''+(node.level!=1?'<span class="menu-title-text menu-title-l'+node.level+'">' + node.title + '</span>':'') +''+
             '</a>' +
           '</li>';
-};
+}
 
 function renderMenuFold(node, nodes) {
   return  '<li  class="menu-item menu-item-l'+node.level+' ' + (node.isSelect ? 'menu-item-selected' : '') +'">' +
@@ -76,7 +76,7 @@ function renderMenuFold(node, nodes) {
             renderTwoWays(nodes, renderMenuFold, renderMenuItemFold) +
             '</ul>' +
           '</li>';
-};
+}
 
 function renderTwoWays(nodes,renderMenuFun,renderItemFun) {
   // console.log(nodes);
@@ -91,7 +91,16 @@ function renderTwoWays(nodes,renderMenuFun,renderItemFun) {
     }
   });
   return tpl;
-};
+}
+
+function ifInContainer(node, parentNodeName) {
+  if (node.nodeName === parentNodeName) return true;
+  if (node.parentNode.nodeName === parentNodeName) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 function bindEvents() {
   
@@ -102,9 +111,9 @@ function bindEvents() {
     var target = event.target || event.srcElement;
     var targetClass = target.getAttribute('class');
     // 判断是否匹配目标元素
-    if (target.nodeName.toLocaleLowerCase() === 'a' ) {
-      var url = target.getAttribute("href");
-      var id = target.getAttribute("data-id");
+    if (ifInContainer(target, 'A')) {
+      var url = target.getAttribute("href") || target.parentNode.getAttribute("href");
+      var id = target.getAttribute("data-id") || target.parentNode.getAttribute("data-id");
       if (url) {
         emitter.emit('viewEmitterToC', {type:'NODE_SELECT', id:id, url: url});
       }
@@ -114,11 +123,10 @@ function bindEvents() {
   $menuFolded.addEventListener('mouseenter', function(e){
     var event = e || window.event;
     var target = event.target || event.srcElement;
-    
     var targetClass = target.getAttribute("class");
-
+    
     if (targetClass.indexOf("menu-item") > -1) {
-      target.className = '' + targetClass + ' menu-item-active';
+      target.className = '' + targetClass + ' menu-item-hover';
 
       var firstUl = target.getElementsByTagName('ul')[0];
       if (!firstUl)return;
@@ -135,7 +143,7 @@ function bindEvents() {
     var targetClass = target.getAttribute("class");
     
     if (targetClass.indexOf("menu-item") > -1) {
-      target.className = targetClass.replace('menu-item-active', '');
+      target.className = targetClass.replace('menu-item-hover', '');
 
       var firstUl = target.getElementsByTagName('ul')[0];
       if (!firstUl)return;
@@ -153,11 +161,11 @@ function bindEvents() {
     var target = event.target || event.srcElement;
     var menuTitleStr = 'menu-submenu-title';
     var secondTitleStr = 'menu-title-vertical';
-    var targetClass = target.getAttribute('class');
     // 判断是否匹配目标元素
-    if (target.nodeName.toLocaleLowerCase() === 'a' ) {
-      var url = target.getAttribute("href");
-      var id = target.getAttribute("data-id");
+    if (ifInContainer(target, 'A')) {
+      var url = target.getAttribute("href") || target.parentNode.getAttribute("href");
+      var id = target.getAttribute("data-id") || target.parentNode.getAttribute("data-id");   
+      var targetClass = target.getAttribute('class') + target.parentNode.getAttribute('class');
       if(targetClass.indexOf(secondTitleStr) > -1) return;
       // 有儿子的菜单，点击打开
       if(targetClass.indexOf(menuTitleStr) > -1 ){
@@ -178,7 +186,7 @@ function bindEvents() {
     if (targetClass.indexOf(secondItemStr) > -1) {
 
       if (targetClass.indexOf("selected") > -1) {
-        target.className = '' + targetClass + ' isHover';
+        target.className = '' + targetClass + ' menu-item-unfold-hover';
       }
     }
   },true);
@@ -191,7 +199,7 @@ function bindEvents() {
 
     if (targetClass.indexOf(secondItemStr) > -1) {
       if (targetClass.indexOf("selected") > -1) {
-        target.className = targetClass.replace('isHover', '');
+        target.className = targetClass.replace('menu-item-unfold-hover', '');
       }
     }
   },true);
@@ -202,7 +210,7 @@ function bindEvents() {
         toggleClass($sidebar, 'sidebar-folded');
         toggleShowHide($menuFolded, $menuUnfold);
     }
-  }
+  };
 }
 
 function render(statusTree) {
@@ -225,7 +233,7 @@ var menuView = {
     // 2.交互时，调用VM方法更新状态树，update view
     // eg:mouseenter、click等
   }
-}
+};
 
 export {
   menuView as View,

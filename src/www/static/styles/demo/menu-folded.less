@@ -15,7 +15,7 @@
 
 
 		// 一级li宽度调整
-		&.menu-item-l1 {
+		&-l1 {
 			width: @sidebar-folded-width;
 		}
 
@@ -35,8 +35,8 @@
 
 		} 
 
-		&.menu-item-active {
-			&.menu-item-selected.menu-item-l3 > .menu-title {
+		&.menu-item-hover {
+			&.menu-item-selected > .menu-title-no-children {
 				box-shadow: inset 3px 0px 0px 0px #709d63, inset 0px 1px 0px 0px #2b3447;
 			}
 			& > .menu-title {
@@ -44,6 +44,7 @@
 				background-color: #1c212d;
 				box-shadow: inset 0px 1px 0px 0px #2b3447;
 			}
+			
 			.menu-title-l1 {
 				padding-left: @base-padding;
 				display: inline-block;

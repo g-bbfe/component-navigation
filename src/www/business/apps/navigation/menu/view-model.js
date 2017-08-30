@@ -29,17 +29,15 @@ var Store = createStore(reducer);
 function reducer(status, action) {
     switch (action.type) {
     case 'NODE_SELECT':
-      return ViewModel.selectNode(action.id);
+      return VMHandler.selectNode(action.id);
     case 'NODE_TOGGLE':
-      return ViewModel.toggleNode(action.id);
+      return VMHandler.toggleNode(action.id);
     case 'INIT':
-        return ViewModel.selectNode(action.url);
+        return VMHandler.selectNode(action.url);
     default:
       return statusTree;
     }
 }
-
-
 
 // 树的层次遍历
 function layerTraversal (tree, callback) {
@@ -127,20 +125,8 @@ function VMToggleNode(key) {
     }
 }
 
-var ViewModel = {
-    init: function(params) {
-        var defaultUrl = params.url;
-        statusTree.children = params.modelData;
-        initStatusTree();
-        console.log('平铺的',statusTreeMap);
-        
-        if (defaultUrl) {
-            Store.dispatch({type: 'INIT', url: defaultUrl});
-        } else {
-            Store.dispatch({type: 'DEFAULT'})
-        }
-            
-    },
+// 主要处理，select & toggle
+var VMHandler = {
     selectNode: function(key) {
 
         // 两次Key相同，直接返回状态树
@@ -156,6 +142,23 @@ var ViewModel = {
         console.log('VM中需要toggle的路径',key);
         VMToggleNode(key);
         return statusTree;
+    }
+}
+
+// 对外暴露的方法，外部只能执行初始方法
+var ViewModel = {
+    init: function(params) {
+        var defaultUrl = params.url;
+        statusTree.children = params.modelData;
+        initStatusTree();
+        console.log('平铺的',statusTreeMap);
+        
+        if (defaultUrl) {
+            Store.dispatch({type: 'INIT', url: defaultUrl});
+        } else {
+            Store.dispatch({type: 'DEFAULT'});
+        }
+            
     }
 }
 export {ViewModel,Store};

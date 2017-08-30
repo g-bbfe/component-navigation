@@ -27,18 +27,18 @@ Menu.prototype = {
   
   init: function() {
     //在此controller内控制VM&View
-    
-    View.init(); //初始化VIEW，绑定事件,内部会监听controller派发出的事件
 
-    subscribe(); // 状态机管理，VM更新,会通知view & 视图上VIEW的动作变化，会通知VM
-    
-    // VM 初始，
-    //1.在VM内生成store
-    //2.VM接收controller传递过来的action，VM状态变化通知Controller
+    subscribe(); // 1.状态机管理，VM更新,会通知view & 视图上VIEW的动作变化，会通知VM
+
+    View.init(); // 2.初始化VIEW，绑定事件,内部会监听controller派发出的事件
+
     ViewModel.init({
       modelData:this.config.data,
       url: this.config.url
     });
+    // 3.初始化VM
+    // (1)在VM内生成store
+    // (2)VM接收controller传递过来的action，VM状态变化通知Controller
   }
 }
 
