@@ -1,4 +1,5 @@
 @import './demo/variables';
+@import './demo/mixin';
 @import './demo/menu';
 @import './demo/menu-folded';
 
@@ -28,6 +29,7 @@ body {
     width: @sidebar-width;
     z-index: @base-zindex + 1;
     overflow-x: visible;
+    .transition();
 
     .logo {
         height: @header-height;
@@ -59,6 +61,7 @@ body {
         cursor: pointer;
         
         .lines {
+            .transition();
             position: relative;
             height: 13px;
             width: @menu-icon-size;
@@ -83,7 +86,6 @@ body {
 
 // 左侧导航菜单区 - 折叠状态
 .sidebar-folded {
-
     width: @sidebar-folded-width;
 
     .sidebar-toggle-btn {
