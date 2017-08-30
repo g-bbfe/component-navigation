@@ -2377,7 +2377,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 function getMenuData() {
-    return __WEBPACK_IMPORTED_MODULE_3__services_proxy__["a" /* default */].get('menu.json')
+    return __WEBPACK_IMPORTED_MODULE_3__services_proxy__["a" /* default */].get('api/menu.json')
         .then(data => {
             return data.items || [];
         })
@@ -2390,7 +2390,7 @@ getMenuData()
         __WEBPACK_IMPORTED_MODULE_0__src_www_business_apps_navigation_menu___default()({
             container: "menu-folded",
             ifFold: true,
-            data: data,
+            data: __WEBPACK_IMPORTED_MODULE_1__mock__["a" /* default */],
             url: '/ios/iphone/8'
         });
 
@@ -2399,7 +2399,7 @@ getMenuData()
         __WEBPACK_IMPORTED_MODULE_0__src_www_business_apps_navigation_menu___default()({
             container: "menu-unfold",
             ifFold: false,
-            data: data,
+            data: __WEBPACK_IMPORTED_MODULE_1__mock__["a" /* default */],
             url: '/ios/iphone/8'
         });
     })
@@ -3613,7 +3613,7 @@ DataSourceProxy.createError = __WEBPACK_IMPORTED_MODULE_1_data_source_proxy___de
 const config = {
 	// api请求的baseURL, 用于DataSourceGateWay
 	// BASE_URL: '/web/',
-	BASE_URL: 'https://www.easy-mock.com/mock/58ff1ae35e43ae5dbea5ef8c/',
+	BASE_URL: 'https://www.easy-mock.com/mock/59a51e3c7b7ac306cc2f08a8',
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (config);

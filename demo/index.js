@@ -6,7 +6,7 @@ import DataSourceProxy from './services/proxy';
 
 
 function getMenuData() {
-    return DataSourceProxy.get('menu.json')
+    return DataSourceProxy.get('api/menu.json')
         .then(data => {
             return data.items || [];
         })
@@ -19,7 +19,7 @@ getMenuData()
         menu({
             container: "menu-folded",
             ifFold: true,
-            data: data,
+            data: menuData,
             url: '/ios/iphone/8'
         });
 
@@ -28,7 +28,7 @@ getMenuData()
         menu({
             container: "menu-unfold",
             ifFold: false,
-            data: data,
+            data: menuData,
             url: '/ios/iphone/8'
         });
     })
