@@ -5,8 +5,6 @@
 //=============  Menu-Styles Start============= 
 .menu-root {
 
-    position: relative;
-
     .calc-colors(@base-menu-font-color);
 
     a {
@@ -24,6 +22,7 @@
     }
 
     .menu-item {
+        .transition();
         position: relative;
         &:not(.menu-item-selected)>.menu-title:hover {
             color: @menu-item-selected-font-color;
@@ -33,6 +32,7 @@
     } 
 
     .menu-title {
+        .transition();
         width: 100%;
         height:  @menu-item-height;
         line-height: @menu-item-height;
