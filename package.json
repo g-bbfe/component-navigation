@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "babel-runtime": "6.26.0",
-    "data-source-agent": "git+https://github.com/weimengxi/data-source-agent.git"
+    "data-source-agent": "git+https://github.com/weimengxi/data-source-agent.git",
+    "redux": "3.7.2"
   }
 }
