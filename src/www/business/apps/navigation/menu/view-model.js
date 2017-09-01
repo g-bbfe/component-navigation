@@ -11,15 +11,17 @@ var statusTree = {
     parent: null
 }; //给一个初始值
 
+var defaultId,
+    curUrl;
+
 //把状态树平铺
-var statusTreeMap = [];
+var statusTreeMap = {};
 
 // 储存选择节点的状态
 var selectStore = {
-    oldNode: null,
-    newNode: null,
-    isEqual: function() {
-        return (this.newNode === this.oldNode);
+    lastNode: null,
+    isEqual: function(curNode) {
+        return (curNode == this.lastNode);
     }   
 };
 
@@ -32,8 +34,6 @@ function reducer(status, action) {
       return VMHandler.selectNode(action.id);
     case 'NODE_TOGGLE':
       return VMHandler.toggleNode(action.id);
-    case 'INIT':
-        return VMHandler.selectNode(action.url);
     default:
       return statusTree;
     }
@@ -64,7 +64,10 @@ function initStatusTree() {
         node.isSelect = false;
         node.parent = parent;
         node.level = getNodeLevel(node);
-        statusTreeMap.push(node);
+        if (node.url == curUrl) {
+            defaultId = node.id;
+        }
+        statusTreeMap[node.id] = node;
     });
 }
 
@@ -80,25 +83,19 @@ function getNodeLevel(node) {
 }
 
 // 通过传入ID或url查找节点
-function searchNodeByTwoWays(param) {
-    var curNode;
-    statusTreeMap.some(function(element) {
-        if ((element.id == param) || (element.url == param)) {
-            return curNode = element;
-        }
-    });
-    return curNode;
+function searchNode(id) {
+    return statusTreeMap[id];
 }
 
 // 操作选择节点的属性
-function selectNodeAttr(node, ifSelected) {
-    node.isSelect = ifSelected;
+function setNodeAttr(node, attr, boolean) {
+    node[attr] = boolean;
 
     // 选择祖先节点
     while (node.parent) {
         // 选中当前节点的父节点
         var parent = node.parent;
-        parent.isSelect = ifSelected;
+        parent[attr] = boolean;
 
         node = parent;
     }
@@ -106,20 +103,20 @@ function selectNodeAttr(node, ifSelected) {
 
 // 选择节点
 function VMSelectNode(newPath) {
-    var oldPath = selectStore.oldNode;
-    if (oldPath) {
-        var oldNode = searchNodeByTwoWays(oldPath);
-        selectNodeAttr(oldNode, false);
+    var lastPath = selectStore.lastNode;
+    if (lastPath) {
+        var lastNode = searchNode(lastPath); //current/last
+        setNodeAttr(lastNode, 'isSelected',false);
     }
-    var newNode = searchNodeByTwoWays(newPath);
+    var newNode = searchNode(newPath);
     if (newNode) {
-        selectNodeAttr(newNode, true);  
+        setNodeAttr(newNode, 'isSelected', true);  
     }
 }
 
 // 传入节点,toggle其展开（isOpen）属性
 function VMToggleNode(key) {
-    var node = searchNodeByTwoWays(key);
+    var node = searchNode(key);//
     if (node != null) {
         node.isOpen = !node.isOpen;
     }
@@ -130,11 +127,11 @@ var VMHandler = {
     selectNode: function(key) {
 
         // 两次Key相同，直接返回状态树
-        selectStore.newNode = key;
-        if (selectStore.isEqual()) return statusTree;
+        
+        if (selectStore.isEqual(key)) return statusTree;
         
         VMSelectNode(key);
-        selectStore.oldNode = key;
+        selectStore.lastNode = key;
         console.log('VM中选中的路径',key);
         return statusTree;
     },
@@ -148,13 +145,13 @@ var VMHandler = {
 // 对外暴露的方法，外部只能执行初始方法
 var ViewModel = {
     init: function(params) {
-        var defaultUrl = params.url;
+        curUrl = params.url;
         statusTree.children = params.modelData;
         initStatusTree();
         console.log('平铺的',statusTreeMap);
         
-        if (defaultUrl) {
-            Store.dispatch({type: 'INIT', url: defaultUrl});
+        if (curUrl) {
+            Store.dispatch({type: 'NODE_SELECT', id: defaultId}); 
         } else {
             Store.dispatch({type: 'DEFAULT'});
         }
