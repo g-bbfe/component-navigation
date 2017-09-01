@@ -1,27 +1,25 @@
 {
-  "name": "component-navigation",
-  "version": "0.0.1",
-  "description": "navigation component",
-  "main": "webpack.config.js",
-  "directories": {
-    "doc": "doc",
-    "test": "test"
-  },
+  "name": "accountbalance",
+  "description": "use vue in lightApp",
+  "author": "zhiwei_zhai",
+  "private": true,
   "scripts": {
-    "test": "test"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/g-bbfe/component-navigation.git"
+  "dependencies": {
+    "vue": "^2.0.1",
+    "vue-router": "^2.0.3"
   },
-  "keywords": [
-    "g-bbfe",
-    "navigation"
-  ],
-  "author": "g-bbfe",
-  "license": "BSD-2-Clause",
-  "bugs": {
-    "url": "https://github.com/g-bbfe/component-navigation/issues"
-  },
-  "homepage": "https://github.com/g-bbfe/component-navigation#readme"
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "file-loader": "^0.9.0",
+    "vue-loader": "^9.7.0",
+    "webpack": "^2.1.0-beta.25",
+    "webpack-dev-server": "^2.1.0-beta.0"
+  }
 }
