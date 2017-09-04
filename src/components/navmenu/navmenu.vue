@@ -1,7 +1,7 @@
 <template>
 
   <div class="sidebar" :class="foldClass" id="sidebar">
-    <a class="sidebar-toggle-btn" id="sidebar-toggle-btn" @click="toggleFold">
+    <a class="sidebar-toggle-btn" id="sidebar-toggle-btn" @click="toggleSidebar">
       <span class="lines"></span>
     </a>
     <aside class="aside">
@@ -9,31 +9,30 @@
         <nav class="menu-root">
             <ul class="menu-list" id="menu-folded" v-show="foldUl">
               <li v-for="(node,index) in statusTree" class="menu-item menu-item-l1" :key="node.id"
-               :class="(node.isOpen?'menu-item-hover ':'') + (node.isSelected?'menu-item-selected':'')" 
-               @mouseenter="setHover(node.id)"
-               @mouseleave="setHover(node.id)" >
+               :class="(node.isHover?'menu-item-hover ':'') + (node.isSelected?'menu-item-selected':'')" 
+               @mouseenter="toggleNode(node.id, 'hover')"
+               @mouseleave="toggleNode(node.id, 'hover')" >
                 <a class="menu-title" :index="'a'+index"
                     @click="node.children?'':selectNode(node.id)"
                     :class="node.children?'':'menu-title-no-children'" >
                   <i v-if="node.icon" class="menu-icon-title-alt fa" :class="node.icon"></i>
                   <span v-if="node.children" class="menu-title-text menu-title-l1">{{node.title}}</span>
                 </a>
-                <ul v-if="node.children" class="menu-submenu menu-submenu-l2 menu-submenu-vertical" :id="node.id" v-show="node.isOpen">
+                <ul v-if="node.children" class="menu-submenu menu-submenu-l2 menu-submenu-vertical" :id="node.id" v-show="node.isHover">
                   <li v-for="nodeSec in node.children" class="menu-item menu-item-l2" :key="nodeSec.id"
-                  :class="(nodeSec.isSelected?'menu-item-selected ':'') + (nodeSec.isOpen?'menu-item-hover ':'')" 
-                  @mouseenter="setHover(nodeSec.id)" 
-                  @mouseleave="setHover(nodeSec.id)">
+                  :class="(nodeSec.isSelected?'menu-item-selected ':'') + (nodeSec.isHover?'menu-item-hover ':'')" 
+                  @mouseenter="toggleNode(nodeSec.id, 'hover')" 
+                  @mouseleave="toggleNode(nodeSec.id, 'hover')">
                     <a :data-id='nodeSec.id' class="menu-title"   
                         @click="nodeSec.children?'':selectNode(nodeSec.id)"
-                        :class="nodeSec.children?'':'menu-title-no-children'"
-                        :href="'/#'+nodeSec.url">
+                        :class="nodeSec.children?'':'menu-title-no-children'" >
                       <span class="menu-title-text menu-title-l2">{{nodeSec.title}}</span>
                     </a>
-                    <ul v-if="nodeSec.children" class="menu-submenu menu-submenu-l3 menu-submenu-vertical"  v-show="nodeSec.isOpen">
+                    <ul v-if="nodeSec.children" class="menu-submenu menu-submenu-l3 menu-submenu-vertical"  v-show="nodeSec.isHover">
                       <li v-for="nodeThir in nodeSec.children" class="menu-item menu-item-l3" 
                           :key="nodeThir.id"
                           :class="nodeThir.isSelected?'menu-item-selected':''" >
-                        <a :data-id='nodeThir.id' :href="'/#'+nodeThir.url" class="menu-title" @click="selectNode(nodeThir.id)" >
+                        <a :data-id='nodeThir.id' class="menu-title" @click="selectNode(nodeThir.id)" >
                           <span class="menu-title-text menu-title-l3">{{nodeThir.title}}</span>
                         </a>
                       </li>
@@ -43,6 +42,39 @@
               </li>
             </ul>
             <ul class="menu-list" id="menu-unfold" v-show="unfoldUl">
+              <li v-for="(node,index) in statusTree" class="menu-item menu-item-l1" :key="node.id"
+               :class="node.isSelected && !node.isOpen ? 'menu-item-selected' : ''" >
+                <a class="menu-title" :index="'a'+index"
+                    @click="node.children?toggleNode(node.id):selectNode(node.id)"
+                    :class="node.children?'':'menu-title-no-children'" >
+                  <i v-if="node.icon" class="menu-icon-title-alt fa" :class="node.icon"></i>
+                  <span class="menu-title-text menu-title-l1">{{node.title}}</span>
+                  <i v-if="node.children" class="menu-icon-angle fa"
+                     :class="node.isOpen ?'fa-angle-down':'fa-angle-right'"></i>
+                </a>
+                <ul v-if="node.children" class="menu-submenu menu-submenu-l2"
+                    :id="node.id"  :class="node.isOpen ? 'menu-submenu-inline' : 'menu-submenu-hidden'">
+                  <li v-for="nodeSec in node.children" class="menu-item menu-item-l2" :key="nodeSec.id"
+                  :class="(nodeSec.isSelected?'menu-item-selected ':'') + (nodeSec.isOpen?'menu-item-unfold-hover ':'')" 
+                  @mouseenter="toggleNode(nodeSec.id)" 
+                  @mouseleave="toggleNode(nodeSec.id)">
+                    <a :data-id='nodeSec.id' class="menu-title"   
+                        @click="nodeSec.children?'':selectNode(nodeSec.id)"
+                        :class="nodeSec.children?'':'menu-title-no-children'">
+                      <span class="menu-title-text menu-title-l2">{{nodeSec.title}}</span>
+                    </a>
+                    <ul v-if="nodeSec.children" class="menu-submenu menu-submenu-l3 menu-submenu-vertical"  v-show="nodeSec.isOpen">
+                      <li v-for="nodeThir in nodeSec.children" class="menu-item menu-item-l3" 
+                          :key="nodeThir.id"
+                          :class="nodeThir.isSelected?'menu-item-selected':''" >
+                        <a :data-id='nodeThir.id' class="menu-title" @click="selectNode(nodeThir.id)" >
+                          <span class="menu-title-text menu-title-l3">{{nodeThir.title}}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
             </ul>
         </nav>
     </aside>
@@ -53,96 +85,100 @@
 import Vue from 'vue';
 export default {
     name: 'navmenu',
-    beforeCreate () {
-      // console.log('执行beforecreate',this.menuData)
-      
-    },
-    beforeMount (){
-      console.log('执行beforemounted',this.menuData);
-    },
     mounted () {
-
-      console.log('执行mounted',this.menuData);
+      console.log('执行mounted');
+      var initSelectedNode = this.lastNodeId;
+      if (initSelectedNode) {
+        this.selectNode(this.lastNodeId);
+      }
       
     },
     data () {
       console.log('执行data');
-      
-      var statusTree = {
-        title: 'root',
-        url: '/',
-        isSelected: false,
-        isOpen: true,
-        level: 0,
-        children: this.menuData,
-        parent: null
-      };
-      var statusTreeMap = {};
-      var id = 1;
-      // 必须保证父级元素已经遍历
-      var queue = [];
-      queue.push(statusTree);
-      while (queue.length > 0) {
-          var parent = queue.pop();
-          if (Array.isArray(parent.children)) {
-              parent.children.forEach(function (node) {
-                queue.unshift(node);
-                node.id = id++;
-                Vue.set(node,'isOpen', false);
-                Vue.set(node,'isSelected', false);
-                node.parent = parent;
-                statusTreeMap[node.id] = node;
-                // node.level = getNodeLevel(node);
-              });
-          }
-      }
+      var initStatusData = this.initStatusTree();
+      // this.selectNode(initStatusData.defaultId);
       console.log('menuuuuuuuuuu', this.menuData);
       return {
           items: this.menuData,
-          fold: true,
+          fold: true, // 是否为折叠状态
           foldClass: 'sidebar-folded',
           foldUl: true,
           unfoldUl: false,
-          id1:false,
-          lastNodeId: '',
-          statusTree : statusTree.children,
-
-          statusTreeMap: statusTreeMap
+          lastNodeId: initStatusData.defaultId, //为初始化选中或上一次选中
+          statusTree : initStatusData.statusTree,
+          statusTreeMap: initStatusData.statusTreeMap
       } 
     },
-    props:['menuData'],
+    props:['menuData','url'],
     methods:{
-        foldHover (index) {
-          console.log(index);
-          // this.handleItems = null;
-          console.log(this.handleItems);
-          this.index = !this.index;
-          this.test = !this.test;
+        initStatusTree () {
+          var statusTree = {
+            title: 'root',
+            url: '/',
+            isSelected: false,
+            isOpen: true,
+            isHover: false,
+            level: 0,
+            children: this.menuData,
+            parent: null
+          };
+          var statusTreeMap = {};
+          var id = 1,
+              defaultUrl = this.url,
+              defaultId = null;
+              console.log(defaultUrl)
+          // 必须保证父级元素已经遍历
+          var queue = [];
+          queue.push(statusTree);
+          while (queue.length > 0) {
+              var parent = queue.pop();
+              if (Array.isArray(parent.children)) {
+                  parent.children.forEach(function (node) {
+                    queue.unshift(node);
+                    node.id = id++;
+                    Vue.set(node,'isOpen', false);
+                    Vue.set(node,'isSelected', false);
+                    Vue.set(node,'isHover', false);
+                    node.parent = parent;
+                    statusTreeMap[node.id] = node;
+                    if(defaultUrl && (node.url == defaultUrl)) defaultId = node.id;
+                  });
+              }
+          }
+
+          return {
+            statusTree: statusTree.children,
+            statusTreeMap: statusTreeMap,
+            defaultId: defaultId
+          }
         },
-        toggleFold () {
+        toggleSidebar () {
           this.fold = !this.fold;
           this.foldClass = this.fold ? 'sidebar-folded' : '';
           this.foldUl = this.unfoldUl;
           this.unfoldUl = !this.unfoldUl;
         },
-        setHover: function(id) {
-          // this.statusTree[7].isOpen = true;
-          // this.$set(this.statusTree,7, this.statusTree[7]);
-
+        toggleNode (id, type) {
           var node = this.searchNode(id);//
           if (node != null) {
-              node.isOpen = !node.isOpen;
+              if(type == "hover"){
+                node.isHover = !node.isHover;
+              } else {
+                node.isOpen = !node.isOpen;
+              }
           }
         },
-        selectNode: function (id) {
+        selectNode (id) {
+          var lastId = this.lastNodeId;
           var curNode = this.searchNode(id);
-          var lastNode = this.searchNode(this.lastNodeId);
+
+          var lastNode = this.searchNode(lastId);
           if(lastNode) this.setNodeAttr(lastNode, 'isSelected', false);
           this.setNodeAttr(curNode, 'isSelected', true);
           this.lastNodeId = id;
-          this.$emit('select_NODE',{url:curNode.url});
+          this.$emit('selectNode',{url:curNode.url});
         },
-        setNodeAttr: function (node, attr, val) {
+        setNodeAttr (node, attr, val) {
           node[attr] = val;
 
           // 选择祖先节点
@@ -154,38 +190,10 @@ export default {
               node = parent;
           }
         },
-        searchNode: function (id) {
+        searchNode (id) {
           return this.statusTreeMap[id];
         }
        
-    },
-    watch: {
-      // 如果 statusTree 发生改变，这个函数就会运行
-      statusTree: {
-        handler:function () {
-          console.log('watch里面', this.statusTree);
-          return this.statusTree
-        },
-        deep:true
-      }
-    },
-    computed: {
-      handleItems: {
-        get: function () {
-          console.log(this.statusTree);
-          return this.statusTree.children;
-        },
-
-        set: function (params) {
-          this.statusTree.children[0].isOpen = true;
-          console.log(params)
-        }
-        
-        
-      }
-
-      
-
     }
 }
 </script>

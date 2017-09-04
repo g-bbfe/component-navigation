@@ -6,7 +6,7 @@
         <div v-if="showDatePicker">
             <datepicker @cancle="cancle" @sure="sure" :selecteddate="olddate"></datepicker>
         </div> -->
-        <navmenu :menuData="items" v-on:select_NODE="response"></navmenu>
+        <navmenu :menuData="items" url="h2-1" v-on:selectNode="response"></navmenu>
     </div>
 </template>
 
@@ -15,12 +15,11 @@
     import navmenu from './components/navmenu'
     import Vue from 'vue'
 
-    Vue.use(datepicker);
     Vue.use(navmenu);
 export default {
     name: 'app',
     data () {
-        this.$on('select_NODE', function (params) {
+        this.$on('selectNode', function (params) {
             
         })
         return {
@@ -30,7 +29,8 @@ export default {
             items:  [
                 {
                 "title": "首页",
-                "icon": "fa-android"
+                "icon": "fa-android",
+                "url": "a"
                 },
                 {
                 "title": "我的申请",
@@ -205,7 +205,8 @@ export default {
                     }
                 ]
                 }
-            ]
+            ],
+            url: 'b1'
         }
     },
     methods:{
