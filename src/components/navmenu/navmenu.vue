@@ -12,7 +12,7 @@
                :class="(node.isHover?'menu-item-hover ':'') + (node.isSelected?'menu-item-selected':'')" 
                @mouseenter="toggleNode(node.id, 'hover')"
                @mouseleave="toggleNode(node.id, 'hover')" >
-                <a class="menu-title" :index="'a'+index"
+                <a class="menu-title"
                     @click="node.children?'':selectNode(node.id)"
                     :class="node.children?'':'menu-title-no-children'" >
                   <i v-if="node.icon" class="menu-icon-title-alt fa" :class="node.icon"></i>
@@ -44,9 +44,9 @@
             <ul class="menu-list" id="menu-unfold" v-show="unfoldUl">
               <li v-for="(node,index) in statusTree" class="menu-item menu-item-l1" :key="node.id"
                :class="node.isSelected && !node.isOpen ? 'menu-item-selected' : ''" >
-                <a class="menu-title" :index="'a'+index"
+                <a class="menu-title"
                     @click="node.children?toggleNode(node.id):selectNode(node.id)"
-                    :class="node.children?'':'menu-title-no-children'" >
+                    :class="node.children?'menu-submenu-title':'menu-title-no-children'" >
                   <i v-if="node.icon" class="menu-icon-title-alt fa" :class="node.icon"></i>
                   <span class="menu-title-text menu-title-l1">{{node.title}}</span>
                   <i v-if="node.children" class="menu-icon-angle fa"
@@ -56,20 +56,17 @@
                     :id="node.id"  :class="node.isOpen ? 'menu-submenu-inline' : 'menu-submenu-hidden'">
                   <li v-for="nodeSec in node.children" class="menu-item menu-item-l2" :key="nodeSec.id"
                   :class="(nodeSec.isSelected?'menu-item-selected ':'') + (nodeSec.isOpen?'menu-item-unfold-hover ':'')" 
-                  @mouseenter="toggleNode(nodeSec.id)" 
-                  @mouseleave="toggleNode(nodeSec.id)">
-                    <a :data-id='nodeSec.id' class="menu-title"   
+                  @mouseenter="nodeSec.children?toggleNode(nodeSec.id):''" 
+                  @mouseleave="nodeSec.children?toggleNode(nodeSec.id):''">
+                    <a :data-id='nodeSec.id' class="menu-title menu-title-vertical"   
                         @click="nodeSec.children?'':selectNode(nodeSec.id)"
-                        :class="nodeSec.children?'':'menu-title-no-children'">
-                      <span class="menu-title-text menu-title-l2">{{nodeSec.title}}</span>
+                        :class="nodeSec.children?'menu-submenu-title':'menu-title-no-children'">{{nodeSec.title}}
                     </a>
                     <ul v-if="nodeSec.children" class="menu-submenu menu-submenu-l3 menu-submenu-vertical"  v-show="nodeSec.isOpen">
                       <li v-for="nodeThir in nodeSec.children" class="menu-item menu-item-l3" 
                           :key="nodeThir.id"
                           :class="nodeThir.isSelected?'menu-item-selected':''" >
-                        <a :data-id='nodeThir.id' class="menu-title" @click="selectNode(nodeThir.id)" >
-                          <span class="menu-title-text menu-title-l3">{{nodeThir.title}}</span>
-                        </a>
+                        <a :data-id='nodeThir.id' class="menu-title" @click="selectNode(nodeThir.id)" >{{nodeThir.title}}</a>
                       </li>
                     </ul>
                   </li>
@@ -200,8 +197,8 @@ export default {
 
 <style>
   .menu-root a {
-  display: inline-block;
-  text-decoration: none;
+    display: inline-block;
+    text-decoration: none;
   }
   .menu-root a,
   .menu-root a:link,
